@@ -1,2 +1,23 @@
+# ✅ Ignore node and dependencies
+node_modules/
+
+# ✅ Ignore Next.js build output
+.next/
+out/
+dist/
+
+# ✅ Ignore environment configs and secrets
+.env
+.env.*
+*.env
+
+# ✅ Ignore macOS & system files
+.DS_Store
+
+# ✅ Ignore local backups/zips
+*.zip
+
+# ✅ Ignore Vercel config if not needed
+.vercel
 .vercel
 .env*.local
