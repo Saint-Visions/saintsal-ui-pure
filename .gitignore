@@ -1,3 +1,28 @@
+# Environment files
+.env
+.env.*
+!.env.local.example
+
+# Node modules
+node_modules/
+
+# Vercel deployment output
+.vercel/
+
+# OS / IDE clutter
+.DS_Store
+*.log
+*.zip
+
+# Build outputs
+.next/
+out/
+dist/
+coverage/
+
+# Editor folders
+.vscode/
+.idea/
 # ✅ Ignore node and dependencies
 node_modules/
 
