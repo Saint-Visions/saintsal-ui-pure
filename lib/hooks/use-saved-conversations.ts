@@ -7,21 +7,11 @@ type Chat = {
 }
 
 export function useSavedConversations() {
-  const savedChats: Chat[] = []  // ✅ Explicitly typed
+  const savedChats: Chat[] = [] // ✅ Explicitly typed
   const refreshSavedChats = () => {
     console.log('Refreshing chats...')
+    // TODO: implement actual refresh logic
   }
 
   return { savedChats, refreshSavedChats }
 }
-'use client'
-
-export function useSavedConversations() {
-  const savedChats = []
-  const refreshSavedChats = () => {
-    console.log('Refreshing chats...')
-  }
-
-  return { savedChats, refreshSavedChats }
-}
-
