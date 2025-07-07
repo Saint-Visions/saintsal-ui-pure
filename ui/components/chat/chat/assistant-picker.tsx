@@ -1,26 +1,32 @@
 "use client"
-import React from "react"
-import { ChatbotUIContext } from "@/context/context"
-import { Tables } from "@/supabase/types"
-import { IconRobotFace } from "@tabler/icons-react"
+
+import React, {
+  FC,
+  useContext,
+  useEffect,
+  useRef,
+  KeyboardEvent,
+} from "react"
 import Image from "next/image"
-import { FC, useContext, useEffect, useRef } from "react"
+import { IconRobotFace } from "@tabler/icons-react"
+import { ChatbotUIContext } from "@/context/context"
+
+import { Tables } from "@/supabase/types"
 import { usePromptAndCommand } from "./chat-hooks/use-prompt-and-command"
 
 interface AssistantPickerProps {}
 
-export const AssistantPicker: FC<AssistantPickerProps> = ({}) => {
+export const AssistantPicker: FC<AssistantPickerProps> = () => {
   const {
     assistants,
     assistantImages,
     focusAssistant,
     atCommand,
     isAssistantPickerOpen,
-    setIsAssistantPickerOpen
+    setIsAssistantPickerOpen,
   } = useContext(ChatbotUIContext)
 
   const { handleSelectAssistant } = usePromptAndCommand()
-
   const itemsRef = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -29,7 +35,7 @@ export const AssistantPicker: FC<AssistantPickerProps> = ({}) => {
     }
   }, [focusAssistant])
 
-  const filteredAssistants = assistants.filter(assistant =>
+  const filteredAssistants = assistants.filter((assistant) =>
     assistant.name.toLowerCase().includes(atCommand.toLowerCase())
   )
 
@@ -43,7 +49,7 @@ export const AssistantPicker: FC<AssistantPickerProps> = ({}) => {
   }
 
   const getKeyDownHandler =
-    (index: number) => (e: React.KeyboardEvent<HTMLDivElement>) => {
+    (index: number) => (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Backspace") {
         e.preventDefault()
         handleOpenChange(false)
@@ -57,14 +63,12 @@ export const AssistantPicker: FC<AssistantPickerProps> = ({}) => {
       ) {
         e.preventDefault()
         itemsRef.current[0]?.focus()
-      } else if (e.key === "ArrowUp" && !e.shiftKey && index === 0) {
-        // go to last element if arrow up is pressed on first element
+      } else if (e.key === "ArrowUp" && index === 0) {
         e.preventDefault()
         itemsRef.current[itemsRef.current.length - 1]?.focus()
       } else if (e.key === "ArrowUp") {
         e.preventDefault()
-        const prevIndex =
-          index - 1 >= 0 ? index - 1 : itemsRef.current.length - 1
+        const prevIndex = index - 1 >= 0 ? index - 1 : itemsRef.current.length - 1
         itemsRef.current[prevIndex]?.focus()
       } else if (e.key === "ArrowDown") {
         e.preventDefault()
@@ -82,46 +86,39 @@ export const AssistantPicker: FC<AssistantPickerProps> = ({}) => {
               No matching assistants.
             </div>
           ) : (
-            <>
-              {filteredAssistants.map((item, index) => (
-                <div
-                  key={item.id}
-                  ref={ref => {
-                    itemsRef.current[index] = ref
-                  }}
-                  tabIndex={0}
-                  className="hover:bg-accent focus:bg-accent flex cursor-pointer items-center rounded p-2 focus:outline-none"
-                  onClick={() =>
-                    callSelectAssistant(item as Tables<"assistants">)
-                  }
-                  onKeyDown={getKeyDownHandler(index)}
-                >
-                  {item.image_path ? (
-                    <Image
-                      src={
-                        assistantImages.find(
-                          image => image.path === item.image_path
-                        )?.url || ""
-                      }
-                      alt={item.name}
-                      width={32}
-                      height={32}
-                      className="rounded"
-                    />
-                  ) : (
-                    <IconRobotFace size={32} />
-                  )}
+            filteredAssistants.map((item, index) => (
+              <div
+                key={item.id}
+                ref={(ref) => {
+                  itemsRef.current[index] = ref
+                }}
+                tabIndex={0}
+                className="hover:bg-accent focus:bg-accent flex cursor-pointer items-center rounded p-2 focus:outline-none"
+                onClick={() => callSelectAssistant(item)}
+                onKeyDown={getKeyDownHandler(index)}
+              >
+                {item.image_path ? (
+                  <Image
+                    src={
+                      assistantImages.find((image) => image.path === item.image_path)?.url || ""
+                    }
+                    alt={item.name || "Assistant image"}
+                    width={32}
+                    height={32}
+                    className="rounded"
+                  />
+                ) : (
+                  <IconRobotFace size={32} />
+                )}
 
-                  <div className="ml-3 flex flex-col">
-                    <div className="font-bold">{item.name}</div>
-
-                    <div className="truncate text-sm opacity-80">
-                      {item.description || "No description."}
-                    </div>
+                <div className="ml-3 flex flex-col">
+                  <div className="font-bold">{item.name}</div>
+                  <div className="truncate text-sm opacity-80">
+                    {item.description || "No description."}
                   </div>
                 </div>
-              ))}
-            </>
+              </div>
+            ))
           )}
         </div>
       )}
