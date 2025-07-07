@@ -17,7 +17,7 @@
     "preview": "next build && next start",
     "type-check": "tsc --noEmit",
     "format:write": "prettier --write \"{app,lib,db,components,context,types}/**/*.{ts,tsx}\" --cache",
-    "format:check": "prettier --check \"{app,lib,db,components,context,types}**/*.{ts,tsx}\" --cache",
+    "format:check": "prettier --check \"{app,lib,db,components,context,types}/**/*.{ts,tsx}\" --cache",
     "db-reset": "supabase db reset && npm run db-types",
     "db-migrate": "supabase migration up && npm run db-types",
     "db-types": "supabase gen types typescript --local > supabase/types.ts",
@@ -27,10 +27,10 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "resolutions": {
-    "esbuild": "^0.24.4",
-    "path-to-regexp": "^6.2.3",
-    "highlight.js": "^11.9.0",
-    "prismjs": "^1.30.0"
+    "**/esbuild": "0.24.4",
+    "**/path-to-regexp": "6.2.3",
+    "**/highlight.js": "11.9.0",
+    "**/prismjs": "1.30.0"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.18.0",
@@ -78,7 +78,7 @@
     "react-i18next": "^15.6.0",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.23.0",
-    "react-syntax-highlighter": "^15.6.1",
+    "react-syntax-highlighter": "^5.8.0",
     "react-textarea-autosize": "^8.5.3",
     "recharts": "^2.15.4",
     "remark-gfm": "^4.0.0",
@@ -123,6 +123,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5",
     "vite": "^7.0.2",
-    "vite-plugin-html": "^3.2.2"
+    "vite-plugin-html": "^3.2.2",
+    "npm-force-resolutions": "^0.0.10"
   }
 }
