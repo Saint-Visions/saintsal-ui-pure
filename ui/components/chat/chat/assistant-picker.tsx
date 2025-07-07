@@ -9,7 +9,8 @@ import React, {
 } from "react"
 import Image from "next/image"
 import { IconRobotFace } from "@tabler/icons-react"
-import { ChatbotUIContext } from "@/context/context"
+// Update the import path below to the correct relative path if needed
+import { ChatbotUIContext } from "../../../context/context"
 
 import { Tables } from "@/supabase/types"
 import { usePromptAndCommand } from "./chat-hooks/use-prompt-and-command"
