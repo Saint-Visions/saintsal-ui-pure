@@ -1,7 +1,15 @@
-// ui/builder/BuilderPage.tsx
-import { BuilderComponent } from "@builder.io/react";
+import { Content } from "@builder.io/sdk-react";
 
-export function BuilderPage({ model = "page", content }: { model?: string; content: any }) {
-  return <BuilderComponent model={model} content={content} />;
+interface BuilderPageProps {
+  model?: string;
+  content: any;
+  apiKey: string;
 }
 
+export function BuilderPage({
+  model = "page",
+  content,
+  apiKey,
+}: BuilderPageProps) {
+  return <Content model={model} content={content} apiKey={apiKey} />;
+}
