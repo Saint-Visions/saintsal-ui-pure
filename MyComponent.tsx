@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// COMPLETE SAINTVISIONAL AI APPLICATION - PRODUCTION READY
 export default function MyComponent(props: any) {
   const [currentPage, setCurrentPage] = useState("landing");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -244,7 +245,7 @@ function Sidebar({ isOpen, onToggle, currentPage, onNavigate, user }) {
       {/* Sidebar - EXACT styling from your photo */}
       <div
         className={`
-        fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-gray-600 via-gray-700 to-gray-800 
+        fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-gray-600 via-gray-700 to-gray-800
         z-50 transform transition-transform duration-300 border-r border-gray-500/30
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         md:translate-x-0
