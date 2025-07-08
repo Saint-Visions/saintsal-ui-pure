@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-// COMPLETE SAINTVISIONAL AI APPLICATION - PRODUCTION READY
+// 🧠 SAINTSAL™ ISN'T A BOT — IT'S A MOVEMENT 🧠
+// Patent-Protected IP: U.S. Patent No. 10,290,222
 export default function MyComponent(props: any) {
   const [currentPage, setCurrentPage] = useState("landing");
   const [sidebarOpen, setSidebarOpen] = useState(false);
