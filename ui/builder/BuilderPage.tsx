@@ -80,7 +80,7 @@ function SaintVisionAIApp() {
       {showAuthModal && (
         <AuthModal
           onClose={() => setShowAuthModal(false)}
-          onSuccess={(userData) => {
+          onSuccess={(userData: any) => {
             setUser(userData);
             setShowAuthModal(false);
             setCurrentPage("dashboard");
