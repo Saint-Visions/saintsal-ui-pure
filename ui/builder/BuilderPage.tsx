@@ -3,6 +3,38 @@ import React, { useState, useEffect } from "react";
 import { BuilderComponent } from "@builder.io/react";
 import Image from "next/image";
 
+// TypeScript interfaces
+interface LandingPageProps {
+  onStartCooking?: () => void;
+  onAIChat?: () => void;
+  onSignIn?: () => void;
+  onMenuToggle?: () => void;
+}
+
+interface SidebarProps {
+  isOpen: boolean;
+  onToggle: () => void;
+  currentPage: string;
+  onNavigate: (page: string) => void;
+  user: any;
+}
+
+interface DashboardProps {
+  user: any;
+  onMenuToggle: () => void;
+  onNavigate: (page: string) => void;
+}
+
+interface ChatInterfaceProps {
+  user: any;
+  onMenuToggle: () => void;
+}
+
+interface AuthModalProps {
+  onClose: () => void;
+  onSuccess: (userData: any) => void;
+}
+
 // Core SaintVisionAI Application
 export function BuilderPage({
   model = "page",
@@ -92,7 +124,12 @@ function SaintVisionAIApp() {
 }
 
 // Landing Page Component
-function LandingPage({ onStartCooking, onAIChat, onSignIn, onMenuToggle }) {
+function LandingPage({
+  onStartCooking,
+  onAIChat,
+  onSignIn,
+  onMenuToggle,
+}: LandingPageProps) {
   const features = [
     {
       title: "Lead Discovery",
