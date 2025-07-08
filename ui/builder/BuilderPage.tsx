@@ -584,7 +584,7 @@ function AuthModal({ onClose, onSuccess }: AuthModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Mock auth - replace with real auth
     onSuccess({ email, plan: "pro" });
