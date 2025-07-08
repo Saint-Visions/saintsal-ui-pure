@@ -1,5 +1,5 @@
 "use client";
-import { builder } from "@builder.io/react";
+import { builder, Builder } from "@builder.io/react";
 
 // Route configuration for SaintVisionAI
 export const ROUTE_CONFIG = {
@@ -49,23 +49,55 @@ export class BuilderRouter {
   }
 
   static registerBuilderActions() {
+    // TODO: Fix Builder.registerAction API calls - currently incompatible with Builder.io v8
     // Register custom actions with Builder.io
-    builder.registerAction("navigateTo", {
-      inputs: [
-        { name: "path", type: "text", required: true },
-        { name: "external", type: "boolean", defaultValue: false },
-      ],
-    });
+    // Builder.registerAction("navigateTo", {
+    //   name: "Navigate To",
+    //   kind: "function",
+    //   inputs: [
+    //     { name: "path", type: "string", required: true },
+    //     { name: "external", type: "boolean", defaultValue: false },
+    //   ],
+    //   action: (context: any, inputs: any) => {
+    //     if (inputs.external) {
+    //       window.open(inputs.path, "_blank");
+    //     } else {
+    //       window.location.href = inputs.path;
+    //     }
+    //   },
+    // });
 
-    builder.registerAction("requireAuth", {
-      inputs: [{ name: "redirectPath", type: "text", defaultValue: "/login" }],
-    });
+    // Builder.registerAction("requireAuth", {
+    //   name: "Require Authentication",
+    //   kind: "function",
+    //   inputs: [{ name: "redirectPath", type: "string", defaultValue: "/login" }],
+    //   action: (context: any, inputs: any) => {
+    //     // Check if user is authenticated (implement your auth logic)
+    //     const isAuthenticated = false; // Replace with actual auth check
+    //     if (!isAuthenticated) {
+    //       window.location.href = inputs.redirectPath;
+    //     }
+    //   },
+    // });
 
-    builder.registerAction("requirePro", {
-      inputs: [
-        { name: "redirectPath", type: "text", defaultValue: "/upgrade" },
-      ],
-    });
+    // Builder.registerAction("requirePro", {
+    //   name: "Require Pro Subscription",
+    //   kind: "function",
+    //   inputs: [
+    //     { name: "redirectPath", type: "string", defaultValue: "/upgrade" },
+    //   ],
+    //   action: (context: any, inputs: any) => {
+    //     // Check if user has pro subscription (implement your logic)
+    //     const hasProSubscription = false; // Replace with actual check
+    //     if (!hasProSubscription) {
+    //       window.location.href = inputs.redirectPath;
+    //     }
+    //   },
+    // });
+
+    console.log(
+      "Builder actions registration temporarily disabled - needs API fix",
+    );
   }
 }
 
