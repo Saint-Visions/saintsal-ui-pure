@@ -55,7 +55,7 @@ export default function MyComponent(props: any) {
       {showAuthModal && (
         <AuthModal
           onClose={() => setShowAuthModal(false)}
-          onSuccess={(userData) => {
+          onSuccess={(userData: any) => {
             setUser(userData);
             setShowAuthModal(false);
             setCurrentPage("dashboard");
