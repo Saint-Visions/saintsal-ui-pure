@@ -1,6 +1,6 @@
 // 🚀 SAINTSAL™ MOVEMENT - PRODUCTION READY - DIRECT DEPLOYMENT
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   Content,
   fetchOneEntry,
@@ -11,19 +11,12 @@ import { customComponents } from "../builder-registry";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
 
 export default function Page() {
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [builderContent, setBuilderContent] = React.useState<any>(null);
 
-  // Builder.io integration for dynamic content
-  const [builderContent, setBuilderContent] = useState(null);
-
+  // Load Builder.io content on client side
   React.useEffect(() => {
     async function loadBuilderContent() {
       try {
-        const { initializeNodeRuntime } = await import(
-          "@builder.io/sdk-react/node/init"
-        );
-        initializeNodeRuntime();
-
         const content = await fetchOneEntry({
           apiKey: process.env.NEXT_PUBLIC_BUILDER_API_KEY!,
           model: "page",
@@ -39,8 +32,27 @@ export default function Page() {
     loadBuilderContent();
   }, []);
 
+  return <HomePage builderContent={builderContent} />;
+}
+
+function HomePage({ builderContent }: { builderContent: any }) {
+  const [showAuthModal, setShowAuthModal] = React.useState(false);
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Builder.io Dynamic Content Zone - Header */}
+      {(builderContent || isPreviewing() || isEditing()) && (
+        <div className="relative z-20">
+          <Content
+            apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
+            model="page"
+            content={builderContent}
+            customComponents={customComponents}
+            data={{ section: "header" }}
+          />
+        </div>
+      )}
+
       {/* Landing Page */}
       <div className="min-h-screen relative overflow-hidden">
         {/* Background with your exact image */}
@@ -129,6 +141,19 @@ export default function Page() {
             </div>
           </div>
 
+          {/* Builder.io Dynamic Content Zone - Before Features */}
+          {(builderContent || isPreviewing() || isEditing()) && (
+            <div className="w-full max-w-4xl mb-8">
+              <Content
+                apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
+                model="page"
+                content={builderContent}
+                customComponents={customComponents}
+                data={{ section: "before-features" }}
+              />
+            </div>
+          )}
+
           {/* What's Inside These Walls - EXACT match */}
           <div className="w-full max-w-4xl">
             <h2 className="text-yellow-400 text-xl font-bold text-center mb-6 flex items-center justify-center">
@@ -183,14 +208,28 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Builder.io Dynamic Content Section */}
+      {/* Builder.io Dynamic Content Zone - After Features */}
       {(builderContent || isPreviewing() || isEditing()) && (
-        <div className="relative z-10">
+        <div className="relative z-10 bg-black">
           <Content
             apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
             model="page"
             content={builderContent}
             customComponents={customComponents}
+            data={{ section: "after-features" }}
+          />
+        </div>
+      )}
+
+      {/* Builder.io Dynamic Content Zone - Footer */}
+      {(builderContent || isPreviewing() || isEditing()) && (
+        <div className="relative z-10 bg-black">
+          <Content
+            apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
+            model="page"
+            content={builderContent}
+            customComponents={customComponents}
+            data={{ section: "footer" }}
           />
         </div>
       )}
