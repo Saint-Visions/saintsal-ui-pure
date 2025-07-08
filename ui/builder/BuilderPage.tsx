@@ -28,6 +28,7 @@ interface DashboardProps {
 interface ChatInterfaceProps {
   user: any;
   onMenuToggle: () => void;
+  onNavigate?: (page: string) => void;
 }
 
 interface AuthModalProps {
@@ -489,7 +490,7 @@ function Dashboard({ user, onMenuToggle, onNavigate }: DashboardProps) {
 }
 
 // Chat Interface Component
-function ChatInterface({ user, onMenuToggle, onNavigate }) {
+function ChatInterface({ user, onMenuToggle, onNavigate }: ChatInterfaceProps) {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
