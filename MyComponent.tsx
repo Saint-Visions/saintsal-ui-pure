@@ -41,7 +41,7 @@ interface AuthModalProps {
 export default function MyComponent(props: any) {
   const [currentPage, setCurrentPage] = useState("landing");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   return (
@@ -91,7 +91,7 @@ export default function MyComponent(props: any) {
       {showAuthModal && (
         <AuthModal
           onClose={() => setShowAuthModal(false)}
-          onSuccess={(userData: any) => {
+          onSuccess={(userData: User) => {
             setUser(userData);
             setShowAuthModal(false);
             setCurrentPage("dashboard");
