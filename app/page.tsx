@@ -1,9 +1,43 @@
 // 🚀 SAINTSAL™ MOVEMENT - PRODUCTION READY - DIRECT DEPLOYMENT
 "use client";
 import React, { useState } from "react";
+import {
+  Content,
+  fetchOneEntry,
+  isPreviewing,
+  isEditing,
+} from "@builder.io/sdk-react";
+import { customComponents } from "../builder-registry";
+import { BuilderDebug } from "../components/builder/BuilderDebug";
 
 export default function Page() {
   const [showAuthModal, setShowAuthModal] = useState(false);
+
+  // Builder.io integration for dynamic content
+  const [builderContent, setBuilderContent] = useState(null);
+
+  React.useEffect(() => {
+    async function loadBuilderContent() {
+      try {
+        const { initializeNodeRuntime } = await import(
+          "@builder.io/sdk-react/node/init"
+        );
+        initializeNodeRuntime();
+
+        const content = await fetchOneEntry({
+          apiKey: process.env.NEXT_PUBLIC_BUILDER_API_KEY!,
+          model: "page",
+          userAttributes: { urlPath: "/" },
+        });
+
+        setBuilderContent(content);
+      } catch (error) {
+        console.log("Builder.io content loading failed:", error);
+      }
+    }
+
+    loadBuilderContent();
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -149,6 +183,18 @@ export default function Page() {
         </div>
       </div>
 
+      {/* Builder.io Dynamic Content Section */}
+      {(builderContent || isPreviewing() || isEditing()) && (
+        <div className="relative z-10">
+          <Content
+            apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
+            model="page"
+            content={builderContent}
+            customComponents={customComponents}
+          />
+        </div>
+      )}
+
       {/* Auth Modal */}
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
@@ -179,6 +225,9 @@ export default function Page() {
           </div>
         </div>
       )}
+
+      {/* Builder.io Debug Component */}
+      <BuilderDebug />
     </div>
   );
 }

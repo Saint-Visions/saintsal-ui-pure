@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Suspense } from "react";
 import { SaintSalLoader } from "../lib/animations/page-transitions";
+import { BuilderInit } from "../components/builder/BuilderInit";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "SaintVisionAI - SAINTSAL™ Movement",
@@ -36,10 +38,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        {/* Builder.io Live Editing Scripts */}
+        <Script
+          src="https://cdn.builder.io/js/webcomponents"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className="antialiased bg-black text-white">
+        <BuilderInit />
         <Suspense fallback={<SaintSalLoader isLoading={true} />}>
           {children}
         </Suspense>
+
+        {/* Builder.io DOM Sync and Live Editing */}
+        <Script id="builder-register-components" strategy="afterInteractive">
+          {`
+            if (typeof window !== 'undefined' && window.parent !== window) {
+              // Enable live editing communication
+              window.addEventListener('message', function(event) {
+                if (event.data && event.data.type === 'builder.configure') {
+                  // Handle Builder.io configuration messages for live editing
+                  console.log('Builder.io live editing enabled');
+                }
+              });
+            }
+          `}
+        </Script>
       </body>
     </html>
   );
