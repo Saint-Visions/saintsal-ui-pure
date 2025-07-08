@@ -46,3 +46,4 @@ dist/
 .vercel
 .vercel
 .env*.local
+*.tar
