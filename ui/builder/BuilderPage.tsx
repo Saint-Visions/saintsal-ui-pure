@@ -280,7 +280,13 @@ function LandingPage({
 }
 
 // Sidebar Component
-function Sidebar({ isOpen, onToggle, currentPage, onNavigate, user }) {
+function Sidebar({
+  isOpen,
+  onToggle,
+  currentPage,
+  onNavigate,
+  user,
+}: SidebarProps) {
   const menuItems = [
     { name: "Main Dashboard", icon: "🏠", page: "dashboard" },
     { name: "My Companion", icon: "👤", page: "chat", emoji: "🧠" },
