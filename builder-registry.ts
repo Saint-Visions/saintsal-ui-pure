@@ -12,11 +12,7 @@ const SaintSalLogo = dynamic(() =>
   })),
 );
 
-const ButtonGold = dynamic(() =>
-  import("./src/components/shared/button-gold").then((mod) => ({
-    default: mod.ButtonGold,
-  })),
-);
+const ButtonGold = dynamic(() => import("./src/components/shared/button-gold"));
 
 export const customComponents: RegisteredComponent[] = [
   {

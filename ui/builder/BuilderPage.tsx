@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Content,
-  Builder,
-  isPreviewing,
-  isEditing,
-} from "@builder.io/sdk-react";
+import { Content, isPreviewing, isEditing } from "@builder.io/sdk-react";
 import { customComponents } from "../../builder-registry";
 import { useEffect, useState } from "react";
 
@@ -26,48 +21,10 @@ export function BuilderPage({
 
   useEffect(() => {
     setIsClient(true);
-
-    // Initialize Builder.io for live editing
-    Builder.set({
-      apiKey,
-      canTrack: true,
-    });
-
-    // Register custom components for the visual editor
-    customComponents.forEach((component) => {
-      Builder.registerComponent(component.component, {
-        name: component.name,
-        inputs: component.inputs,
-        canHaveChildren: component.canHaveChildren,
-      });
-    });
-
-    // Enable live DOM synchronization
-    Builder.register("editor.settings", {
-      designTokens: {
-        colors: [
-          { name: "SaintSal Gold", value: "#fbbf24" },
-          { name: "SaintSal Black", value: "#000000" },
-          { name: "SaintSal White", value: "#ffffff" },
-          { name: "Blue Action", value: "#2563eb" },
-          { name: "Green Success", value: "#16a34a" },
-          { name: "Purple Premium", value: "#9333ea" },
-          { name: "Red Alert", value: "#dc2626" },
-        ],
-        spacing: [
-          { name: "xs", value: "4px" },
-          { name: "sm", value: "8px" },
-          { name: "md", value: "16px" },
-          { name: "lg", value: "24px" },
-          { name: "xl", value: "32px" },
-          { name: "2xl", value: "48px" },
-        ],
-        fontFamily: [
-          { name: "System", value: "system-ui, -apple-system, sans-serif" },
-          { name: "Mono", value: 'ui-monospace, "SF Mono", monospace' },
-        ],
-      },
-    });
+    console.log(
+      "✅ BuilderPage initialized with API key:",
+      apiKey.substring(0, 8) + "...",
+    );
   }, [apiKey]);
 
   // Show loading state during hydration
