@@ -1,5 +1,41 @@
 import React, { useState, useEffect } from "react";
 
+// TypeScript interfaces
+interface User {
+  email: string;
+  plan: string;
+}
+
+interface LandingPageProps {
+  onStartCooking: () => void;
+  onAIChat: () => void;
+  onSignIn: () => void;
+}
+
+interface SidebarProps {
+  isOpen: boolean;
+  onToggle: () => void;
+  currentPage: string;
+  onNavigate: (page: string) => void;
+  user: User | null;
+}
+
+interface DashboardProps {
+  user: User | null;
+  onMenuToggle: () => void;
+  onNavigate: (page: string) => void;
+}
+
+interface ChatInterfaceProps {
+  user: User | null;
+  onMenuToggle: () => void;
+}
+
+interface AuthModalProps {
+  onClose: () => void;
+  onSuccess: (userData: User) => void;
+}
+
 // 🚀 SAINTSAL™ MOVEMENT - PRODUCTION READY - CAPTAIN'S VERSION
 // Patent-Protected IP: U.S. Patent No. 10,290,222
 export default function MyComponent(props: any) {
@@ -67,7 +103,7 @@ export default function MyComponent(props: any) {
 }
 
 // Landing Page - EXACT match to your Figma design
-function LandingPage({ onStartCooking, onAIChat, onSignIn }) {
+function LandingPage({ onStartCooking, onAIChat, onSignIn }: LandingPageProps) {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background with your exact image */}
@@ -210,7 +246,13 @@ function LandingPage({ onStartCooking, onAIChat, onSignIn }) {
 }
 
 // Sidebar - EXACT match to your photo design
-function Sidebar({ isOpen, onToggle, currentPage, onNavigate, user }) {
+function Sidebar({
+  isOpen,
+  onToggle,
+  currentPage,
+  onNavigate,
+  user,
+}: SidebarProps) {
   const menuItems = [
     { name: "Main Dashboard", icon: "🏠", page: "dashboard" },
     { name: "My Companion", icon: "👤", page: "chat", emoji: "🧠" },
@@ -318,7 +360,7 @@ function Sidebar({ isOpen, onToggle, currentPage, onNavigate, user }) {
 }
 
 // Dashboard Component
-function Dashboard({ user, onMenuToggle, onNavigate }) {
+function Dashboard({ user, onMenuToggle, onNavigate }: DashboardProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 p-6">
       <div className="max-w-7xl mx-auto">
@@ -371,7 +413,7 @@ function Dashboard({ user, onMenuToggle, onNavigate }) {
 }
 
 // Chat Interface
-function ChatInterface({ user, onMenuToggle }) {
+function ChatInterface({ user, onMenuToggle }: ChatInterfaceProps) {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -450,7 +492,7 @@ function ChatInterface({ user, onMenuToggle }) {
 }
 
 // Auth Modal
-function AuthModal({ onClose, onSuccess }) {
+function AuthModal({ onClose, onSuccess }: AuthModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
