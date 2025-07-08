@@ -579,7 +579,7 @@ function ChatInterface({ user, onMenuToggle, onNavigate }: ChatInterfaceProps) {
 }
 
 // Auth Modal Component
-function AuthModal({ onClose, onSuccess }) {
+function AuthModal({ onClose, onSuccess }: AuthModalProps) {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
