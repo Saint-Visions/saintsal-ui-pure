@@ -19,7 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/supabase/types": ["./supabase/types"],
+      "@/lib/*": ["./lib/*"],
+      "@/db/*": ["./db/*"],
+      "@/context/*": ["./context/*"],
+      "@/types": ["./types"]
     }
   },
   "include": [
