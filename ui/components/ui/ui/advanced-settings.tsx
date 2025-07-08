@@ -1,27 +1,27 @@
-"use client"
-import React from "react"
+"use client";
+import React from "react";
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger
-} from "@/components/ui/collapsible"
-import { IconChevronDown, IconChevronRight } from "@tabler/icons-react"
-import { FC, useState } from "react"
+  CollapsibleTrigger,
+} from "./collapsible";
+import { IconChevronDown, IconChevronRight } from "@tabler/icons-react";
+import { FC, useState } from "react";
 
 interface AdvancedSettingsProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const AdvancedSettings: FC<AdvancedSettingsProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(
-    false
+    false,
     // localStorage.getItem("advanced-settings-open") === "true"
-  )
+  );
 
   const handleOpenChange = (isOpen: boolean) => {
-    setIsOpen(isOpen)
+    setIsOpen(isOpen);
     // localStorage.setItem("advanced-settings-open", String(isOpen))
-  }
+  };
 
   return (
     <Collapsible className="pt-2" open={isOpen} onOpenChange={handleOpenChange}>
@@ -38,5 +38,5 @@ export const AdvancedSettings: FC<AdvancedSettingsProps> = ({ children }) => {
 
       <CollapsibleContent className="mt-4">{children}</CollapsibleContent>
     </Collapsible>
-  )
-}
+  );
+};

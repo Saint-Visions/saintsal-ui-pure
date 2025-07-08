@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import * as React from "react";
+import { motion, AnimatePresence, Transition } from "framer-motion";
 
 // Animation variants for page transitions
 export const pageVariants = {
@@ -21,7 +21,7 @@ export const pageVariants = {
   },
 };
 
-export const pageTransition = {
+export const pageTransition: Transition = {
   type: "tween",
   ease: "anticipate",
   duration: 0.5,
