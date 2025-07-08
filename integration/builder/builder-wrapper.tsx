@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../../lib/hooks/use-auth";
+import { useAuth } from "../../hooks/use-auth";
 
 // Initialize Builder
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY || "");
