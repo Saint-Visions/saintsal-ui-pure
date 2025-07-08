@@ -1,9 +1,12 @@
 // integration/builder/fetchContent.ts
-import { builder } from "@builder.io/react";
-
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY || "");
+import { fetchOneEntry } from "@builder.io/sdk-react";
 
 export async function getBuilderContent(model: string, urlPath: string) {
-  return await builder.get(model, { url: urlPath }).toPromise();
-}
+  const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
 
+  return await fetchOneEntry({
+    apiKey,
+    model,
+    userAttributes: { urlPath },
+  });
+}
