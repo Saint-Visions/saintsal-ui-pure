@@ -1,22 +1,20 @@
-# Dockerfile for SaintSal™ UI Pure Build
+# 🚀 SAINTSAL™ Production Build (Non-Alpine)
+FROM node:18-slim
 
-FROM node:18-alpine
-
+# Set working directory
 WORKDIR /app
 
-# Install only dependencies first for Docker caching boost
+# Install deps first (layer caching)
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
-# Now copy the rest of the files
+# Copy rest of app
 COPY . .
 
-# Build the production app
+# Build the app
 RUN npm run build
 
-# Expose the app port
+# Expose port & run
 EXPOSE 3000
-
-# Start the app
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
 
