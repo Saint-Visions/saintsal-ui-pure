@@ -24,7 +24,8 @@
     "db-pull": "supabase db remote commit",
     "db-push": "supabase db push",
     "test": "jest",
-    "preinstall": "npx npm-force-resolutions"
+    "preinstall": "npx npm-force-resolutions",
+    "sync:builder": "node builder-registry.js"
   },
   "resolutions": {
     "**/esbuild": "0.24.4",
