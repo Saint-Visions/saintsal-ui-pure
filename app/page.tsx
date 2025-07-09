@@ -6,6 +6,9 @@ import {
   isPreviewing,
   isEditing,
 } from "@builder.io/sdk-react";
+
+// Force dynamic rendering for Azure deployment
+export const dynamic = "force-dynamic";
 import { customComponents } from "../builder-registry-simple";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
 import { ClientHomePage } from "./client-page";

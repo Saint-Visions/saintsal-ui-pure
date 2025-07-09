@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saintAI } from "../../../lib/azure/openai-client";
 
+// Force dynamic rendering for Azure deployment
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const { messages, userId, userPlan = "free" } = await request.json();
