@@ -39,6 +39,9 @@ jobs:
     environment:
       name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
@@ -49,6 +52,13 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_51F1771493E941D8AED4DEBE5F18CFAF }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -56,4 +66,3 @@ jobs:
           app-name: "saintvisionai-production"
           slot-name: "Production"
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_SAINTVISIONAI }}
