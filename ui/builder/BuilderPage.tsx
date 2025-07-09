@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 
 interface BuilderPageProps {
   model?: string;
-  content: any;
+  content: never;
   apiKey: string;
-  options?: any;
+  options?: Record<string, unknown>;
 }
 
 export function BuilderPage({
