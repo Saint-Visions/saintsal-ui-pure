@@ -48,3 +48,4 @@ dist/
 .env*.local
 *.tar
 *.tar
+.azure/
