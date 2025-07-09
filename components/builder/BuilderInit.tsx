@@ -5,7 +5,7 @@ import {
   initializeBuilder,
   registerCustomComponents,
 } from "../../lib/builder-sync";
-import { customComponents } from "../../builder-registry";
+import { customComponents } from "../../builder-registry-simple";
 
 export function BuilderInit() {
   useEffect(() => {
