@@ -6,9 +6,9 @@
  * U.S. Patent No. 10,290,222
  */
 
-const { createServer } = require("http");
-const { parse } = require("url");
-const next = require("next");
+import { createServer } from "http";
+import { parse } from "url";
+import next from "next";
 
 // Azure App Service configuration
 const dev = false; // Always production on Azure
