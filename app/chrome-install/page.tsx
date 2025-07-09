@@ -4,7 +4,7 @@ import {
   isPreviewing,
   isEditing,
 } from "@builder.io/sdk-react";
-import { customComponents } from "../../builder-registry";
+import { customComponents } from "../../builder-registry-simple";
 
 interface PageProps {
   searchParams: Record<string, string>;
