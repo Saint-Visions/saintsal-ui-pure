@@ -14,6 +14,12 @@ const SaintSalLogo = dynamic(() =>
 
 const ButtonGold = dynamic(() => import("./src/components/shared/button-gold"));
 
+const BrandShowcase = dynamic(() =>
+  import("./components/brand-showcase").then((mod) => ({
+    default: mod.default,
+  })),
+);
+
 export const customComponents: RegisteredComponent[] = [
   {
     component: Button,
@@ -95,5 +101,11 @@ export const customComponents: RegisteredComponent[] = [
       },
     ],
     canHaveChildren: true,
+  },
+  {
+    component: BrandShowcase,
+    name: "BrandShowcase",
+    inputs: [],
+    canHaveChildren: false,
   },
 ];
