@@ -19,8 +19,17 @@ mkdir azure-deploy
 
 echo "📦 Packaging files for Azure..."
 
-# Copy essential files
-cp -r .next azure-deploy/
+# Copy essential files - FORCE COPY .next directory
+if [ -d ".next" ]; then
+    echo "✅ Copying .next build directory..."
+    cp -r .next azure-deploy/
+else
+    echo "❌ .next directory not found! Running build first..."
+    export NEXT_PUBLIC_BUILDER_API_KEY=d83998c6a81f466db4fb83ab90c7ba25
+    npm run build
+    cp -r .next azure-deploy/
+fi
+
 cp -r public azure-deploy/
 cp package.json azure-deploy/
 cp package-lock.json azure-deploy/
