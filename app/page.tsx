@@ -12,6 +12,7 @@ import { BuilderDebug } from "../components/builder/BuilderDebug";
 import BrandShowcase from "../components/brand-showcase";
 import UpgradeModal from "../components/stripe/upgrade-modal";
 import { useUpgradeModal } from "../lib/hooks/use-upgrade-modal";
+import "./page.css";
 
 export default function Page() {
   const [builderContent, setBuilderContent] = React.useState<any>(null);
@@ -112,13 +113,8 @@ function HomePage({
 
       {/* Landing Page */}
       <div className="min-h-screen relative overflow-hidden">
-        {/* Background with your exact image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F4a769c3a9d844d819be31f969ef02451?format=webp&width=800')",
-          }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat saintsal-landing-bg"
         >
           <div className="absolute inset-0 bg-black/60" />
         </div>
