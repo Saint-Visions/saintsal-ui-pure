@@ -23,9 +23,12 @@ Make sure these are set in Azure App Service Configuration:
 # Required for Builder.io
 NEXT_PUBLIC_BUILDER_API_KEY=your-builder-api-key
 
-# Your existing variables
+# Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+
+# Upstash Vector Database (for AI search)
+UPSTASH_VECTOR_REST_TOKEN=AB0FMGNhcmVmdWwtbW9ua2V5LTI1NTU2LWdjcC11c2MxYWRtaW5NekUxTURVM056a3RNR0poT0MwMFptTXlMVGd4WWpjdE5EUTBZbVk1WlRGa09XUTM=
 
 # Any other environment variables you have
 ```
