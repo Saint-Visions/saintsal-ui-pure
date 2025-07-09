@@ -9,9 +9,11 @@ import {
 } from "@builder.io/sdk-react";
 import { customComponents } from "../builder-registry";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
+import BrandShowcase from "../components/brand-showcase";
 
 export default function Page() {
   const [builderContent, setBuilderContent] = React.useState<any>(null);
+  const [showBrandShowcase, setShowBrandShowcase] = React.useState(false);
 
   // Load Builder.io content on client side
   React.useEffect(() => {
@@ -30,12 +32,50 @@ export default function Page() {
     }
 
     loadBuilderContent();
+
+    // Check URL params for showcase mode
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("showcase") === "true") {
+        setShowBrandShowcase(true);
+      }
+    }
   }, []);
 
-  return <HomePage builderContent={builderContent} />;
+  // If brand showcase is requested, show it
+  if (showBrandShowcase) {
+    return (
+      <div className="min-h-screen bg-black">
+        {/* Toggle button to go back */}
+        <div className="fixed top-4 left-4 z-50">
+          <button
+            onClick={() => setShowBrandShowcase(false)}
+            className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition-colors shadow-lg"
+          >
+            ← Back to Landing
+          </button>
+        </div>
+        <BrandShowcase />
+        <BuilderDebug />
+      </div>
+    );
+  }
+
+  return (
+    <HomePage
+      builderContent={builderContent}
+      onShowBrandShowcase={() => setShowBrandShowcase(true)}
+    />
+  );
 }
 
-function HomePage({ builderContent }: { builderContent: any }) {
+function HomePage({
+  builderContent,
+  onShowBrandShowcase,
+}: {
+  builderContent: any;
+  onShowBrandShowcase: () => void;
+}) {
   const [showAuthModal, setShowAuthModal] = React.useState(false);
 
   return (
@@ -127,7 +167,7 @@ function HomePage({ builderContent }: { builderContent: any }) {
             {/* Quick Access - EXACT match */}
             <div className="text-center text-xs">
               <p className="text-yellow-400 mb-2">Quick Access:</p>
-              <div className="flex justify-center space-x-4 text-white/70">
+              <div className="flex justify-center space-x-3 text-white/70 mb-3">
                 <span className="cursor-pointer hover:text-yellow-400">
                   ⚠️ Pricing
                 </span>
@@ -138,6 +178,12 @@ function HomePage({ builderContent }: { builderContent: any }) {
                   ❓ Help
                 </span>
               </div>
+              <button
+                onClick={() => (window.location.href = "/brand-showcase")}
+                className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white text-xs py-2 px-4 rounded-lg transition-all shadow-lg border border-purple-500/30"
+              >
+                🎨 Brand Showcase
+              </button>
             </div>
           </div>
 
