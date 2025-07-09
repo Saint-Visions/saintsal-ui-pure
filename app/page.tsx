@@ -10,10 +10,17 @@ import {
 import { customComponents } from "../builder-registry";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
 import BrandShowcase from "../components/brand-showcase";
+import UpgradeModal from "../components/stripe/upgrade-modal";
+import { useUpgradeModal } from "../lib/hooks/use-upgrade-modal";
 
 export default function Page() {
   const [builderContent, setBuilderContent] = React.useState<any>(null);
   const [showBrandShowcase, setShowBrandShowcase] = React.useState(false);
+  const {
+    isOpen: isUpgradeModalOpen,
+    closeUpgradeModal,
+    triggerUpgrade,
+  } = useUpgradeModal();
 
   // Load Builder.io content on client side
   React.useEffect(() => {
@@ -62,19 +69,29 @@ export default function Page() {
   }
 
   return (
-    <HomePage
-      builderContent={builderContent}
-      onShowBrandShowcase={() => setShowBrandShowcase(true)}
-    />
+    <>
+      <HomePage
+        builderContent={builderContent}
+        onShowBrandShowcase={() => setShowBrandShowcase(true)}
+        onTriggerUpgrade={triggerUpgrade}
+      />
+      <UpgradeModal
+        isOpen={isUpgradeModalOpen}
+        onClose={closeUpgradeModal}
+        currentPlan="free"
+      />
+    </>
   );
 }
 
 function HomePage({
   builderContent,
   onShowBrandShowcase,
+  onTriggerUpgrade,
 }: {
   builderContent: any;
   onShowBrandShowcase: () => void;
+  onTriggerUpgrade: (context?: string) => void;
 }) {
   const [showAuthModal, setShowAuthModal] = React.useState(false);
 
@@ -168,7 +185,10 @@ function HomePage({
             <div className="text-center text-xs">
               <p className="text-yellow-400 mb-2">Quick Access:</p>
               <div className="flex justify-center space-x-3 text-white/70 mb-3">
-                <span className="cursor-pointer hover:text-yellow-400">
+                <span
+                  className="cursor-pointer hover:text-yellow-400"
+                  onClick={() => onTriggerUpgrade("pricing-quick-access")}
+                >
                   ⚠️ Pricing
                 </span>
                 <span className="cursor-pointer hover:text-yellow-400">
