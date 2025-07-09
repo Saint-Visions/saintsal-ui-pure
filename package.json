@@ -26,10 +26,11 @@
     "db-push": "supabase db push",
     "test": "jest",
     "preinstall": "npx npm-force-resolutions",
-    "sync:builder": "ts-node-esm builder-registry.ts",
-    "dev:builder": "ts-node-esm builder-registry.ts",
-    "build:builder": "tsc builder-registry.ts --outDir dist",
-    "start:builder": "node dist/builder-registry.js"
+    "sync:builder": "node builder-registry.mjs",
+    "dev:builder": "node builder-registry.mjs && npm run dev",
+    "build:builder": "node builder-registry.mjs && npm run build",
+    "post-commit:builder": "bash scripts/post-commit-builder-sync.sh",
+    "setup:git-hooks": "echo '#!/bin/bash\nnpm run post-commit:builder' > .git/hooks/post-commit && chmod +x .git/hooks/post-commit"
   },
   "resolutions": {
     "**/esbuild": "0.24.4",
@@ -154,10 +155,8 @@
     "tailwindcss": "^3.3.5",
     "tailwindcss-animate": "^1.0.7",
     "ts-node": "^10.9.2",
-    "ts-node-esm": "^10.9.2",
     "typescript": "^5.8.3",
     "vite": "^7.0.2",
     "vite-plugin-html": "^3.2.2"
   }
 }
-
