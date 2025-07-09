@@ -17,31 +17,48 @@ export default function UpgradeModal({
 
   const plans = [
     {
-      id: "pro",
-      name: "Pro Saint",
-      price: "$29",
+      id: "starter",
+      name: "Starter Saint",
+      price: "$27",
       period: "/month",
-      description: "For serious cooking knowledge seekers",
-      icon: <Zap className="w-6 h-6" />,
+      description: "Perfect for cooking enthusiasts",
+      icon: <Zap className="w-5 h-5" />,
       color: "from-blue-500 to-blue-600",
       features: [
+        "AI Chat Sessions",
+        "Basic Recipe Analysis",
+        "Mobile App Access",
+        "Community Access",
+      ],
+      popular: false,
+      stripePriceId: "price_starter_monthly",
+    },
+    {
+      id: "pro",
+      name: "Pro Saint",
+      price: "$97",
+      period: "/month",
+      description: "For serious cooking knowledge seekers",
+      icon: <Crown className="w-5 h-5" />,
+      color: "from-green-500 to-green-600",
+      features: [
+        "Everything in Starter",
         "Unlimited AI Chat Sessions",
         "Advanced Recipe Analysis",
         "Priority Support",
-        "Mobile App Access",
         "Custom Meal Planning",
         "Nutritional Insights",
       ],
-      popular: false,
-      stripePriceId: "price_pro_monthly", // Replace with your actual Stripe price ID
+      popular: true,
+      stripePriceId: "price_1RINIMFZsXxBWnjQEYxlyUIy",
     },
     {
       id: "elite",
       name: "Elite Saint",
-      price: "$79",
+      price: "$297",
       period: "/month",
       description: "Maximum cooking knowledge power",
-      icon: <Crown className="w-6 h-6" />,
+      icon: <Rocket className="w-5 h-5" />,
       color: "from-yellow-500 to-yellow-600",
       features: [
         "Everything in Pro",
@@ -50,18 +67,17 @@ export default function UpgradeModal({
         "White-glove Onboarding",
         "Direct Chef Consultations",
         "Exclusive Saint Community",
-        "Custom Dietary Protocols",
       ],
-      popular: true,
-      stripePriceId: "price_elite_monthly", // Replace with your actual Stripe price ID
+      popular: false,
+      stripePriceId: "price_elite_monthly",
     },
     {
       id: "legendary",
       name: "Legendary Saint",
-      price: "$199",
+      price: "$497",
       period: "/month",
       description: "The ultimate culinary AI experience",
-      icon: <Rocket className="w-6 h-6" />,
+      icon: <Crown className="w-5 h-5" />,
       color: "from-purple-500 to-purple-600",
       features: [
         "Everything in Elite",
@@ -70,10 +86,28 @@ export default function UpgradeModal({
         "Restaurant Partnership Access",
         "Exclusive Events & Masterclasses",
         "Priority Feature Requests",
-        "Commercial Usage Rights",
       ],
       popular: false,
-      stripePriceId: "price_legendary_monthly", // Replace with your actual Stripe price ID
+      stripePriceId: "price_legendary_monthly",
+    },
+    {
+      id: "custom",
+      name: "Custom Saint",
+      price: "$1,500",
+      period: " deposit",
+      description: "Fully customized culinary AI solution",
+      icon: <Rocket className="w-5 h-5" />,
+      color: "from-indigo-500 to-indigo-600",
+      features: [
+        "Everything in Legendary",
+        "Custom AI Model Development",
+        "Dedicated Account Manager",
+        "Custom Integration Support",
+        "Commercial Usage Rights",
+        "White-label Solutions",
+      ],
+      popular: false,
+      stripePriceId: "price_custom_deposit",
     },
   ];
 
@@ -128,7 +162,7 @@ export default function UpgradeModal({
 
         {/* Plans Grid */}
         <div className="p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {plans.map((plan) => (
               <div
                 key={plan.id}
@@ -147,32 +181,32 @@ export default function UpgradeModal({
                 )}
 
                 {/* Plan Header */}
-                <div className="text-center mb-6">
+                <div className="text-center mb-4">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-br ${plan.color} rounded-xl flex items-center justify-center mb-4 mx-auto`}
+                    className={`w-12 h-12 bg-gradient-to-br ${plan.color} rounded-lg flex items-center justify-center mb-3 mx-auto`}
                   >
                     <div className="text-white">{plan.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-lg font-bold text-white mb-1">
                     {plan.name}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-gray-400 text-xs mb-3">
                     {plan.description}
                   </p>
-                  <div className="text-4xl font-bold text-white">
+                  <div className="text-2xl font-bold text-white">
                     {plan.price}
-                    <span className="text-lg text-gray-400 font-normal">
+                    <span className="text-sm text-gray-400 font-normal">
                       {plan.period}
                     </span>
                   </div>
                 </div>
 
                 {/* Features */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-2 mb-6">
                   {plan.features.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{feature}</span>
+                    <div key={index} className="flex items-center space-x-2">
+                      <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
+                      <span className="text-gray-300 text-xs">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -181,7 +215,7 @@ export default function UpgradeModal({
                 <button
                   onClick={() => handleUpgrade(plan)}
                   disabled={isLoading === plan.id || currentPlan === plan.id}
-                  className={`w-full py-3 px-6 rounded-lg font-bold transition-all duration-200 ${
+                  className={`w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-200 ${
                     currentPlan === plan.id
                       ? "bg-gray-700 text-gray-400 cursor-not-allowed"
                       : plan.popular
