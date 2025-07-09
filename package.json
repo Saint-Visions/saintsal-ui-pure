@@ -26,7 +26,11 @@
     "db-push": "supabase db push",
     "test": "jest",
     "preinstall": "npx npm-force-resolutions",
-    "sync:builder": "ts-node-esm builder-registry.mts"
+
+    "sync:builder": "ts-node-esm builder-registry.mts",
+    "dev:builder": "ts-node-esm builder-registry.ts",
+    "build:builder": "tsc builder-registry.ts --outDir dist",
+    "start:builder": "node dist/builder-registry.js"
   },
   "resolutions": {
     "**/esbuild": "0.24.4",
