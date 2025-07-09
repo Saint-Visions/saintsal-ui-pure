@@ -7,7 +7,7 @@ import {
   isPreviewing,
   isEditing,
 } from "@builder.io/sdk-react";
-import { customComponents } from "../builder-registry";
+import * as customComponents from "../builder-registry";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
 import BrandShowcase from "../components/brand-showcase";
 import UpgradeModal from "../components/stripe/upgrade-modal";
@@ -105,7 +105,7 @@ function HomePage({
             apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
             model="page"
             content={builderContent}
-            customComponents={customComponents}
+            customComponents={Object.values(customComponents)}
             data={{ section: "header" }}
           />
         </div>
@@ -210,7 +210,7 @@ function HomePage({
                 apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
                 model="page"
                 content={builderContent}
-                customComponents={customComponents}
+                customComponents={Object.values(customComponents)}
                 data={{ section: "before-features" }}
               />
             </div>
@@ -277,7 +277,7 @@ function HomePage({
             apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
             model="page"
             content={builderContent}
-            customComponents={customComponents}
+            customComponents={Object.values(customComponents)}
             data={{ section: "after-features" }}
           />
         </div>
@@ -290,7 +290,7 @@ function HomePage({
             apiKey={process.env.NEXT_PUBLIC_BUILDER_API_KEY!}
             model="page"
             content={builderContent}
-            customComponents={customComponents}
+            customComponents={Object.values(customComponents)}
             data={{ section: "footer" }}
           />
         </div>
