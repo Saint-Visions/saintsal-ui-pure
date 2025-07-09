@@ -6,6 +6,9 @@ import {
 } from "@builder.io/sdk-react";
 import { customComponents } from "../../builder-registry-simple";
 
+// Force dynamic rendering for Builder.io compatibility
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   searchParams: Record<string, string>;
 }
@@ -14,22 +17,35 @@ interface PageProps {
 const BUILDER_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
 
 export default async function ChromeInstallPage(props: PageProps) {
-  // Initialize Builder.io node runtime
-  const { initializeNodeRuntime } = await import(
-    "@builder.io/sdk-react/node/init"
-  );
-  initializeNodeRuntime();
+  // Initialize Builder.io node runtime with error handling
+  try {
+    if (process.env.NODE_ENV !== "production") {
+      const { initializeNodeRuntime } = await import(
+        "@builder.io/sdk-react/node/init"
+      );
+      initializeNodeRuntime();
+    }
+  } catch (error) {
+    console.log("Builder.io node runtime initialization skipped:", error);
+  }
 
   // Define the URL path for this page
   const urlPath = "/chrome-install";
 
   // Fetch Builder.io content for the chrome install page
-  const content = await fetchOneEntry({
-    options: props.searchParams,
-    apiKey: BUILDER_PUBLIC_API_KEY,
-    model: "page",
-    userAttributes: { urlPath },
-  });
+  let content = null;
+  try {
+    if (BUILDER_PUBLIC_API_KEY) {
+      content = await fetchOneEntry({
+        options: props.searchParams,
+        apiKey: BUILDER_PUBLIC_API_KEY,
+        model: "page",
+        userAttributes: { urlPath },
+      });
+    }
+  } catch (error) {
+    console.log("Builder.io content loading failed:", error);
+  }
 
   const canShowContent =
     content ||

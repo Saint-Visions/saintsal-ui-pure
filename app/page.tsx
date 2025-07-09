@@ -21,21 +21,29 @@ interface PageProps {
 const BUILDER_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
 
 export default async function Page(props: PageProps) {
-  // Initialize Node runtime for Builder.io
-  const { initializeNodeRuntime } = await import(
-    "@builder.io/sdk-react/node/init"
-  );
-  initializeNodeRuntime();
+  // Initialize Node runtime for Builder.io with error handling
+  try {
+    if (process.env.NODE_ENV !== "production") {
+      const { initializeNodeRuntime } = await import(
+        "@builder.io/sdk-react/node/init"
+      );
+      initializeNodeRuntime();
+    }
+  } catch (error) {
+    console.log("Builder.io node runtime initialization skipped:", error);
+  }
 
   // Fetch Builder.io content server-side
   let builderContent = null;
   try {
-    builderContent = await fetchOneEntry({
-      options: props.searchParams,
-      apiKey: BUILDER_PUBLIC_API_KEY,
-      model: "page",
-      userAttributes: { urlPath: "/" },
-    });
+    if (BUILDER_PUBLIC_API_KEY) {
+      builderContent = await fetchOneEntry({
+        options: props.searchParams,
+        apiKey: BUILDER_PUBLIC_API_KEY,
+        model: "page",
+        userAttributes: { urlPath: "/" },
+      });
+    }
   } catch (error) {
     console.log("Builder.io content loading failed:", error);
   }
