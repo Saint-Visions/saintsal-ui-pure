@@ -5,9 +5,9 @@
 
 echo "🚀 Starting Azure deployment for SaintVisionAI..."
 
-# Variables (update these with your values)
-APP_NAME="saintsal-ui-pure"
-RESOURCE_GROUP="saintsal-rg"
+# Variables (NEW app for THIS pure project)
+APP_NAME="saintsal-ui-pure-builder"
+RESOURCE_GROUP="SaintSal Core Production"
 LOCATION="East US"
 
 # Your actual environment variables
@@ -21,14 +21,14 @@ BUILDER_API_KEY="d83998c6a81f466db4fb83ab90c7ba25"
 echo "📦 Step 1: Creating Azure App Service..."
 
 # Deploy the app
-az webapp up --sku B1 --name $APP_NAME --resource-group $RESOURCE_GROUP --location "$LOCATION"
+az webapp up --sku B1 --name $APP_NAME --resource-group "$RESOURCE_GROUP" --location "$LOCATION"
 
 echo "🔑 Step 2: Setting environment variables..."
 
 # Set all environment variables
 az webapp config appsettings set \
   --name $APP_NAME \
-  --resource-group $RESOURCE_GROUP \
+  --resource-group "$RESOURCE_GROUP" \
   --settings \
     UPSTASH_VECTOR_REST_TOKEN="$UPSTASH_TOKEN" \
     NEXT_PUBLIC_SUPABASE_URL="$SUPABASE_URL" \
@@ -38,7 +38,7 @@ az webapp config appsettings set \
 echo "🔄 Step 3: Restarting app..."
 
 # Restart the app to load new environment variables
-az webapp restart --name $APP_NAME --resource-group $RESOURCE_GROUP
+az webapp restart --name $APP_NAME --resource-group "$RESOURCE_GROUP"
 
 echo "✅ Deployment complete!"
 echo ""
