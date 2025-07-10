@@ -59,7 +59,10 @@ export default function DashboardPage() {
             <p className="saintsal-body mb-4">
               Manage your partner network and referral tracking.
             </p>
-            <button className="saintsal-button-secondary w-full py-2 rounded-lg">
+            <button
+              onClick={() => (window.location.href = "/crm")}
+              className="saintsal-button-secondary w-full py-2 rounded-lg"
+            >
               Open CRM
             </button>
           </div>
@@ -98,7 +101,10 @@ export default function DashboardPage() {
             <p className="saintsal-body mb-4">
               Your personal SaintSal™ AI companion.
             </p>
-            <button className="saintsal-button py-2 rounded-lg w-full">
+            <button
+              onClick={() => (window.location.href = "/chat")}
+              className="saintsal-button py-2 rounded-lg w-full"
+            >
               Start Chat
             </button>
           </div>
