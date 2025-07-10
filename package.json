@@ -8,7 +8,11 @@
     "start": "next start",
     "start:production": "node deployment-nextjs/server.js",
     "deploy:prepare": "npm run build && cp -r .next deployment-nextjs/",
-    "deploy:azure": "cd deployment-nextjs && npm start"
+    "deploy:azure": "cd deployment-nextjs && npm start",
+    "sync:builder": "node scripts/builder-sync.js",
+    "setup:builder": "chmod +x scripts/setup-builder.sh && ./scripts/setup-builder.sh",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "next": "^14.2.3",
