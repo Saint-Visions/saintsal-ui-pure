@@ -96,25 +96,103 @@
 }
 
 /* 🔥 SAINTSAL™ CRITICAL STYLES - DO NOT REMOVE */
+
+/* Landing Page Background - Cinematic */
 .saintsal-landing-bg {
   background:
     linear-gradient(
       135deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(20, 20, 20, 0.8) 25%,
-      rgba(40, 40, 40, 0.7) 50%,
-      rgba(20, 20, 20, 0.8) 75%,
-      rgba(0, 0, 0, 0.9) 100%
+      rgba(16, 22, 28, 0.95) 0%,
+      rgba(0, 0, 0, 0.9) 25%,
+      rgba(32, 32, 32, 0.85) 50%,
+      rgba(16, 22, 28, 0.9) 75%,
+      rgba(0, 0, 0, 0.95) 100%
     ),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g"><stop offset="0%" stop-color="%23333"/><stop offset="100%" stop-color="%23000"/></radialGradient></defs><rect width="100" height="100" fill="url(%23g)"/></svg>');
-  background-size: cover;
+    radial-gradient(
+      ellipse at center,
+      rgba(212, 175, 55, 0.1) 0%,
+      rgba(212, 175, 55, 0.05) 25%,
+      rgba(0, 0, 0, 0.8) 70%
+    ),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  background-size:
+    cover,
+    cover,
+    50px 50px;
   background-position: center;
   background-attachment: fixed;
 }
 
+/* Dashboard Background */
+.saintsal-dashboard-bg {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(16, 22, 28, 0.98) 0%,
+      rgba(25, 25, 25, 0.95) 100%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(212, 175, 55, 0.08) 0%,
+      transparent 50%
+    );
+  background-attachment: fixed;
+}
+
+/* CRM Background */
+.saintsal-crm-bg {
+  background:
+    linear-gradient(
+      45deg,
+      rgba(16, 22, 28, 0.98) 0%,
+      rgba(30, 30, 35, 0.95) 100%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(212, 175, 55, 0.06) 0%,
+      transparent 60%
+    );
+  background-attachment: fixed;
+}
+
+/* SaintSal Brand Colors */
+:root {
+  --saintsal-black: #10161c;
+  --saintsal-gold: #d4af37;
+  --saintsal-gold-light: #e5c547;
+  --saintsal-gold-dark: #b8941f;
+}
+
 /* Smooth animations for SAINTSAL™ */
 * {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button hover effects */
+.saintsal-button {
+  @apply bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105;
+}
+
+.saintsal-button-secondary {
+  @apply bg-gray-800 hover:bg-gray-700 text-white border border-yellow-500/30 hover:border-yellow-500/60 transition-all duration-300;
+}
+
+/* Card styles */
+.saintsal-card {
+  @apply bg-black/80 backdrop-blur-sm rounded-xl border border-yellow-500/30 p-6 hover:border-yellow-500/60 transition-all duration-300;
+}
+
+/* Text styles */
+.saintsal-title {
+  @apply text-yellow-400 font-bold text-2xl;
+}
+
+.saintsal-subtitle {
+  @apply text-white/90 text-lg;
+}
+
+.saintsal-body {
+  @apply text-white/70 text-base;
 }
 
 /* Ensure dark theme compatibility */
@@ -123,6 +201,29 @@ html {
 }
 
 body {
-  background-color: #000000;
+  background-color: #10161c;
   color: #ffffff;
+}
+
+/* Builder.io overrides for dark theme */
+.builder-blocks {
+  color: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(16, 22, 28, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.7);
 }

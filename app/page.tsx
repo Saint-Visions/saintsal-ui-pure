@@ -1,4 +1,4 @@
-// 🚀 SAINTSAL™ MOVEMENT - PRODUCTION READY - DIRECT DEPLOYMENT
+// 🚀 SAINTSAL™ MOVEMENT - PRODUCTION READY - AZURE DEPLOYMENT
 import React from "react";
 import {
   Content,
@@ -9,9 +9,9 @@ import {
 
 // Force dynamic rendering for Azure deployment
 export const dynamic = "force-dynamic";
-import { customComponents } from "../builder-registry";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
 import { ClientHomePage } from "./client-page";
+import { LandingLayout } from "../components/PageLayout";
 
 interface PageProps {
   searchParams: Record<string, string>;
@@ -45,26 +45,30 @@ export default async function Page(props: PageProps) {
 
   if (showBrandShowcase) {
     return (
-      <ClientHomePage
-        initialBuilderContent={builderContent}
-        showBrandShowcase={true}
-        searchParams={props.searchParams}
-      />
+      <LandingLayout>
+        <ClientHomePage
+          initialBuilderContent={builderContent}
+          showBrandShowcase={true}
+          searchParams={props.searchParams}
+        />
+      </LandingLayout>
     );
   }
 
   return (
-    <>
-      {/* Builder.io Dynamic Content - Following Pattern C (Homepage Integration) */}
+    <LandingLayout>
+      {/* Builder.io Dynamic Content - Pattern C (Homepage Integration) */}
       {canShowBuilderContent && (
-        <Content
-          apiKey={BUILDER_PUBLIC_API_KEY}
-          model="page"
-          content={builderContent}
-        />
+        <div className="w-full">
+          <Content
+            apiKey={BUILDER_PUBLIC_API_KEY}
+            model="page"
+            content={builderContent}
+          />
+        </div>
       )}
 
-      {/* Your existing homepage content stays here */}
+      {/* SaintSal™ Homepage Content */}
       <ClientHomePage
         initialBuilderContent={builderContent}
         showBrandShowcase={false}
@@ -73,6 +77,6 @@ export default async function Page(props: PageProps) {
 
       {/* Builder.io Debug Component */}
       <BuilderDebug />
-    </>
+    </LandingLayout>
   );
 }

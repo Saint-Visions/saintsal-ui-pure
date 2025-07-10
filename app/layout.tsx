@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "../lib/utils";
+import { BuilderInit } from "../components/builder/BuilderInit";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "SaintVisionAI™ - SAINTSAL™ Build Bible",
+    default: "SaintVisionAI™ - SAINTSAL™ Elite AI Sanctuary",
     template: "%s | SaintVisionAI™",
   },
   description:
@@ -33,14 +34,14 @@ export const metadata: Metadata = {
     url:
       process.env.NEXT_PUBLIC_SITE_URL ||
       "https://saintvisionai.azurewebsites.net",
-    title: "SaintVisionAI™ - SAINTSAL™ Build Bible",
+    title: "SaintVisionAI™ - SAINTSAL™ Elite AI Sanctuary",
     description:
       "Patent-protected AI movement for elite cooking knowledge. U.S. Patent No. 10,290,222",
     siteName: "SaintVisionAI™",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SaintVisionAI™ - SAINTSAL™ Build Bible",
+    title: "SaintVisionAI™ - SAINTSAL™ Elite AI Sanctuary",
     description:
       "Patent-protected AI movement for elite cooking knowledge. U.S. Patent No. 10,290,222",
     creator: "@saintvisionai",
@@ -70,14 +71,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-[#10161C] text-white font-sans antialiased",
           inter.variable,
         )}
       >
-        <div className="relative flex min-h-screen flex-col">
+        <BuilderInit />
+        <div className="relative flex min-h-screen flex-col bg-[#10161C]">
           <div className="flex-1">{children}</div>
         </div>
       </body>
