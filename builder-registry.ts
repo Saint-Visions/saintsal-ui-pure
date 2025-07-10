@@ -1,35 +1,32 @@
 import { type RegisteredComponent } from "@builder.io/sdk-react";
 import dynamic from "next/dynamic";
 
-// Dynamic imports for all Builder.io components
-const ChatSidebar = dynamic(() =>
-  import("./components/chat/chat-sidebar").then((mod) => ({
-    default: mod.ChatSidebar,
+// Dynamic imports using the exact pattern from the integration guide
+const HeroSection = dynamic(() =>
+  import("./components/builder/HeroSection").then((mod) => ({
+    default: mod.default,
   })),
 );
 
-const HeroSection = dynamic(() => import("./components/builder/HeroSection"));
+const FeatureGrid = dynamic(() =>
+  import("./components/builder/FeatureGrid").then((mod) => ({
+    default: mod.default,
+  })),
+);
 
-const FeatureGrid = dynamic(() => import("./components/builder/FeatureGrid"));
+const SEOSection = dynamic(() =>
+  import("./components/builder/SEOSection").then((mod) => ({
+    default: mod.default,
+  })),
+);
 
-const SEOSection = dynamic(() => import("./components/builder/SEOSection"));
-
-const ChatInterface = dynamic(
-  () => import("./components/builder/ChatInterface"),
+const ChatInterface = dynamic(() =>
+  import("./components/builder/ChatInterface").then((mod) => ({
+    default: mod.default,
+  })),
 );
 
 export const customComponents: RegisteredComponent[] = [
-  {
-    component: ChatSidebar,
-    name: "ChatSidebar",
-    inputs: [
-      {
-        name: "isOpen",
-        type: "boolean",
-        defaultValue: false,
-      },
-    ],
-  },
   {
     component: HeroSection,
     name: "HeroSection",
@@ -37,17 +34,64 @@ export const customComponents: RegisteredComponent[] = [
       {
         name: "title",
         type: "string",
-        defaultValue: "Welcome to SaintVisionAI",
+        defaultValue: "SaintVisionAI™",
+        required: false,
       },
       {
         name: "subtitle",
         type: "string",
-        defaultValue: "Your AI-powered assistant",
+        defaultValue: "Cooking Knowledge",
+        required: false,
+      },
+      {
+        name: "description",
+        type: "string",
+        defaultValue:
+          "The patent-protected AI movement for elite cooking knowledge",
+        required: false,
+      },
+      {
+        name: "primaryButtonText",
+        type: "string",
+        defaultValue: "🔥 Start Cooking",
+        required: false,
+      },
+      {
+        name: "secondaryButtonText",
+        type: "string",
+        defaultValue: "💬 AI Chat",
+        required: false,
       },
       {
         name: "backgroundImage",
         type: "file",
         allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
+        required: false,
+      },
+      {
+        name: "showVideo",
+        type: "boolean",
+        defaultValue: false,
+        required: false,
+      },
+      {
+        name: "showRating",
+        type: "boolean",
+        defaultValue: true,
+        required: false,
+      },
+      {
+        name: "testimonial",
+        type: "string",
+        defaultValue:
+          '"SaintSal AI doesn\'t just answer. It adapts. It empowers. It becomes your GOTTA GUY™!"',
+        required: false,
+      },
+      {
+        name: "testimonialAuthor",
+        type: "string",
+        defaultValue: "Elite Saint Community",
+        required: false,
       },
     ],
     canHaveChildren: true,
@@ -57,44 +101,22 @@ export const customComponents: RegisteredComponent[] = [
     name: "FeatureGrid",
     inputs: [
       {
-        name: "features",
-        type: "list",
-        subFields: [
-          {
-            name: "title",
-            type: "string",
-            defaultValue: "Feature Title",
-          },
-          {
-            name: "description",
-            type: "string",
-            defaultValue: "Feature description",
-          },
-          {
-            name: "icon",
-            type: "string",
-            defaultValue: "🚀",
-          },
-          {
-            name: "color",
-            type: "color",
-            defaultValue: "#3B82F6",
-          },
-        ],
-        defaultValue: [
-          {
-            title: "AI Chat",
-            description: "Intelligent conversations",
-            icon: "💬",
-            color: "#3B82F6",
-          },
-          {
-            title: "Smart Analysis",
-            description: "Data-driven insights",
-            icon: "📊",
-            color: "#10B981",
-          },
-        ],
+        name: "title",
+        type: "string",
+        defaultValue: "🔧 What's Inside These Walls",
+        required: false,
+      },
+      {
+        name: "subtitle",
+        type: "string",
+        defaultValue: "Elite AI Sanctuary • Ready for Saints",
+        required: false,
+      },
+      {
+        name: "columns",
+        type: "number",
+        defaultValue: 4,
+        required: false,
       },
     ],
   },
@@ -105,17 +127,39 @@ export const customComponents: RegisteredComponent[] = [
       {
         name: "title",
         type: "string",
-        defaultValue: "SaintVisionAI - AI Assistant",
+        defaultValue: "Trusted by Elite Cooking Professionals",
+        required: false,
       },
       {
         name: "description",
         type: "string",
-        defaultValue: "Advanced AI assistant for modern needs",
+        defaultValue:
+          "Join thousands of culinary experts who rely on SaintVisionAI™ for their cooking knowledge needs",
+        required: false,
       },
       {
-        name: "keywords",
+        name: "rating",
+        type: "number",
+        defaultValue: 4.9,
+        required: false,
+      },
+      {
+        name: "userCount",
         type: "string",
-        defaultValue: "AI, assistant, chat, technology",
+        defaultValue: "10,000+",
+        required: false,
+      },
+      {
+        name: "showPatent",
+        type: "boolean",
+        defaultValue: true,
+        required: false,
+      },
+      {
+        name: "backgroundColor",
+        type: "string",
+        defaultValue: "bg-gray-900",
+        required: false,
       },
     ],
   },
@@ -124,15 +168,35 @@ export const customComponents: RegisteredComponent[] = [
     name: "ChatInterface",
     inputs: [
       {
-        name: "placeholder",
+        name: "title",
         type: "string",
-        defaultValue: "Ask me anything...",
+        defaultValue: "SaintSal™ AI Assistant",
+        required: false,
       },
       {
-        name: "theme",
+        name: "placeholder",
         type: "string",
-        enum: ["light", "dark"],
-        defaultValue: "dark",
+        defaultValue: "Ask me anything about cooking...",
+        required: false,
+      },
+      {
+        name: "welcomeMessage",
+        type: "string",
+        defaultValue:
+          "Welcome to SaintVisionAI™! I'm here to help you with all your cooking knowledge needs.",
+        required: false,
+      },
+      {
+        name: "showVoiceInput",
+        type: "boolean",
+        defaultValue: true,
+        required: false,
+      },
+      {
+        name: "maxMessages",
+        type: "number",
+        defaultValue: 10,
+        required: false,
       },
     ],
     canHaveChildren: true,

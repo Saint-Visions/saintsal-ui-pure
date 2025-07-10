@@ -4,7 +4,7 @@ import {
   isPreviewing,
   isEditing,
 } from "@builder.io/sdk-react";
-import { customComponents } from "../../builder-registry-simple";
+// Builder.io components will be loaded dynamically
 
 // Force dynamic rendering for Builder.io compatibility
 export const dynamic = "force-dynamic";
@@ -13,8 +13,8 @@ interface PageProps {
   searchParams: Record<string, string>;
 }
 
-// Builder.io API key
-const BUILDER_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
+// Builder.io API key - hardcoded for Azure deployment stability
+const BUILDER_PUBLIC_API_KEY = "d83998c6a81f466db4fb83ab90c7ba25";
 
 export default async function ChromeInstallPage(props: PageProps) {
   // Initialize Builder.io node runtime with error handling
@@ -145,12 +145,7 @@ export default async function ChromeInstallPage(props: PageProps) {
   }
 
   return (
-    <Content
-      content={content}
-      apiKey={BUILDER_PUBLIC_API_KEY}
-      model="page"
-      customComponents={customComponents}
-    />
+    <Content content={content} apiKey={BUILDER_PUBLIC_API_KEY} model="page" />
   );
 }
 
