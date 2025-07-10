@@ -10,26 +10,40 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Chatbot UI",
-    template: "%s | Chatbot UI",
+    default: "SaintVisionAI™ - SAINTSAL™ Build Bible",
+    template: "%s | SaintVisionAI™",
   },
-  description: "Advanced AI chatbot interface built with Next.js",
-  keywords: ["AI", "chatbot", "Next.js", "React", "TypeScript"],
-  authors: [{ name: "Chatbot UI Team" }],
-  creator: "Chatbot UI",
+  description:
+    "Patent-protected AI movement for elite cooking knowledge. U.S. Patent No. 10,290,222",
+  keywords: [
+    "AI",
+    "SaintSal",
+    "SaintVisionAI",
+    "cooking",
+    "recipe",
+    "patent",
+    "elite",
+    "knowledge",
+  ],
+  authors: [{ name: "SAINTSAL™ Team" }],
+  creator: "SAINTSAL™",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000",
-    title: "Chatbot UI",
-    description: "Advanced AI chatbot interface built with Next.js",
-    siteName: "Chatbot UI",
+    url:
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      "https://saintvisionai.azurewebsites.net",
+    title: "SaintVisionAI™ - SAINTSAL™ Build Bible",
+    description:
+      "Patent-protected AI movement for elite cooking knowledge. U.S. Patent No. 10,290,222",
+    siteName: "SaintVisionAI™",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chatbot UI",
-    description: "Advanced AI chatbot interface built with Next.js",
-    creator: "@chatbotui",
+    title: "SaintVisionAI™ - SAINTSAL™ Build Bible",
+    description:
+      "Patent-protected AI movement for elite cooking knowledge. U.S. Patent No. 10,290,222",
+    creator: "@saintvisionai",
   },
   robots: {
     index: true,

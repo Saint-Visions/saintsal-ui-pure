@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle, ArrowRight, Home } from "lucide-react";
 
-export default function UpgradeSuccessPage() {
+function UpgradeSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const [isLoading, setIsLoading] = useState(true);
@@ -125,5 +125,19 @@ export default function UpgradeSuccessPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function UpgradeSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-black text-white flex items-center justify-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-yellow-500"></div>
+        </div>
+      }
+    >
+      <UpgradeSuccessContent />
+    </Suspense>
   );
 }

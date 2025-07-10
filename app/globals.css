@@ -94,3 +94,35 @@
     @apply text-base lg:text-lg;
   }
 }
+
+/* 🔥 SAINTSAL™ CRITICAL STYLES - DO NOT REMOVE */
+.saintsal-landing-bg {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(20, 20, 20, 0.8) 25%,
+      rgba(40, 40, 40, 0.7) 50%,
+      rgba(20, 20, 20, 0.8) 75%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g"><stop offset="0%" stop-color="%23333"/><stop offset="100%" stop-color="%23000"/></radialGradient></defs><rect width="100" height="100" fill="url(%23g)"/></svg>');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Smooth animations for SAINTSAL™ */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Ensure dark theme compatibility */
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}

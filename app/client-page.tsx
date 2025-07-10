@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Content, isPreviewing, isEditing } from "@builder.io/sdk-react";
-import { customComponents } from "../builder-registry-simple";
 import { BuilderDebug } from "../components/builder/BuilderDebug";
 import BrandShowcase from "../components/brand-showcase";
 import UpgradeModal from "../components/stripe/upgrade-modal";
@@ -27,8 +26,8 @@ export function ClientHomePage({
     triggerUpgrade,
   } = useUpgradeModal();
 
-  // Builder.io API key
-  const BUILDER_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
+  // Builder.io API key - hardcoded for Azure stability
+  const BUILDER_PUBLIC_API_KEY = "d83998c6a81f466db4fb83ab90c7ba25";
 
   // If brand showcase is requested, show it
   if (showBrandShowcase) {
@@ -70,7 +69,6 @@ export function ClientHomePage({
             apiKey={BUILDER_PUBLIC_API_KEY}
             model="page"
             content={initialBuilderContent}
-            customComponents={customComponents}
             data={{ section: "before-features" }}
           />
         </div>
@@ -182,7 +180,7 @@ function HomePage({
                 </span>
               </div>
               <button
-                onClick={() => (window.location.href = "/brand-showcase")}
+                onClick={onShowBrandShowcase}
                 className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white text-xs py-2 px-4 rounded-lg transition-all shadow-lg border border-purple-500/30"
               >
                 🎨 Brand Showcase
