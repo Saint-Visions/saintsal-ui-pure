@@ -1,33 +1,52 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Suspense } from "react";
-import { SaintSalLoader } from "../lib/animations/page-transitions";
-import { BuilderInit } from "../components/builder/BuilderInit";
-import Script from "next/script";
+import { Inter } from "next/font/google";
+import { cn } from "../lib/utils";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: "SaintVisionAI - SAINTSAL™ Movement",
-  description:
-    "Patent-protected AI movement for elite saints. U.S. Patent No. 10,290,222",
-  keywords: "AI, SaintSal, SaintVisionAI, patent-protected, elite AI sanctuary",
+  title: {
+    default: "Chatbot UI",
+    template: "%s | Chatbot UI",
+  },
+  description: "Advanced AI chatbot interface built with Next.js",
+  keywords: ["AI", "chatbot", "Next.js", "React", "TypeScript"],
+  authors: [{ name: "Chatbot UI Team" }],
+  creator: "Chatbot UI",
   openGraph: {
-    title: "SaintVisionAI - Elite AI Sanctuary",
-    description: "The patent-protected AI movement for saints",
-    url: "https://saintvisionai.com",
-    siteName: "SaintVisionAI",
-    images: [
-      {
-        url: "https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F24ec722c92144286a6714ce12f92f029?format=webp&width=800",
-        width: 800,
-        height: 600,
-        alt: "SaintVisionAI - Elite AI Sanctuary",
-      },
-    ],
+    type: "website",
+    locale: "en_US",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000",
+    title: "Chatbot UI",
+    description: "Advanced AI chatbot interface built with Next.js",
+    siteName: "Chatbot UI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SaintVisionAI - Elite AI Sanctuary",
-    description: "The patent-protected AI movement for saints",
+    title: "Chatbot UI",
+    description: "Advanced AI chatbot interface built with Next.js",
+    creator: "@chatbotui",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -37,34 +56,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        {/* Builder.io Live Editing Scripts */}
-        <Script
-          src="https://cdn.builder.io/js/webcomponents"
-          strategy="beforeInteractive"
-        />
-      </head>
-      <body className="antialiased bg-black text-white">
-        <BuilderInit />
-        <Suspense fallback={<SaintSalLoader isLoading={true} />}>
-          {children}
-        </Suspense>
-
-        {/* Builder.io DOM Sync and Live Editing */}
-        <Script id="builder-register-components" strategy="afterInteractive">
-          {`
-            if (typeof window !== 'undefined' && window.parent !== window) {
-              // Enable live editing communication
-              window.addEventListener('message', function(event) {
-                if (event.data && event.data.type === 'builder.configure') {
-                  // Handle Builder.io configuration messages for live editing
-                  console.log('Builder.io live editing enabled');
-                }
-              });
-            }
-          `}
-        </Script>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.variable,
+        )}
+      >
+        <div className="relative flex min-h-screen flex-col">
+          <div className="flex-1">{children}</div>
+        </div>
       </body>
     </html>
   );
