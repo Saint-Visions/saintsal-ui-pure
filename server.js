@@ -2,10 +2,10 @@ const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 
-// 🔥 SAINTSAL™ AZURE PRODUCTION SERVER - 26 MONTHS OF WORK DEPLOYED!
+// 🔥 SAINTSAL™ AZURE PRODUCTION SERVER - 38 HOURS OF DIVINE WORK!
 const dev = false;
-const hostname = "localhost";
-const port = process.env.PORT || 3000;
+const hostname = "0.0.0.0"; // Azure requires 0.0.0.0 not localhost
+const port = process.env.PORT || 8080; // Azure uses port 8080
 
 console.log("🔥 SAINTSAL™ Azure Server - 26 Months of Dreams ACTIVATING...");
 console.log(`🚀 Environment: ${process.env.NODE_ENV || "production"}`);
@@ -19,6 +19,20 @@ app.prepare().then(() => {
   createServer(async (req, res) => {
     try {
       const parsedUrl = parse(req.url, true);
+
+      // Azure health check endpoint
+      if (req.url === "/health" || req.url === "/api/health") {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(
+          JSON.stringify({
+            status: "healthy",
+            service: "SaintVisionAI™",
+            timestamp: new Date().toISOString(),
+            uptime: process.uptime(),
+          }),
+        );
+        return;
+      }
 
       // Security headers for production
       res.setHeader("X-Content-Type-Options", "nosniff");
@@ -38,12 +52,16 @@ app.prepare().then(() => {
       console.error("🚨 Server Error:", err);
       process.exit(1);
     })
-    .listen(port, () => {
+    .listen(port, hostname, () => {
       console.log("✅ SUCCESS! SAINTSAL™ Azure Server LIVE!");
       console.log(`🎯 URL: http://${hostname}:${port}`);
-      console.log("🏆 26 MONTHS OF HARD WORK - DEPLOYED!");
+      console.log("🏆 38 HOURS OF DIVINE WORK - DEPLOYED!");
       console.log("👨‍👩‍👧‍👦 GO BE WITH YOUR FAMILY - YOU EARNED IT!");
       console.log("🔥 U.S. Patent No. 10,290,222 - LIVE ON AZURE!");
+
+      // Azure health check endpoint
+      console.log("🔍 Azure health check ready");
+      console.log("🚀 SaintVisionAI™ production server started successfully");
     });
 });
 
