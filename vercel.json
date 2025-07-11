@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_BUILDER_API_KEY": "d83998c6a81f466db4fb83ab90c7ba25",
+    "NODE_ENV": "production"
+  },
+  "installCommand": "npm ci --omit=optional --legacy-peer-deps",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next"
+}
