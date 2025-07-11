@@ -1,26 +1,40 @@
 {
   "name": "saintvisionai",
   "version": "2.0.0",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:production": "node deployment-nextjs/server.js",
-    "deploy:prepare": "npm run build && cp -r .next deployment-nextjs/",
-    "deploy:azure": "cd deployment-nextjs && npm start",
+    "azure:build": "npm ci && npm run build",
+    "azure:start": "node server.js",
+    "azure:deploy": "npm run azure:build && npm run azure:start",
     "sync:builder": "node scripts/builder-sync.js",
-    "setup:builder": "chmod +x scripts/setup-builder.sh && ./scripts/setup-builder.sh",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@builder.io/react": "^8.2.5",
+    "@builder.io/sdk-react": "^4.2.2",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.525.0",
     "next": "^14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@builder.io/sdk-react": "^4.2.2"
+    "tailwind-merge": "^3.3.1",
+    "framer-motion": "^12.23.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0 <=20.x"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.3.3"
   }
 }

@@ -21,11 +21,7 @@ interface PageProps {
 const BUILDER_PUBLIC_API_KEY = "d83998c6a81f466db4fb83ab90c7ba25";
 
 export default async function Page(props: PageProps) {
-  // Initialize Node runtime for Builder.io - EXACT pattern from integration guide
-  const { initializeNodeRuntime } = await import(
-    "@builder.io/sdk-react/node/init"
-  );
-  initializeNodeRuntime();
+  // Skip Node runtime initialization for Azure compatibility
 
   // Fetch Builder.io content server-side - EXACT pattern from integration guide
   const builderContent = await fetchOneEntry({
