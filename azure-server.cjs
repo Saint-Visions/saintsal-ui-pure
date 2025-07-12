@@ -1,4 +1,4 @@
-const { createServer } = require("http");
+const http = require("http");
 const { parse } = require("url");
 const next = require("next");
 
@@ -73,3 +73,7 @@ process.on("SIGINT", () => {
   console.log("🛑 Manual shutdown - Mission accomplished!");
   process.exit(0);
 });
+
+function createServer(requestListener) {
+  return http.createServer(requestListener);
+}
