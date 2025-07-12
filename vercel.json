@@ -1,16 +1,29 @@
 {
   "version": 2,
+  "name": "saintvisionai",
   "builds": [
     {
-      "src": "package.json",
+      "src": "next.config.js",
       "use": "@vercel/next"
     }
   ],
+  "routes": [
+    {
+      "src": "/health",
+      "dest": "/api/health"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
   "env": {
-    "NEXT_PUBLIC_BUILDER_API_KEY": "d83998c6a81f466db4fb83ab90c7ba25",
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "NEXT_PUBLIC_BUILDER_API_KEY": "d83998c6a81f466db4fb83ab90c7ba25"
   },
-  "installCommand": "npm ci --omit=optional --legacy-peer-deps",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next"
+  "functions": {
+    "app/**/*.{js,ts,tsx}": {
+      "maxDuration": 30
+    }
+  }
 }
