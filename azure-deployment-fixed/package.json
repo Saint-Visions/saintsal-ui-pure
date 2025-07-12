@@ -12,7 +12,7 @@
     "postinstall": "echo 'Azure build complete'"
   },
   "dependencies": {
-    "next": "14.2.3",
+    "next": "14.2.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "@builder.io/react": "8.2.5",
