@@ -7,9 +7,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "azure:start": "node azure-server.cjs",
     "azure:build": "npm ci && npm run build",
-    "azure:start": "node azure-server.js",
     "azure:deploy": "npm run azure:build && npm run azure:start",
+    "postinstall": "npm run build",
+    "azure:emergency": "node emergency-azure.js",
     "sync:builder": "node scripts/builder-sync.js",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
