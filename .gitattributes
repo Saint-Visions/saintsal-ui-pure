@@ -1,1 +1,2 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
+azure-deploy-final/saintvisionai-emergency.zip filter=lfs diff=lfs merge=lfs -text
