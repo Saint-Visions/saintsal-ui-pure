@@ -10,12 +10,14 @@ const nextConfig = {
     domains: ["cdn.builder.io"],
     unoptimized: true,
   },
-  // Optimize for Azure deployment
-  trailingSlash: false,
-  output: "standalone",
-  poweredByHeader: false,
+  // Vercel optimization
+  experimental: {
+    serverComponentsExternalPackages: ["@builder.io/react"],
+  },
+  // Build optimization
+  swcMinify: true,
   compress: true,
-  reactStrictMode: true,
+  poweredByHeader: false,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
