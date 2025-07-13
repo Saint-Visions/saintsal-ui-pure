@@ -20,7 +20,12 @@ export default function ChatPage() {
   const [showBossPanel, setShowBossPanel] = useState(false);
   const [walkThroughMode, setWalkThroughMode] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [showOnboarding, setShowOnboarding] = useState(true);
+  const [isFirstTime, setIsFirstTime] = useState(true);
+  const [fileUploaded, setFileUploaded] = useState<File | null>(null);
+  const [voiceInput, setVoiceInput] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Initialize with cinematic welcome
   useEffect(() => {
@@ -276,7 +281,7 @@ export default function ChatPage() {
                     <div className="flex items-start space-x-3">
                       <span className="text-lg">
                         {message.role === "user"
-                          ? "���"
+                          ? "👤"
                           : getMoodEmoji(message.mood)}
                       </span>
                       <div className="flex-1">
