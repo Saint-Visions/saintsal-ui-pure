@@ -414,7 +414,7 @@ export default function ChatPage() {
           </div>
 
           <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
-            <span>⚡ HACP™ Protocol Active • Adaptive Intelligence</span>
+            <span>��� HACP™ Protocol Active • Adaptive Intelligence</span>
             <span>{messages.length} interactions</span>
           </div>
         </div>
@@ -426,6 +426,22 @@ export default function ChatPage() {
         onToggle={() => setShowBossPanel(!showBossPanel)}
         currentInput={inputMessage}
         messages={messages}
+      />
+
+      {/* Knowledge Capsules */}
+      <KnowledgeCapsules
+        currentMessages={messages}
+        onSave={handleKnowledgeCapsuleSave}
+        onLoad={handleKnowledgeCapsuleLoad}
+      />
+
+      {/* Cinematic Onboarding */}
+      <CinematicOnboarding
+        isFirstTime={isFirstTime && showOnboarding}
+        onComplete={() => {
+          setShowOnboarding(false);
+          setIsFirstTime(false);
+        }}
       />
     </div>
   );
