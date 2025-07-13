@@ -123,7 +123,7 @@ function HomePage({
             <div className="flex flex-col items-center mb-6">
               <div className="w-20 h-20 rounded-xl flex items-center justify-center mb-4 shadow-lg overflow-hidden bg-black">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+                  src="/LIGHT_BRAND_LOGO.png"
                   alt="SaintVisionAI Professional Logo"
                   className="w-full h-full object-cover"
                 />
