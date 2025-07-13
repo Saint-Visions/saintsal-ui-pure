@@ -7,7 +7,7 @@ import UpgradeModal from "../components/stripe/upgrade-modal";
 import { useUpgradeModal } from "../lib/hooks/use-upgrade-modal";
 
 interface ClientHomePageProps {
-  initialBuilderContent: unknown;
+  initialBuilderContent: any;
   showBrandShowcase: boolean;
   searchParams: Record<string, string>;
 }
@@ -87,7 +87,7 @@ function HomePage({
   onShowBrandShowcase,
   onTriggerUpgrade,
 }: {
-  builderContent: unknown;
+  builderContent: any;
   onShowBrandShowcase: () => void;
   onTriggerUpgrade: (context?: string) => void;
   searchParams: Record<string, string>;
