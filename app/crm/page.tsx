@@ -1,183 +1,257 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import SaintSalBossPanel from "../../components/SaintSalBossPanel";
+
 export default function CRMPage() {
+  const [showBossPanel, setShowBossPanel] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [crmUrl, setCrmUrl] = useState("");
+
+  useEffect(() => {
+    // Simulate CRM URL loading (in production, this would come from your backend)
+    setTimeout(() => {
+      setCrmUrl(
+        "https://api.leadconnectorhq.com/widget/booking/your-calendar-link",
+      ); // Replace with actual GHL URL
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background:
-          "linear-gradient(135deg, #000 0%, #1a1a2e 50%, #16213e 100%)",
-        color: "white",
-        padding: "40px 20px",
-      }}
-    >
-      {/* CRM Header */}
-      <div style={{ marginBottom: "40px", textAlign: "center" }}>
-        <h1
-          style={{
-            fontSize: "48px",
-            fontWeight: "bold",
-            marginBottom: "16px",
-            background: "linear-gradient(45deg, #ffd700, #ffed4e)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          SaintSal™ CRM Dashboard
-        </h1>
-        <p style={{ color: "#ccc", fontSize: "18px" }}>
-          Elite customer relationship management for the SaintVisionAI™
-          ecosystem.
-        </p>
-      </div>
-
-      {/* Success Message */}
-      <div
-        style={{
-          background: "rgba(0, 255, 136, 0.1)",
-          border: "2px solid #00ff88",
-          borderRadius: "15px",
-          padding: "30px",
-          margin: "30px auto",
-          maxWidth: "600px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            color: "#00ff88",
-            fontSize: "24px",
-            fontWeight: "bold",
-            marginBottom: "10px",
-          }}
-        >
-          ✅ CRM MODULE ACCESSIBLE!
-        </div>
-        <div>Your CRM system is now online after 39 days!</div>
-      </div>
-
-      {/* CRM Stats */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "20px",
-          maxWidth: "800px",
-          margin: "40px auto",
-        }}
-      >
-        <div
-          style={{
-            background: "rgba(255, 215, 0, 0.1)",
-            border: "2px solid #ffd700",
-            borderRadius: "15px",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{ fontSize: "32px", fontWeight: "bold", color: "#ffd700" }}
-          >
-            127
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      {/* Header */}
+      <div className="bg-black/50 border-b border-gray-700 p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold">📊</span>
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-white">CRM Dashboard</h1>
+              <p className="text-gray-400 text-sm">GoHighLevel Integration</p>
+            </div>
           </div>
-          <div style={{ color: "#ccc" }}>Active Partners</div>
-        </div>
 
-        <div
-          style={{
-            background: "rgba(255, 215, 0, 0.1)",
-            border: "2px solid #ffd700",
-            borderRadius: "15px",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{ fontSize: "32px", fontWeight: "bold", color: "#ffd700" }}
-          >
-            $847K
+          <div className="flex items-center space-x-3">
+            <div className="bg-green-600/20 border border-green-500/30 rounded-lg px-3 py-1">
+              <span className="text-green-400 text-sm">🟢 Connected</span>
+            </div>
+
+            <button
+              onClick={() => setShowBossPanel(true)}
+              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-bold px-4 py-2 rounded-lg transition-all"
+            >
+              👑 Boss
+            </button>
           </div>
-          <div style={{ color: "#ccc" }}>Monthly Revenue</div>
         </div>
+      </div>
 
-        <div
-          style={{
-            background: "rgba(255, 215, 0, 0.1)",
-            border: "2px solid #ffd700",
-            borderRadius: "15px",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{ fontSize: "32px", fontWeight: "bold", color: "#ffd700" }}
-          >
-            94%
+      {/* CRM Stats Bar */}
+      <div className="bg-gray-900/50 border-b border-gray-700 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg p-3 text-center">
+            <div className="text-2xl font-bold text-blue-400">127</div>
+            <div className="text-xs text-gray-300">Active Leads</div>
           </div>
-          <div style={{ color: "#ccc" }}>Success Rate</div>
+
+          <div className="bg-green-600/20 border border-green-500/30 rounded-lg p-3 text-center">
+            <div className="text-2xl font-bold text-green-400">32</div>
+            <div className="text-xs text-gray-300">Conversions</div>
+          </div>
+
+          <div className="bg-purple-600/20 border border-purple-500/30 rounded-lg p-3 text-center">
+            <div className="text-2xl font-bold text-purple-400">$47k</div>
+            <div className="text-xs text-gray-300">Revenue</div>
+          </div>
+
+          <div className="bg-yellow-600/20 border border-yellow-500/30 rounded-lg p-3 text-center">
+            <div className="text-2xl font-bold text-yellow-400">94%</div>
+            <div className="text-xs text-gray-300">Satisfaction</div>
+          </div>
         </div>
       </div>
 
-      {/* CRM Interface Placeholder */}
-      <div
-        style={{
-          background: "rgba(255, 255, 255, 0.1)",
-          borderRadius: "15px",
-          border: "2px solid #ffd700",
-          padding: "60px",
-          margin: "40px auto",
-          maxWidth: "800px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            width: "80px",
-            height: "80px",
-            background: "linear-gradient(45deg, #ffd700, #ffed4e)",
-            borderRadius: "15px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "0 auto 20px",
-            fontSize: "40px",
-          }}
-        >
-          💼
-        </div>
-        <h3
-          style={{
-            color: "#ffd700",
-            fontSize: "24px",
-            fontWeight: "bold",
-            marginBottom: "10px",
-          }}
-        >
-          CRM Module Online
-        </h3>
-        <p style={{ color: "#ccc" }}>
-          Elite partner management system ready for deployment!
-        </p>
+      {/* Main CRM Content */}
+      <div className="p-6">
+        {isLoading ? (
+          <motion.div
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <motion.div
+                className="w-8 h-8 border-4 border-white border-t-transparent rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-3">
+              Loading CRM Dashboard
+            </h3>
+            <p className="text-gray-400">Connecting to GoHighLevel...</p>
+          </motion.div>
+        ) : (
+          <div className="space-y-6">
+            {/* Quick Actions */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <button className="bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl p-4 text-white transition-all">
+                <div className="text-2xl mb-2">👥</div>
+                <h3 className="font-bold">Manage Leads</h3>
+                <p className="text-sm opacity-90">View and organize contacts</p>
+              </button>
+
+              <button className="bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 rounded-xl p-4 text-white transition-all">
+                <div className="text-2xl mb-2">📧</div>
+                <h3 className="font-bold">Email Campaigns</h3>
+                <p className="text-sm opacity-90">Create and send emails</p>
+              </button>
+
+              <button className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl p-4 text-white transition-all">
+                <div className="text-2xl mb-2">📅</div>
+                <h3 className="font-bold">Schedule</h3>
+                <p className="text-sm opacity-90">Manage appointments</p>
+              </button>
+            </div>
+
+            {/* CRM Iframe */}
+            <div className="bg-gray-900/50 border border-gray-700 rounded-2xl overflow-hidden">
+              <div className="bg-gray-800/50 p-4 border-b border-gray-700">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-white">
+                    GoHighLevel CRM
+                  </h3>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-green-400 text-sm">●</span>
+                    <span className="text-gray-400 text-sm">
+                      Live Dashboard
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative h-[600px]">
+                {/* Placeholder for CRM iframe */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">🚧</div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      CRM Integration Ready
+                    </h3>
+                    <p className="text-gray-400 mb-4">
+                      GoHighLevel iframe will be embedded here
+                    </p>
+                    <div className="text-sm text-gray-500">
+                      <p>• Lead management system</p>
+                      <p>• Email automation</p>
+                      <p>• Calendar booking</p>
+                      <p>• Pipeline tracking</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Uncomment when you have actual CRM URL */}
+                {/* 
+                <iframe
+                  src={crmUrl}
+                  className="w-full h-full border-0"
+                  title="GoHighLevel CRM"
+                  allow="camera; microphone; geolocation"
+                />
+                */}
+              </div>
+            </div>
+
+            {/* CRM Features */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
+                <h4 className="text-lg font-bold text-white mb-4">
+                  Recent Activity
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
+                    <span className="text-blue-400">👤</span>
+                    <div className="flex-1">
+                      <p className="text-white text-sm">New lead: John Smith</p>
+                      <p className="text-gray-400 text-xs">5 minutes ago</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
+                    <span className="text-green-400">📧</span>
+                    <div className="flex-1">
+                      <p className="text-white text-sm">Email campaign sent</p>
+                      <p className="text-gray-400 text-xs">1 hour ago</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
+                    <span className="text-purple-400">💰</span>
+                    <div className="flex-1">
+                      <p className="text-white text-sm">Deal closed: $5,000</p>
+                      <p className="text-gray-400 text-xs">3 hours ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
+                <h4 className="text-lg font-bold text-white mb-4">
+                  AI Insights
+                </h4>
+                <div className="space-y-4">
+                  <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg p-4">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-blue-400">🧠</span>
+                      <span className="text-blue-400 font-medium text-sm">
+                        Lead Quality Score
+                      </span>
+                    </div>
+                    <p className="text-white text-sm">
+                      Your recent leads show 87% higher engagement than average
+                    </p>
+                  </div>
+
+                  <div className="bg-green-600/20 border border-green-500/30 rounded-lg p-4">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-green-400">📈</span>
+                      <span className="text-green-400 font-medium text-sm">
+                        Conversion Trend
+                      </span>
+                    </div>
+                    <p className="text-white text-sm">
+                      Conversion rate increased 23% this week
+                    </p>
+                  </div>
+
+                  <div className="bg-yellow-600/20 border border-yellow-500/30 rounded-lg p-4">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-yellow-400">⚡</span>
+                      <span className="text-yellow-400 font-medium text-sm">
+                        Optimization Tip
+                      </span>
+                    </div>
+                    <p className="text-white text-sm">
+                      Follow up within 5 minutes for 400% better results
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Patent Footer */}
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "40px",
-          padding: "20px",
-          background: "rgba(255, 215, 0, 0.1)",
-          border: "1px solid #ffd700",
-          borderRadius: "10px",
-          maxWidth: "400px",
-          margin: "40px auto",
-        }}
-      >
-        <div style={{ color: "#ffd700", fontWeight: "bold" }}>
-          🏆 U.S. Patent No. 10,290,222
-        </div>
-      </div>
+      {/* Boss Panel */}
+      <SaintSalBossPanel
+        isVisible={showBossPanel}
+        onToggle={() => setShowBossPanel(!showBossPanel)}
+        currentInput=""
+        messages={[]}
+      />
     </div>
   );
 }
