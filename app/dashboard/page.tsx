@@ -288,7 +288,7 @@ export default function DashboardPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gray-900/70 to-black/80" />
         </div>
         {/* Dashboard Header */}
-        <div className="bg-black/50 border-b border-gray-700 p-6">
+        <div className="relative z-10 bg-black/50 backdrop-blur-sm border-b border-gray-700 p-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-white">
