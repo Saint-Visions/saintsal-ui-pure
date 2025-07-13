@@ -131,6 +131,10 @@ export function BackgroundGallery({
             className={`object-cover transition-all duration-1000 ${
               isLoaded ? "blur-0" : "blur-sm"
             }`}
+            style={{
+              objectPosition: "center center",
+              backgroundAttachment: "fixed",
+            }}
             priority={index === 0 || background.featured}
             quality={95}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
