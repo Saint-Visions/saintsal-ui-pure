@@ -169,12 +169,12 @@ function HomePage({
                 </p>
               </div>
 
-              {/* Main Logo */}
-              <div className="w-20 h-20 rounded-xl flex items-center justify-center mb-4 shadow-2xl overflow-hidden bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 border border-yellow-500/40">
+              {/* Main Logo - Premium Circuit Board Design */}
+              <div className="w-24 h-24 rounded-xl flex items-center justify-center mb-4 shadow-2xl overflow-hidden bg-white/5 border border-yellow-500/40 backdrop-blur-sm">
                 <img
-                  src="/LIGHT_BRAND_LOGO.png"
-                  alt="SaintVisionAI Professional Logo"
-                  className="w-full h-full object-cover"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fac538a6a553c4746a3312a6ddb16cfab?format=webp&width=800"
+                  alt="SaintSal Premium Circuit Board Logo"
+                  className="w-full h-full object-contain p-2"
                 />
               </div>
 
