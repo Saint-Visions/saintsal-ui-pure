@@ -148,12 +148,16 @@ export function SaintVisionSidebar({
         flex flex-col shadow-2xl
       `}
       >
-        {/* Header */}
+        {/* Header with Professional Logo */}
         <div className="flex items-center justify-between p-6 border-b border-amber-200">
           <div className="flex items-center space-x-3">
-            {/* SaintVisionAI Logo */}
-            <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-amber-800 rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-lg">SV</span>
+            {/* Professional SaintVisionAI Logo */}
+            <div className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg overflow-hidden bg-black">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+                alt="SaintVisionAI Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <h1 className="text-lg font-bold text-gray-800">
@@ -199,15 +203,28 @@ export function SaintVisionSidebar({
           ))}
         </div>
 
-        {/* Footer */}
+        {/* Footer with SAINTSAL Branding */}
         <div className="p-4 border-t border-amber-200">
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center mb-3">
             <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">AP</span>
             </div>
           </div>
-          <p className="text-xs text-gray-600 text-center mt-2">
+
+          {/* SAINTSAL™ Logo */}
+          <div className="flex justify-center mb-2">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67984c1e84dc1ed7478bd2e405ffb84c2627e3b?width=3072"
+              alt="SAINTSAL™ Cookin Knowledge"
+              className="h-8 w-auto object-contain"
+            />
+          </div>
+
+          <p className="text-xs text-gray-600 text-center">
             SAINTSAL™ Movement
+          </p>
+          <p className="text-xs text-gray-500 text-center mt-1">
+            Cookin' Knowledge
           </p>
         </div>
       </div>
