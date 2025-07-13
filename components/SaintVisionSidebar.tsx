@@ -256,11 +256,11 @@ export function SaintVisionSidebar({
             </div>
           </div>
 
-          {/* SAINTSAL™ Logo */}
+          {/* Premium Cookin' Knowledge Logo */}
           <div className="flex justify-center mb-3">
             <Image
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67984c1e84dc1ed7478bd2e405ffb84c2627e3b?width=3072"
-              alt="SAINTSAL™ Cookin Knowledge"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F88465a2d1f0c4d7cab7b4f6831fc9307?format=webp&width=800"
+              alt="Cookin' Knowledge Premium Script"
               width={120}
               height={40}
               className="object-contain opacity-90 hover:opacity-100 transition-opacity"
