@@ -40,8 +40,12 @@ export default function CRMPage() {
               <span className="text-white font-bold">📊</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white">CRM Dashboard</h1>
-              <p className="text-gray-400 text-sm">GoHighLevel Integration</p>
+              <h1 className="text-xl font-bold text-white">
+                PartnerTech.ai CRM
+              </h1>
+              <p className="text-gray-400 text-sm">
+                GoHighLevel Integration • Elite AI Analytics
+              </p>
             </div>
           </div>
 
