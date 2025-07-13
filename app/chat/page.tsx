@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 
+interface Message {
+  role: string;
+  content: string;
+}
+
 export default function ChatPage() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
