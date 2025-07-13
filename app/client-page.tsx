@@ -115,8 +115,9 @@ function HomePage({
             backgroundImage:
               "url(https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F8155e04eb6064174a0cb82e2eecf77b6)",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
+            backgroundPosition: "center center",
             backgroundSize: "cover",
+            backgroundAttachment: "fixed",
           }}
         >
           {/* Quote Section - EXACT match */}
