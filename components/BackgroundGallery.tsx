@@ -60,6 +60,18 @@ const backgroundAssets = [
     category: "hero",
     featured: true,
   },
+  {
+    id: "premium-elite-backdrop-1",
+    src: "https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F8565a5a7cb0e4498b69f1b15a09fb152?format=webp&width=800",
+    alt: "Premium Elite Professional Backdrop",
+    category: "hero",
+  },
+  {
+    id: "premium-elite-backdrop-2",
+    src: "https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fb53357c3f7cb4b0f8203ee2ccec9818a?format=webp&width=800",
+    alt: "Premium Elite Business Backdrop",
+    category: "brand",
+  },
 ];
 
 interface BackgroundGalleryProps {
