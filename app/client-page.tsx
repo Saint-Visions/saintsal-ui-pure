@@ -99,8 +99,13 @@ function HomePage({
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Landing Page */}
       <div className="min-h-screen relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat saintsal-landing-bg">
-          <div className="absolute inset-0 bg-black/60" />
+        {/* Premium Background Gallery */}
+        <div className="absolute inset-0">
+          <BackgroundGallery
+            featured={true}
+            autoRotate={true}
+            className="w-full h-full"
+          />
         </div>
 
         {/* Content - EXACT layout from your photos */}
