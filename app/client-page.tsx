@@ -123,16 +123,33 @@ function HomePage({
             backgroundAttachment: "fixed",
           }}
         >
-          {/* Quote Section - EXACT match */}
-          <div className="text-center mb-8 max-w-2xl">
-            <div className="bg-black/80 rounded-xl p-6 mb-6 border border-yellow-500/30">
-              <p className="text-yellow-400 text-lg font-medium mb-2">
-                &ldquo;SaintSal&rdquo; AI doesn&apos;t just answer.
-              </p>
-              <p className="text-white text-base mb-3">
-                It adapts. It empowers. It becomes your...
-              </p>
-              <p className="text-yellow-400 text-2xl font-bold">GOTTA GUY™!</p>
+          {/* Elite Partnership Network - Premium Brand Showcase */}
+          <div className="text-center mb-8 max-w-4xl">
+            <div className="bg-black/90 rounded-2xl p-8 mb-6 border border-yellow-500/30 backdrop-blur-sm">
+              {/* Premium Partnership Network */}
+              <div className="mb-8">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fb7a0e6e16e0a4460bd0b7177a652b1b2?format=webp&width=800"
+                  alt="SaintVisionAI Elite Partnership Network"
+                  className="w-full max-w-lg mx-auto h-auto rounded-xl shadow-2xl border border-yellow-500/20"
+                />
+                <p className="text-yellow-400 text-sm mt-3 font-medium">
+                  🏆 Elite Tech Partnership Network • We Lead The Industry
+                </p>
+              </div>
+
+              {/* Partnership Statement */}
+              <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 rounded-xl p-6 border border-yellow-500/20">
+                <p className="text-yellow-400 text-lg font-medium mb-2">
+                  &ldquo;SaintSal&rdquo; AI doesn&apos;t just answer.
+                </p>
+                <p className="text-white text-base mb-3">
+                  It adapts. It empowers. It becomes your...
+                </p>
+                <p className="text-yellow-400 text-2xl font-bold">
+                  GOTTA GUY™!
+                </p>
+              </div>
             </div>
           </div>
 
