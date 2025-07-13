@@ -174,9 +174,12 @@ function HomePage({
                 >
                   ⚠️ Pricing
                 </span>
-                <span className="cursor-pointer hover:text-yellow-400">
-                  🤖 Setup
-                </span>
+                <a
+                  href="/chat"
+                  className="cursor-pointer hover:text-yellow-400 transition-colors"
+                >
+                  🧠 Divine AI
+                </a>
                 <span className="cursor-pointer hover:text-yellow-400">
                   ❓ Help
                 </span>
