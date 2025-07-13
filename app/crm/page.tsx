@@ -7,14 +7,10 @@ import SaintSalBossPanel from "../../components/SaintSalBossPanel";
 export default function CRMPage() {
   const [showBossPanel, setShowBossPanel] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [crmUrl, setCrmUrl] = useState("");
 
   useEffect(() => {
-    // Simulate CRM URL loading (in production, this would come from your backend)
+    // Simulate CRM loading
     setTimeout(() => {
-      setCrmUrl(
-        "https://api.leadconnectorhq.com/widget/booking/your-calendar-link",
-      ); // Replace with actual GHL URL
       setIsLoading(false);
     }, 2000);
   }, []);
@@ -117,7 +113,7 @@ export default function CRMPage() {
               </button>
             </div>
 
-            {/* CRM Iframe */}
+            {/* CRM Interface */}
             <div className="bg-gray-900/50 border border-gray-700 rounded-2xl overflow-hidden">
               <div className="bg-gray-800/50 p-4 border-b border-gray-700">
                 <div className="flex items-center justify-between">
@@ -133,35 +129,26 @@ export default function CRMPage() {
                 </div>
               </div>
 
-              <div className="relative h-[600px]">
-                {/* Placeholder for CRM iframe */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🚧</div>
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      CRM Integration Ready
-                    </h3>
-                    <p className="text-gray-400 mb-4">
-                      GoHighLevel iframe will be embedded here
-                    </p>
-                    <div className="text-sm text-gray-500">
-                      <p>• Lead management system</p>
-                      <p>• Email automation</p>
-                      <p>• Calendar booking</p>
-                      <p>• Pipeline tracking</p>
-                    </div>
+              <div className="relative h-[600px] bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">📊</div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    CRM Integration Ready
+                  </h3>
+                  <p className="text-gray-400 mb-4">
+                    GoHighLevel dashboard will be embedded here
+                  </p>
+                  <div className="text-sm text-gray-500 space-y-1">
+                    <p>• Lead management system</p>
+                    <p>• Email automation workflows</p>
+                    <p>• Calendar booking integration</p>
+                    <p>• Pipeline tracking & analytics</p>
                   </div>
-                </div>
 
-                {/* Uncomment when you have actual CRM URL */}
-                {/* 
-                <iframe
-                  src={crmUrl}
-                  className="w-full h-full border-0"
-                  title="GoHighLevel CRM"
-                  allow="camera; microphone; geolocation"
-                />
-                */}
+                  <button className="mt-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white font-bold px-6 py-3 rounded-lg transition-all">
+                    Configure CRM URL
+                  </button>
+                </div>
               </div>
             </div>
 
