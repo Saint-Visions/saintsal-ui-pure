@@ -109,7 +109,16 @@ function HomePage({
         </div>
 
         {/* Content - EXACT layout from your photos */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        <div
+          className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4"
+          style={{
+            backgroundImage:
+              "url(https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F8155e04eb6064174a0cb82e2eecf77b6)",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        >
           {/* Quote Section - EXACT match */}
           <div className="text-center mb-8 max-w-2xl">
             <div className="bg-black/80 rounded-xl p-6 mb-6 border border-yellow-500/30">
