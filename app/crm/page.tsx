@@ -86,7 +86,7 @@ export default function CRMPage() {
       </div>
 
       {/* Main CRM Content */}
-      <div className="p-6">
+      <div className="relative z-10 p-6">
         {isLoading ? (
           <motion.div
             className="text-center py-12"
