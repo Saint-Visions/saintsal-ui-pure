@@ -1,206 +1,335 @@
 "use client";
 
+import React, { useState } from "react";
+import MainLayout from "../../components/MainLayout";
+import SaintSalBossPanel from "../../components/SaintSalBossPanel";
+import BackgroundGallery from "../../components/BackgroundGallery";
+import { motion } from "framer-motion";
+
 export default function DashboardPage() {
+  const [showBossPanel, setShowBossPanel] = useState(false);
+  const [activeSection, setActiveSection] = useState("overview");
+  const [currentInput, setCurrentInput] = useState("");
+
+  const dashboardSections = [
+    {
+      id: "overview",
+      title: "Overview",
+      icon: "📊",
+      color: "from-blue-500 to-blue-600",
+    },
+    {
+      id: "ai-companion",
+      title: "AI Companion",
+      icon: "🤖",
+      color: "from-purple-500 to-purple-600",
+    },
+    {
+      id: "knowledge",
+      title: "Knowledge Base",
+      icon: "📚",
+      color: "from-green-500 to-green-600",
+    },
+    {
+      id: "analytics",
+      title: "Analytics",
+      icon: "📈",
+      color: "from-yellow-500 to-yellow-600",
+    },
+    {
+      id: "settings",
+      title: "Settings",
+      icon: "⚙️",
+      color: "from-gray-500 to-gray-600",
+    },
+  ];
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case "overview":
+        return (
+          <div className="space-y-6">
+            {/* Welcome Section */}
+            <div className="bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 border border-yellow-500/30 rounded-2xl p-8">
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+                    alt="SaintSal Logo"
+                    className="w-10 h-10 object-cover rounded"
+                  />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold text-white">
+                    Welcome to SaintSal™ Command Center
+                  </h1>
+                  <p className="text-gray-300">
+                    Your divine intelligence dashboard is ready
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-black/40 rounded-xl p-4">
+                  <div className="text-2xl mb-2">🧠</div>
+                  <h3 className="font-bold text-white mb-1">Emotional Sync</h3>
+                  <p className="text-gray-400 text-sm">
+                    AI adapts to your mood and style
+                  </p>
+                </div>
+
+                <div className="bg-black/40 rounded-xl p-4">
+                  <div className="text-2xl mb-2">📑</div>
+                  <h3 className="font-bold text-white mb-1">
+                    Knowledge Capsules
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Save and share AI interactions
+                  </p>
+                </div>
+
+                <div className="bg-black/40 rounded-xl p-4">
+                  <div className="text-2xl mb-2">🚀</div>
+                  <h3 className="font-bold text-white mb-1">Boss Mode</h3>
+                  <p className="text-gray-400 text-sm">
+                    Escalate to divine-level support
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <motion.a
+                href="/chat"
+                className="bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl p-6 text-white transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="text-3xl mb-3">💬</div>
+                <h3 className="font-bold mb-2">Start Chat</h3>
+                <p className="text-sm opacity-90">Begin AI conversation</p>
+              </motion.a>
+
+              <motion.div
+                onClick={() => setActiveSection("knowledge")}
+                className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl p-6 text-white transition-all cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="text-3xl mb-3">📚</div>
+                <h3 className="font-bold mb-2">Knowledge Base</h3>
+                <p className="text-sm opacity-90">Access saved capsules</p>
+              </motion.div>
+
+              <motion.div
+                onClick={() => setActiveSection("analytics")}
+                className="bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 rounded-xl p-6 text-white transition-all cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="text-3xl mb-3">📈</div>
+                <h3 className="font-bold mb-2">Analytics</h3>
+                <p className="text-sm opacity-90">Usage insights</p>
+              </motion.div>
+
+              <motion.div
+                onClick={() => setShowBossPanel(true)}
+                className="bg-gradient-to-br from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 rounded-xl p-6 text-black transition-all cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="text-3xl mb-3">👑</div>
+                <h3 className="font-bold mb-2">Boss Mode</h3>
+                <p className="text-sm opacity-90">Divine intelligence</p>
+              </motion.div>
+            </div>
+
+            {/* Recent Activity */}
+            <div className="bg-gray-900/50 border border-gray-700 rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">
+                Recent Activity
+              </h2>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
+                  <span className="text-blue-400">💬</span>
+                  <div className="flex-1">
+                    <p className="text-white text-sm">Chat session completed</p>
+                    <p className="text-gray-400 text-xs">2 minutes ago</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
+                  <span className="text-purple-400">📑</span>
+                  <div className="flex-1">
+                    <p className="text-white text-sm">
+                      Knowledge capsule saved
+                    </p>
+                    <p className="text-gray-400 text-xs">1 hour ago</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
+                  <span className="text-yellow-400">🚀</span>
+                  <div className="flex-1">
+                    <p className="text-white text-sm">Boss mode activated</p>
+                    <p className="text-gray-400 text-xs">3 hours ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "knowledge":
+        return (
+          <div className="min-h-screen">
+            <BackgroundGallery />
+          </div>
+        );
+
+      case "analytics":
+        return (
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-white">
+              Analytics Dashboard
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-blue-600/20 to-blue-700/20 border border-blue-500/30 rounded-xl p-6">
+                <div className="text-3xl mb-3">🧠</div>
+                <h3 className="text-xl font-bold text-white mb-2">128</h3>
+                <p className="text-blue-400">AI Interactions</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-purple-600/20 to-purple-700/20 border border-purple-500/30 rounded-xl p-6">
+                <div className="text-3xl mb-3">📑</div>
+                <h3 className="text-xl font-bold text-white mb-2">24</h3>
+                <p className="text-purple-400">Knowledge Capsules</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-yellow-600/20 to-yellow-700/20 border border-yellow-500/30 rounded-xl p-6">
+                <div className="text-3xl mb-3">⚡</div>
+                <h3 className="text-xl font-bold text-white mb-2">96%</h3>
+                <p className="text-yellow-400">Satisfaction Score</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-900/50 border border-gray-700 rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-white mb-4">
+                HACP™ Performance
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-gray-300">
+                      Emotional Sync Accuracy
+                    </span>
+                    <span className="text-green-400">94%</span>
+                  </div>
+                  <div className="h-2 bg-gray-700 rounded-full">
+                    <div className="h-2 bg-green-400 rounded-full w-[94%]"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-gray-300">Intent Recognition</span>
+                    <span className="text-blue-400">87%</span>
+                  </div>
+                  <div className="h-2 bg-gray-700 rounded-full">
+                    <div className="h-2 bg-blue-400 rounded-full w-[87%]"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-gray-300">Response Quality</span>
+                    <span className="text-purple-400">92%</span>
+                  </div>
+                  <div className="h-2 bg-gray-700 rounded-full">
+                    <div className="h-2 bg-purple-400 rounded-full w-[92%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div className="text-center py-12">
+            <div className="text-6xl mb-4">🚧</div>
+            <h3 className="text-xl font-bold text-white mb-2">Coming Soon</h3>
+            <p className="text-gray-400">
+              This section is being enhanced with divine intelligence
+            </p>
+          </div>
+        );
+    }
+  };
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background:
-          "linear-gradient(135deg, #000 0%, #1a1a2e 50%, #16213e 100%)",
-        color: "white",
-        padding: "40px 20px",
-      }}
-    >
-      {/* Dashboard Header */}
-      <div style={{ marginBottom: "40px", textAlign: "center" }}>
-        <h1
-          style={{
-            fontSize: "48px",
-            fontWeight: "bold",
-            marginBottom: "16px",
-            background: "linear-gradient(45deg, #ffd700, #ffed4e)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          Welcome to Your Elite Sanctuary
-        </h1>
-        <p style={{ color: "#ccc", fontSize: "18px" }}>
-          Your SaintVisionAI™ dashboard is ready for divine execution.
-        </p>
-      </div>
+    <MainLayout showSidebar={true}>
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+        {/* Dashboard Header */}
+        <div className="bg-black/50 border-b border-gray-700 p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-white">
+                SaintSal™ Dashboard
+              </h1>
+              <p className="text-gray-400">
+                Divine Intelligence Command Center
+              </p>
+            </div>
 
-      {/* Success Message */}
-      <div
-        style={{
-          background: "rgba(0, 255, 136, 0.1)",
-          border: "2px solid #00ff88",
-          borderRadius: "15px",
-          padding: "30px",
-          margin: "30px auto",
-          maxWidth: "600px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            color: "#00ff88",
-            fontSize: "24px",
-            fontWeight: "bold",
-            marginBottom: "10px",
-          }}
-        >
-          ✅ DASHBOARD ONLINE!
-        </div>
-        <div>Your dashboard is accessible after 39 days!</div>
-      </div>
+            <div className="flex items-center space-x-4">
+              <div className="bg-green-600/20 border border-green-500/30 rounded-lg px-3 py-1">
+                <span className="text-green-400 text-sm">🟢 HACP™ Online</span>
+              </div>
 
-      {/* Dashboard Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "20px",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        <div
-          style={{
-            background: "rgba(255, 215, 0, 0.1)",
-            border: "2px solid #ffd700",
-            borderRadius: "15px",
-            padding: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "15px",
-            }}
-          >
-            <span style={{ fontSize: "24px", marginRight: "10px" }}>🔍</span>
-            <h3 style={{ color: "#ffd700", fontWeight: "bold" }}>
-              Lead Discovery
-            </h3>
+              <button
+                onClick={() => setShowBossPanel(true)}
+                className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-bold px-4 py-2 rounded-lg transition-all"
+              >
+                👑 Boss Mode
+              </button>
+            </div>
           </div>
-          <p style={{ color: "#ccc", marginBottom: "15px" }}>
-            AI-powered lead generation and discovery tools.
-          </p>
-          <button
-            style={{
-              background: "linear-gradient(45deg, #ffd700, #ffed4e)",
-              color: "#000",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              width: "100%",
-            }}
-          >
-            Launch Tool
-          </button>
         </div>
 
-        <div
-          style={{
-            background: "rgba(255, 215, 0, 0.1)",
-            border: "2px solid #ffd700",
-            borderRadius: "15px",
-            padding: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "15px",
-            }}
-          >
-            <span style={{ fontSize: "24px", marginRight: "10px" }}>🤝</span>
-            <h3 style={{ color: "#ffd700", fontWeight: "bold" }}>
-              Referral Network
-            </h3>
+        {/* Section Navigation */}
+        <div className="bg-gray-900/50 border-b border-gray-700 p-4">
+          <div className="flex space-x-2 overflow-x-auto">
+            {dashboardSections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => setActiveSection(section.id)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all ${
+                  activeSection === section.id
+                    ? `bg-gradient-to-r ${section.color} text-white`
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                }`}
+              >
+                <span>{section.icon}</span>
+                <span className="font-medium">{section.title}</span>
+              </button>
+            ))}
           </div>
-          <p style={{ color: "#ccc", marginBottom: "15px" }}>
-            Manage your partner network and referral tracking.
-          </p>
-          <button
-            onClick={() => (window.location.href = "/crm")}
-            style={{
-              background: "linear-gradient(45deg, #ffd700, #ffed4e)",
-              color: "#000",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              width: "100%",
-            }}
-          >
-            Open CRM
-          </button>
         </div>
 
-        <div
-          style={{
-            background: "rgba(255, 215, 0, 0.1)",
-            border: "2px solid #ffd700",
-            borderRadius: "15px",
-            padding: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "15px",
-            }}
-          >
-            <span style={{ fontSize: "24px", marginRight: "10px" }}>🧠</span>
-            <h3 style={{ color: "#ffd700", fontWeight: "bold" }}>AI Chat</h3>
-          </div>
-          <p style={{ color: "#ccc", marginBottom: "15px" }}>
-            Your personal SaintSal™ AI companion.
-          </p>
-          <button
-            onClick={() => (window.location.href = "/chat")}
-            style={{
-              background: "linear-gradient(45deg, #ffd700, #ffed4e)",
-              color: "#000",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              cursor: "pointer",
-              width: "100%",
-            }}
-          >
-            Start Chat
-          </button>
-        </div>
-      </div>
+        {/* Main Content */}
+        <div className="p-6">{renderSection()}</div>
 
-      {/* Patent Footer */}
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "40px",
-          padding: "20px",
-          background: "rgba(255, 215, 0, 0.1)",
-          border: "1px solid #ffd700",
-          borderRadius: "10px",
-          maxWidth: "400px",
-          margin: "40px auto",
-        }}
-      >
-        <div style={{ color: "#ffd700", fontWeight: "bold" }}>
-          🏆 U.S. Patent No. 10,290,222
-        </div>
+        {/* SaintSal Boss Panel */}
+        <SaintSalBossPanel
+          isVisible={showBossPanel}
+          onToggle={() => setShowBossPanel(!showBossPanel)}
+          currentInput={currentInput}
+          messages={[]}
+        />
       </div>
-    </div>
+    </MainLayout>
   );
 }
