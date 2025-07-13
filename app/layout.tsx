@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   keywords:
     "AI, SaintVisionAI, SAINTSAL, artificial intelligence, patent protected, Azure, GPT-4, elite sanctuary",
   authors: [{ name: "SAINTSAL™ Movement" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "SaintVisionAI™ - Elite AI Sanctuary",
@@ -23,6 +22,11 @@ export const metadata: Metadata = {
     description:
       "Patent-protected AI movement. Your GOTTA GUY™ AI that adapts, empowers, and transforms.",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
