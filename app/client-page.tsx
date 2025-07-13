@@ -119,15 +119,19 @@ function HomePage({
 
           {/* Main Interface Card - EXACT match to your design */}
           <div className="bg-black/90 rounded-2xl p-8 mb-8 border border-yellow-500/30 max-w-md w-full">
-            {/* Logo Section - EXACT match */}
+            {/* Logo Section - Professional SAINTSAL™ Branding */}
             <div className="flex flex-col items-center mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                <div className="text-black font-bold text-xl">SV</div>
+              <div className="w-20 h-20 rounded-xl flex items-center justify-center mb-4 shadow-lg overflow-hidden bg-black">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+                  alt="SaintVisionAI Professional Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="text-center">
                 <div className="text-yellow-400 text-xs mb-1">SAINTSAL™</div>
                 <div className="text-yellow-400 text-xs mb-2">
-                  Cooking Knowledge
+                  Cookin' Knowledge
                 </div>
                 <h1 className="text-white text-2xl font-bold">
                   SaintVisionAI™
