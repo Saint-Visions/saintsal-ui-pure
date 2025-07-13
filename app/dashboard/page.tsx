@@ -315,7 +315,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Section Navigation */}
-        <div className="bg-gray-900/50 border-b border-gray-700 p-4">
+        <div className="relative z-10 bg-gray-900/50 backdrop-blur-sm border-b border-gray-700 p-4">
           <div className="flex space-x-2 overflow-x-auto">
             {dashboardSections.map((section) => (
               <button
