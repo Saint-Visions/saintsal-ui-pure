@@ -214,7 +214,7 @@ export function SaintVisionSidebar({
           {/* SAINTSAL™ Logo */}
           <div className="flex justify-center mb-2">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67984c1e84dc1ed7478bd2e405ffb84c2627e3b?width=3072"
+              src="/DARK_BRAND_LOGO.png"
               alt="SAINTSAL™ Cookin Knowledge"
               className="h-8 w-auto object-contain"
             />
