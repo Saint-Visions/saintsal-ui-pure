@@ -61,7 +61,7 @@ export default function CRMPage() {
       </div>
 
       {/* CRM Stats Bar */}
-      <div className="bg-gray-900/50 border-b border-gray-700 p-4">
+      <div className="relative z-10 bg-gray-900/50 backdrop-blur-sm border-b border-gray-700 p-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg p-3 text-center">
             <div className="text-2xl font-bold text-blue-400">127</div>
