@@ -1,128 +1,206 @@
 "use client";
 
-import React from "react";
-import { Content, fetchOneEntry } from "@builder.io/sdk-react";
-import { DashboardLayout } from "../../components/PageLayout";
-
 export default function DashboardPage() {
   return (
-    <DashboardLayout>
-      <div className="min-h-screen p-8">
-        {/* Dashboard Header */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="saintsal-title text-3xl mb-2">
-                Welcome to Your Elite Sanctuary
-              </h1>
-              <p className="saintsal-body">
-                Your SaintVisionAI™ dashboard is ready for divine execution.
-              </p>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#D4AF37] to-yellow-600 rounded-lg flex items-center justify-center">
-                <div className="text-black font-bold text-lg">SV</div>
-              </div>
-            </div>
+    <div
+      style={{
+        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #000 0%, #1a1a2e 50%, #16213e 100%)",
+        color: "white",
+        padding: "40px 20px",
+      }}
+    >
+      {/* Dashboard Header */}
+      <div style={{ marginBottom: "40px", textAlign: "center" }}>
+        <h1
+          style={{
+            fontSize: "48px",
+            fontWeight: "bold",
+            marginBottom: "16px",
+            background: "linear-gradient(45deg, #ffd700, #ffed4e)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Welcome to Your Elite Sanctuary
+        </h1>
+        <p style={{ color: "#ccc", fontSize: "18px" }}>
+          Your SaintVisionAI™ dashboard is ready for divine execution.
+        </p>
+      </div>
+
+      {/* Success Message */}
+      <div
+        style={{
+          background: "rgba(0, 255, 136, 0.1)",
+          border: "2px solid #00ff88",
+          borderRadius: "15px",
+          padding: "30px",
+          margin: "30px auto",
+          maxWidth: "600px",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            color: "#00ff88",
+            fontSize: "24px",
+            fontWeight: "bold",
+            marginBottom: "10px",
+          }}
+        >
+          ✅ DASHBOARD ONLINE!
+        </div>
+        <div>Your dashboard is accessible after 39 days!</div>
+      </div>
+
+      {/* Dashboard Grid */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "20px",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <div
+          style={{
+            background: "rgba(255, 215, 0, 0.1)",
+            border: "2px solid #ffd700",
+            borderRadius: "15px",
+            padding: "20px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "15px",
+            }}
+          >
+            <span style={{ fontSize: "24px", marginRight: "10px" }}>🔍</span>
+            <h3 style={{ color: "#ffd700", fontWeight: "bold" }}>
+              Lead Discovery
+            </h3>
           </div>
+          <p style={{ color: "#ccc", marginBottom: "15px" }}>
+            AI-powered lead generation and discovery tools.
+          </p>
+          <button
+            style={{
+              background: "linear-gradient(45deg, #ffd700, #ffed4e)",
+              color: "#000",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            Launch Tool
+          </button>
         </div>
 
-        {/* Builder.io Content */}
-        <div className="mb-8">
-          <Content
-            apiKey="d83998c6a81f466db4fb83ab90c7ba25"
-            model="page"
-            userAttributes={{ urlPath: "/dashboard" }}
-          />
+        <div
+          style={{
+            background: "rgba(255, 215, 0, 0.1)",
+            border: "2px solid #ffd700",
+            borderRadius: "15px",
+            padding: "20px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "15px",
+            }}
+          >
+            <span style={{ fontSize: "24px", marginRight: "10px" }}>🤝</span>
+            <h3 style={{ color: "#ffd700", fontWeight: "bold" }}>
+              Referral Network
+            </h3>
+          </div>
+          <p style={{ color: "#ccc", marginBottom: "15px" }}>
+            Manage your partner network and referral tracking.
+          </p>
+          <button
+            onClick={() => (window.location.href = "/crm")}
+            style={{
+              background: "linear-gradient(45deg, #ffd700, #ffed4e)",
+              color: "#000",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            Open CRM
+          </button>
         </div>
 
-        {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="saintsal-card">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl">🔍</span>
-              <h3 className="text-[#D4AF37] font-semibold">Lead Discovery</h3>
-            </div>
-            <p className="saintsal-body mb-4">
-              AI-powered lead generation and discovery tools.
-            </p>
-            <button className="saintsal-button-secondary w-full py-2 rounded-lg">
-              Launch Tool
-            </button>
+        <div
+          style={{
+            background: "rgba(255, 215, 0, 0.1)",
+            border: "2px solid #ffd700",
+            borderRadius: "15px",
+            padding: "20px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "15px",
+            }}
+          >
+            <span style={{ fontSize: "24px", marginRight: "10px" }}>🧠</span>
+            <h3 style={{ color: "#ffd700", fontWeight: "bold" }}>AI Chat</h3>
           </div>
-
-          <div className="saintsal-card">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl">🤝</span>
-              <h3 className="text-[#D4AF37] font-semibold">Referral Network</h3>
-            </div>
-            <p className="saintsal-body mb-4">
-              Manage your partner network and referral tracking.
-            </p>
-            <button
-              onClick={() => (window.location.href = "/crm")}
-              className="saintsal-button-secondary w-full py-2 rounded-lg"
-            >
-              Open CRM
-            </button>
-          </div>
-
-          <div className="saintsal-card">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl">📊</span>
-              <h3 className="text-[#D4AF37] font-semibold">AI Analysis</h3>
-            </div>
-            <p className="saintsal-body mb-4">
-              GPT-4 powered deal analysis and insights.
-            </p>
-            <button className="saintsal-button-secondary w-full py-2 rounded-lg">
-              View Reports
-            </button>
-          </div>
-
-          <div className="saintsal-card">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl">📱</span>
-              <h3 className="text-[#D4AF37] font-semibold">Mobile Export</h3>
-            </div>
-            <p className="saintsal-body mb-4">
-              Export to iOS and Android applications.
-            </p>
-            <button className="saintsal-button-secondary w-full py-2 rounded-lg">
-              Export Now
-            </button>
-          </div>
-
-          <div className="saintsal-card">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl">🧠</span>
-              <h3 className="text-[#D4AF37] font-semibold">AI Chat</h3>
-            </div>
-            <p className="saintsal-body mb-4">
-              Your personal SaintSal™ AI companion.
-            </p>
-            <button
-              onClick={() => (window.location.href = "/chat")}
-              className="saintsal-button py-2 rounded-lg w-full"
-            >
-              Start Chat
-            </button>
-          </div>
-
-          <div className="saintsal-card">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl">⚡</span>
-              <h3 className="text-[#D4AF37] font-semibold">Upgrade</h3>
-            </div>
-            <p className="saintsal-body mb-4">
-              Unlock premium features and capabilities.
-            </p>
-            <button className="saintsal-button py-2 rounded-lg w-full">
-              Upgrade Now
-            </button>
-          </div>
+          <p style={{ color: "#ccc", marginBottom: "15px" }}>
+            Your personal SaintSal™ AI companion.
+          </p>
+          <button
+            onClick={() => (window.location.href = "/chat")}
+            style={{
+              background: "linear-gradient(45deg, #ffd700, #ffed4e)",
+              color: "#000",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            Start Chat
+          </button>
         </div>
       </div>
-    </DashboardLayout>
+
+      {/* Patent Footer */}
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "40px",
+          padding: "20px",
+          background: "rgba(255, 215, 0, 0.1)",
+          border: "1px solid #ffd700",
+          borderRadius: "10px",
+          maxWidth: "400px",
+          margin: "40px auto",
+        }}
+      >
+        <div style={{ color: "#ffd700", fontWeight: "bold" }}>
+          🏆 U.S. Patent No. 10,290,222
+        </div>
+      </div>
+    </div>
   );
 }

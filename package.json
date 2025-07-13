@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "node server.js",
-    "export": "next export"
+    "export": "next export",
+    "azure:functions": "echo 'Testing Azure Functions connection...' && node -e \"require('./lib/azure-functions.js').azureFunctions.healthCheck().then(console.log).catch(console.error)\""
   },
   "dependencies": {
     "@builder.io/sdk-react": "4.2.2",
