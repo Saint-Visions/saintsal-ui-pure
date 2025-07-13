@@ -5,6 +5,7 @@ import { BuilderDebug } from "../components/builder/BuilderDebug";
 import BrandShowcase from "../components/brand-showcase";
 import UpgradeModal from "../components/stripe/upgrade-modal";
 import { useUpgradeModal } from "../lib/hooks/use-upgrade-modal";
+import { BackgroundGallery } from "../components/BackgroundGallery";
 
 interface ClientHomePageProps {
   initialBuilderContent: any;
