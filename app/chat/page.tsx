@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import SaintSalBossPanel from "../../components/SaintSalBossPanel";
+import CinematicOnboarding from "../../components/CinematicOnboarding";
+import KnowledgeCapsules from "../../components/KnowledgeCapsules";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -274,7 +276,7 @@ export default function ChatPage() {
                     <div className="flex items-start space-x-3">
                       <span className="text-lg">
                         {message.role === "user"
-                          ? "👤"
+                          ? "���"
                           : getMoodEmoji(message.mood)}
                       </span>
                       <div className="flex-1">
