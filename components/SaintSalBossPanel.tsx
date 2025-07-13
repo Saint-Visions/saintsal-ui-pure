@@ -271,7 +271,7 @@ export function SaintSalBossPanel({
           title="SAINTSAL Command Center"
         >
           <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+            src="/LIGHT_BRAND_LOGO.png"
             alt="SaintSal Boss"
             className="w-10 h-10 object-cover rounded-full"
           />
