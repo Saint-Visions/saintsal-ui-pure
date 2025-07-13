@@ -33,7 +33,7 @@ export default function CRMPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/80 to-black/70" />
       </div>
       {/* Header */}
-      <div className="bg-black/50 border-b border-gray-700 p-4">
+      <div className="relative z-10 bg-black/50 backdrop-blur-sm border-b border-gray-700 p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
