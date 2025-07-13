@@ -1,8 +1,7 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import Image from "next/image";
-import { Sidebar } from "./Sidebar";
+import { Sidebar } from "./sidebar";
 
 interface PageLayoutProps {
   children: ReactNode;
