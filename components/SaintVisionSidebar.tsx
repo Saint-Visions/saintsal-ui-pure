@@ -180,8 +180,8 @@ export function SaintVisionSidebar({
               }}
             >
               <Image
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
-                alt="SaintVisionAI SV Logo"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
+                alt="SaintVisionAI Premium Brain Logo"
                 width={48}
                 height={48}
                 className="object-contain"
@@ -200,7 +200,7 @@ export function SaintVisionSidebar({
             onClick={onClose}
             className="lg:hidden p-2 rounded-lg hover:bg-yellow-500/10 transition-colors"
           >
-            <span className="text-yellow-400 text-xl">✕</span>
+            <span className="text-yellow-400 text-xl">��</span>
           </button>
         </div>
 
