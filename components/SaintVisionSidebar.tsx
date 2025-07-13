@@ -154,7 +154,7 @@ export function SaintVisionSidebar({
             {/* Professional SaintVisionAI Logo */}
             <div className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg overflow-hidden bg-black">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+                src="/LIGHT_BRAND_LOGO.png"
                 alt="SaintVisionAI Logo"
                 className="w-full h-full object-cover"
               />
