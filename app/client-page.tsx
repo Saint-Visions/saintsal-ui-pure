@@ -96,7 +96,10 @@ function HomePage({
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div
+      className="min-h-screen bg-black text-white overflow-hidden"
+      style={{ scrollBehavior: "smooth" }}
+    >
       {/* Landing Page */}
       <div className="min-h-screen relative overflow-hidden">
         {/* Premium Background Gallery */}
