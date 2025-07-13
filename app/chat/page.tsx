@@ -158,6 +158,58 @@ export default function ChatPage() {
     }
   };
 
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileUploaded(file);
+      // Auto-analyze the file
+      const analysisMessage: Message = {
+        role: "assistant",
+        content: `I've received your ${file.type.includes("pdf") ? "PDF document" : "file"}: "${file.name}". I'm analyzing it now to provide you with context-aware responses. What would you like to know about this file?`,
+        timestamp: new Date(),
+        mood: "excited",
+      };
+      setMessages((prev) => [...prev, analysisMessage]);
+    }
+  };
+
+  const toggleVoiceInput = () => {
+    setVoiceInput(!voiceInput);
+    if (!voiceInput) {
+      // Simulate voice input activation
+      const voiceMessage: Message = {
+        role: "assistant",
+        content:
+          "🎤 Voice input activated! I'm listening and ready to adapt to your vocal patterns and tone.",
+        timestamp: new Date(),
+        mood: "excited",
+      };
+      setMessages((prev) => [...prev, voiceMessage]);
+    }
+  };
+
+  const handleKnowledgeCapsuleSave = (capsule: any) => {
+    console.log("Knowledge capsule saved:", capsule);
+    const saveMessage: Message = {
+      role: "assistant",
+      content: `📑 Knowledge capsule "${capsule.title}" saved! This conversation is now bookmarked for future reference and can be shared with others.`,
+      timestamp: new Date(),
+      mood: "excited",
+    };
+    setMessages((prev) => [...prev, saveMessage]);
+  };
+
+  const handleKnowledgeCapsuleLoad = (capsule: any) => {
+    console.log("Loading knowledge capsule:", capsule);
+    const loadMessage: Message = {
+      role: "assistant",
+      content: `📖 Resuming "${capsule.title}" thread. I remember exactly where we left off and I'm ready to continue with full context.`,
+      timestamp: new Date(),
+      mood: "excited",
+    };
+    setMessages((prev) => [...prev, loadMessage]);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white flex">
       {/* Chat Sidebar */}
