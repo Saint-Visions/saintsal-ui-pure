@@ -52,3 +52,9 @@ dist/
 
 .config/
 azure-deploy-final/*.zip
+
+# Deployment directories (prevent auto-generation)
+azure-deploy-*/
+azure-deployment-*/
+deployment-*/
+nuclear-deploy/
