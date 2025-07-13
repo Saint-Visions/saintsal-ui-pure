@@ -271,7 +271,22 @@ export default function DashboardPage() {
 
   return (
     <MainLayout showSidebar={true}>
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative">
+        {/* Subtle Workspace Background */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="w-full h-full opacity-15"
+            style={{
+              backgroundImage:
+                "url(https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F93507a0b9c5f453da841403952668682?format=webp&width=800)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center center",
+              backgroundSize: "cover",
+              backgroundAttachment: "fixed",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gray-900/70 to-black/80" />
+        </div>
         {/* Dashboard Header */}
         <div className="bg-black/50 border-b border-gray-700 p-6">
           <div className="flex items-center justify-between">
