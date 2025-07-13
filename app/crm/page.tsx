@@ -16,7 +16,22 @@ export default function CRMPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative">
+      {/* PartnerTech.ai Professional Background */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="w-full h-full opacity-20"
+          style={{
+            backgroundImage:
+              "url(https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fc6531d3225fc449e86e35b3449b04b5c?format=webp&width=800)",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/80 to-black/70" />
+      </div>
       {/* Header */}
       <div className="bg-black/50 border-b border-gray-700 p-4">
         <div className="flex items-center justify-between">
