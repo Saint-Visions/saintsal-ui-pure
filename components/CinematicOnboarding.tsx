@@ -31,7 +31,7 @@ export function CinematicOnboarding({
       subtitle: "I learn your style and sync with your vibe",
       content:
         "Frustrated? I simplify. Overwhelmed? I guide you step by step. I become exactly what you need.",
-      icon: "🧠",
+      icon: "����",
       background: "from-blue-500/20 to-purple-500/20",
     },
     {
@@ -130,7 +130,7 @@ export function CinematicOnboarding({
             {currentStep === 0 ? (
               <div className="w-32 h-32 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
+                  src="/LIGHT_BRAND_LOGO.png"
                   alt="SaintSal Logo"
                   className="w-20 h-20 object-cover rounded-full"
                 />
