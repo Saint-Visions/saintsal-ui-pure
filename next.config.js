@@ -6,7 +6,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-<<<<<<< HEAD
   images: {
     domains: [
       "cdn.builder.io",
@@ -32,8 +31,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["@builder.io/react"],
   },
-=======
->>>>>>> 2db64ec (chore: rename next.config.cjs to next.config.js)
 };
 
 module.exports = nextConfig;
