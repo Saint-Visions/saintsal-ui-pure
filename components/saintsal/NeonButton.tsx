@@ -25,24 +25,23 @@ export default function NeonButton({
   const variants = {
     primary: {
       base: "bg-[#FFD700] text-[#10161C] border-[#FFD700]",
-      hover: "hover:bg-[#FFD700]/90 hover:shadow-[0_0_20px_#FFD700]/50",
-      glow: "shadow-[0_0_15px_#FFD700]/30",
+      hover: "hover:bg-[#FFD700]/90",
+      glow: "glow-gold",
     },
     secondary: {
       base: "bg-transparent text-white border-white/30",
-      hover: "hover:bg-white/10 hover:border-white/50",
-      glow: "hover:shadow-[0_0_15px_white]/20",
+      hover: "hover:bg-white/10 hover:border-white/50 btn-neon-outline",
+      glow: "",
     },
     divine: {
       base: "bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-[#10161C] border-[#FFD700]",
-      hover:
-        "hover:from-[#FFD700]/90 hover:to-[#FFA500]/90 hover:shadow-[0_0_25px_#FFD700]/40",
-      glow: "shadow-[0_0_20px_#FFD700]/40",
+      hover: "hover:from-[#FFD700]/95 hover:to-[#FFA500]/95",
+      glow: "glow-gold",
     },
     danger: {
       base: "bg-red-600 text-white border-red-600",
-      hover: "hover:bg-red-500 hover:shadow-[0_0_20px_red]/50",
-      glow: "shadow-[0_0_15px_red]/30",
+      hover: "hover:bg-red-500",
+      glow: "border border-red-500/40",
     },
   };
 

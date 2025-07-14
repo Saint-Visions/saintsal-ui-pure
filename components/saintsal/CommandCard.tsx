@@ -65,12 +65,12 @@ export default function CommandCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: onClick ? 1.02 : 1, y: onClick ? -2 : 0 }}
+      whileHover={{ scale: onClick ? 1.01 : 1, y: onClick ? -1 : 0 }}
       onClick={onClick}
       className={`
-        relative p-6 rounded-xl border backdrop-blur-sm transition-all duration-300
+        relative p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 box-accent-glow
         ${currentVariant.bg}
-        ${onClick ? `cursor-pointer ${currentVariant.glow}` : ""}
+        ${onClick ? `cursor-pointer` : ""}
         ${className}
       `}
     >
