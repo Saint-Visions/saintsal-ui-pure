@@ -1,9 +1,10 @@
 node_modules
 .next
 .git
-*.sh
 *.md
+*.sh
 *.log
+package-lock.json
 DEPLOY*
 AZURE*
 EMERGENCY*
@@ -12,8 +13,3 @@ deploy-temp
 deployment-static
 emergency-deploy
 emergency-fix
-*.zip
-*.tar
-*.gz
-package-lock.json
-yarn.lock
