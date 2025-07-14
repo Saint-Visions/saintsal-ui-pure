@@ -21,6 +21,18 @@ export default function SaintSalConsole() {
 
   return (
     <div className="min-h-screen saintsal-console-bg relative overflow-hidden font-jetbrains">
+      {/* Background Asset */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fe4c69c537822414682bb42c1aeda11b3?format=webp&width=1200')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+
       {/* Circuit Background */}
       <CircuitBG intensity="medium" animated={true} color="gold" />
 
