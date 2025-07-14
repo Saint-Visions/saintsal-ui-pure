@@ -33,27 +33,11 @@ export default function CircuitBG({
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Background Image Layer */}
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F6b86fa2c1e4c414ba874771fa8473016?format=webp&width=1200')",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          opacity: config.opacity * 0.4,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: config.opacity * 0.4 }}
-        transition={{ duration: 2 }}
-      />
-
       {/* Main circuit pattern */}
       <motion.svg
         className="w-full h-full"
         viewBox="0 0 800 600"
-        style={{ opacity: config.opacity * 0.6 }}
+        style={{ opacity: config.opacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: config.opacity * 0.6 }}
         transition={{ duration: 2 }}
@@ -185,12 +169,20 @@ export default function CircuitBG({
         )}
       </motion.svg>
 
-      {/* Additional overlay for depth */}
+      {/* Background Image Overlay */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0"
         style={{
-          background: `radial-gradient(circle at 30% 30%, ${strokeColor}20 0%, transparent 50%),
-                       radial-gradient(circle at 70% 70%, ${strokeColor}15 0%, transparent 40%)`,
+          backgroundImage:
+            "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F6b86fa2c1e4c414ba874771fa8473016?format=webp&width=1200')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          opacity: config.opacity * 2,
+          animationDuration: "2s",
+          animationIterationCount: "infinite",
+          animationName: "pulse",
+          animationTimingFunction: "cubic-bezier(0.4, 0, 0.6, 1)",
         }}
       />
     </div>
