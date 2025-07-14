@@ -40,32 +40,30 @@ export default function HomePage() {
 
         {/* All Content in One Flowing Container */}
         <div className="relative z-20">
-                    {/* Hero Content */}
+          {/* Hero Content */}
           <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-6xl mx-auto">
-            <div className="w-full">
-              {/* SaintSal Brain Logo */}
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="mb-12"
-              >
-                <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
-                    alt="SaintSal™ Circuit Brain"
-                    className="relative w-32 h-32 md:w-48 md:h-48 object-contain"
-                  />
-                </div>
-              </motion.div>
+            {/* SaintSal Brain Logo */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="mb-12"
+            >
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
+                  alt="SaintSal™ Circuit Brain"
+                  className="relative w-32 h-32 md:w-48 md:h-48 object-contain"
+                />
+              </div>
 
               {/* Hero Text */}
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="mb-8"
+                className="mt-8"
               >
                 <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-wider">
                   <span className="text-saintsal-gold glow-gold">
