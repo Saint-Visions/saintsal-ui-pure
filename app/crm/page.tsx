@@ -182,7 +182,15 @@ export default function SaintSalConsole() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Primary Commands */}
               <div className="lg:col-span-2 space-y-6">
-                <div className="console-terminal rounded-xl p-6">
+                <div
+                  className="rounded-xl p-6"
+                  style={{
+                    backgroundColor: "rgba(16, 22, 28, 0.7)",
+                    border: "1px solid rgba(255, 215, 0, 0.2)",
+                    boxShadow:
+                      "inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.1)",
+                  }}
+                >
                   <h3 className="text-xl font-bold text-[#FFD700] mb-6 tracking-wider flex items-center">
                     <img
                       src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
