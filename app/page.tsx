@@ -50,9 +50,9 @@ export default function HomePage() {
               <div className="relative inline-block">
                 <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
                   alt="SaintSal™ Circuit Brain"
-                  className="relative w-32 h-32 md:w-48 md:h-48 object-contain glow-gold"
+                  className="relative w-32 h-32 md:w-48 md:h-48 object-contain"
                 />
               </div>
 
