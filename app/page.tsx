@@ -65,8 +65,10 @@ export default function HomePage() {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="mt-8"
               >
-                                <h1 className="text-5xl md:text-7xl font-black pt-10 pb-4 tracking-wider text-[#FFD700] mb-6">
-                  SAINTSAL™
+                <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-wider">
+                  <span className="text-saintsal-gold glow-gold">
+                    SAINTSAL™
+                  </span>
                 </h1>
                 <div className="text-2xl md:text-4xl font-light text-saintsal-ivory tracking-wide mb-4">
                   — Cookin' Knowledge.
