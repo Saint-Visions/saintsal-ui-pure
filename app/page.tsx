@@ -38,15 +38,16 @@ export default function HomePage() {
 
         {/* All Content in One Flowing Container */}
         <div className="relative z-20">
-          {/* Hero Content */}
+                    {/* Hero Content */}
           <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-6xl mx-auto">
-            {/* SaintSal Brain Logo */}
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="mb-12"
-            >
+            <div className="w-full">
+              {/* SaintSal Brain Logo */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="mb-12"
+              >
               <div className="relative inline-block">
                 <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
                 <img
