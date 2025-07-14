@@ -58,7 +58,16 @@ export default function SaintSalConsole() {
       />
 
       {/* Main Console Content */}
-      <div className="relative z-10 p-8 space-y-8">
+      <div
+        className="relative z-10 p-8 space-y-8"
+        style={{
+          backgroundImage:
+            "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fcf84ed9938f847c3bc2c3849e966fb91?format=webp&width=1200')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
         {isInitializing ? (
           <motion.div
             className="flex flex-col items-center justify-center py-20"
@@ -235,7 +244,15 @@ export default function SaintSalConsole() {
                 </div>
 
                 {/* CRM Integration Zone */}
-                <div className="console-terminal rounded-xl overflow-hidden">
+                <div
+                  className="rounded-xl overflow-hidden"
+                  style={{
+                    backgroundColor: "rgba(16, 22, 28, 0.56)",
+                    border: "1px solid rgba(255, 215, 0, 0.2)",
+                    boxShadow:
+                      "inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.1)",
+                  }}
+                >
                   <div className="bg-[#10161C]/80 p-4 border-b border-[#FFD700]/20">
                     <div className="flex items-center justify-between">
                       <h3 className="text-lg font-bold text-white tracking-wider">
@@ -250,7 +267,14 @@ export default function SaintSalConsole() {
                     </div>
                   </div>
 
-                  <div className="h-96 bg-gradient-to-br from-[#10161C] to-[#0a0f14] flex items-center justify-center">
+                  <div
+                    className="h-96 flex items-center justify-center"
+                    style={{
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                    }}
+                  >
                     <div className="text-center">
                       <div className="text-6xl mb-6 animate-divine-pulse">
                         📊
