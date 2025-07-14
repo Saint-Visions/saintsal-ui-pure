@@ -49,7 +49,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
-                alt="SaintSal™ Circuit Brain"
+                alt="SaintSal��� Circuit Brain"
                 className="relative w-32 h-32 md:w-48 md:h-48 object-contain glow-gold"
               />
             </div>
@@ -196,7 +196,22 @@ export default function HomePage() {
       </section>
 
       {/* AI Workstation Demo Section */}
-      <section className="relative py-24 bg-gradient-to-br from-[#0a0f14] to-[#10161C]">
+      <section className="relative py-24">
+        {/* Parallax Background */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fcf84ed9938f847c3bc2c3849e966fb91')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+          }}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f14]/90 via-[#10161C]/85 to-[#0a0f14]/90" />
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ y: 40, opacity: 0 }}
