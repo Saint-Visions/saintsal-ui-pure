@@ -104,9 +104,9 @@ export default function HomePage() {
                       UPGRADE TO PRO
                     </NeonButton>
                   </Link>
-                </motion.div>
+                                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Features Flow */}
