@@ -2,256 +2,374 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import GlowHeader from "../../components/saintsal/GlowHeader";
+import NeonButton from "../../components/saintsal/NeonButton";
+import CommandCard from "../../components/saintsal/CommandCard";
+import CircuitBG from "../../components/saintsal/CircuitBG";
 import SaintSalBossPanel from "../../components/SaintSalBossPanel";
 
-export default function CRMPage() {
+export default function SaintSalConsole() {
   const [showBossPanel, setShowBossPanel] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isInitializing, setIsInitializing] = useState(true);
 
   useEffect(() => {
-    // Simulate CRM loading
+    // Console initialization sequence
     setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+      setIsInitializing(false);
+    }, 2500);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative">
-      {/* PartnerTech.ai Professional Background */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full opacity-20"
-          style={{
-            backgroundImage:
-              "url(https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fc6531d3225fc449e86e35b3449b04b5c?format=webp&width=800)",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center center",
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/80 to-black/70" />
-      </div>
+    <div className="min-h-screen saintsal-console-bg relative overflow-hidden font-jetbrains">
+      {/* Circuit Background */}
+      <CircuitBG intensity="medium" animated={true} color="gold" />
+
+      {/* Grid overlay */}
+      <div className="absolute inset-0 workstation-grid opacity-30" />
+
       {/* Header */}
-      <div className="relative z-10 bg-black/50 backdrop-blur-sm border-b border-gray-700 p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">📊</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-white">
-                PartnerTech.ai CRM
-              </h1>
-              <p className="text-gray-400 text-sm">
-                GoHighLevel Integration • Elite AI Analytics
-              </p>
-            </div>
-          </div>
+      <GlowHeader
+        title="SAINTSAL™ COMMAND CENTER"
+        subtitle="SVT FUSION CORE • Business Intelligence Console"
+        icon="⚡"
+        status="connected"
+        rightAction={
+          <NeonButton
+            variant="divine"
+            onClick={() => setShowBossPanel(true)}
+            icon="👑"
+            size="md"
+          >
+            BOSS MODE
+          </NeonButton>
+        }
+      />
 
-          <div className="flex items-center space-x-3">
-            <div className="bg-green-600/20 border border-green-500/30 rounded-lg px-3 py-1">
-              <span className="text-green-400 text-sm">🟢 Connected</span>
-            </div>
-
-            <button
-              onClick={() => setShowBossPanel(true)}
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-bold px-4 py-2 rounded-lg transition-all"
-            >
-              👑 Boss
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* CRM Stats Bar */}
-      <div className="relative z-10 bg-gray-900/50 backdrop-blur-sm border-b border-gray-700 p-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold text-blue-400">127</div>
-            <div className="text-xs text-gray-300">Active Leads</div>
-          </div>
-
-          <div className="bg-green-600/20 border border-green-500/30 rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold text-green-400">32</div>
-            <div className="text-xs text-gray-300">Conversions</div>
-          </div>
-
-          <div className="bg-purple-600/20 border border-purple-500/30 rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold text-purple-400">$47k</div>
-            <div className="text-xs text-gray-300">Revenue</div>
-          </div>
-
-          <div className="bg-yellow-600/20 border border-yellow-500/30 rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold text-yellow-400">94%</div>
-            <div className="text-xs text-gray-300">Satisfaction</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main CRM Content */}
-      <div className="relative z-10 p-6">
-        {isLoading ? (
+      {/* Main Console Content */}
+      <div className="relative z-10 p-8 space-y-8">
+        {isInitializing ? (
           <motion.div
-            className="text-center py-12"
+            className="flex flex-col items-center justify-center py-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            {/* Initialization Animation */}
+            <motion.div
+              className="relative mb-8"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center relative overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                  animate={{ x: [-200, 200] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <span className="text-4xl text-[#10161C] font-bold">⚡</span>
+              </div>
+            </motion.div>
+
+            <motion.h2
+              className="text-3xl font-bold text-white mb-4 tracking-wider"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              INITIALIZING CONSOLE
+            </motion.h2>
+
+            <motion.p
+              className="text-[#FFD700] text-lg tracking-wide"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.7 }}
+            >
+              Connecting to Divine Intelligence Systems...
+            </motion.p>
+
+            {/* Loading Progress */}
+            <motion.div
+              className="w-80 h-2 bg-black/50 rounded-full mt-8 overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
               <motion.div
-                className="w-8 h-8 border-4 border-white border-t-transparent rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="h-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 2, ease: "easeInOut" }}
               />
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-3">
-              Loading CRM Dashboard
-            </h3>
-            <p className="text-gray-400">Connecting to GoHighLevel...</p>
+            </motion.div>
           </motion.div>
         ) : (
-          <div className="space-y-6">
-            {/* Quick Actions */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <button className="bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl p-4 text-white transition-all">
-                <div className="text-2xl mb-2">👥</div>
-                <h3 className="font-bold">Manage Leads</h3>
-                <p className="text-sm opacity-90">View and organize contacts</p>
-              </button>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            {/* Command Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <CommandCard
+                title="ACTIVE OPERATIONS"
+                icon="🎯"
+                value="127"
+                trend="up"
+                variant="primary"
+                description="Live business processes"
+              />
 
-              <button className="bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 rounded-xl p-4 text-white transition-all">
-                <div className="text-2xl mb-2">📧</div>
-                <h3 className="font-bold">Email Campaigns</h3>
-                <p className="text-sm opacity-90">Create and send emails</p>
-              </button>
+              <CommandCard
+                title="CONVERSIONS"
+                icon="⚡"
+                value="32"
+                trend="up"
+                variant="success"
+                description="Divine alignment executed"
+              />
 
-              <button className="bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl p-4 text-white transition-all">
-                <div className="text-2xl mb-2">📅</div>
-                <h3 className="font-bold">Schedule</h3>
-                <p className="text-sm opacity-90">Manage appointments</p>
-              </button>
+              <CommandCard
+                title="REVENUE STREAM"
+                icon="💎"
+                value="$47K"
+                trend="up"
+                variant="warning"
+                description="Kingdom wealth generated"
+              />
+
+              <CommandCard
+                title="SYSTEM EFFICIENCY"
+                icon="🔥"
+                value="94%"
+                trend="neutral"
+                variant="default"
+                description="Operational excellence"
+              />
             </div>
 
-            {/* CRM Interface */}
-            <div className="bg-gray-900/50 border border-gray-700 rounded-2xl overflow-hidden">
-              <div className="bg-gray-800/50 p-4 border-b border-gray-700">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-bold text-white">
-                    GoHighLevel CRM
+            {/* Main Command Interface */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Primary Commands */}
+              <div className="lg:col-span-2 space-y-6">
+                <div className="console-terminal rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-[#FFD700] mb-6 tracking-wider flex items-center">
+                    <span className="mr-3">🖥️</span>
+                    BUSINESS COMMAND TERMINAL
                   </h3>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-green-400 text-sm">●</span>
-                    <span className="text-gray-400 text-sm">
-                      Live Dashboard
-                    </span>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <NeonButton
+                      variant="primary"
+                      icon="👥"
+                      onClick={() => {}}
+                      className="h-20 flex-col"
+                    >
+                      <span className="font-bold">LEAD MANAGEMENT</span>
+                      <span className="text-xs opacity-80">
+                        Execute contact strategies
+                      </span>
+                    </NeonButton>
+
+                    <NeonButton
+                      variant="secondary"
+                      icon="📧"
+                      onClick={() => {}}
+                      className="h-20 flex-col"
+                    >
+                      <span className="font-bold">COMMUNICATION</span>
+                      <span className="text-xs opacity-80">
+                        Deploy message campaigns
+                      </span>
+                    </NeonButton>
+
+                    <NeonButton
+                      variant="secondary"
+                      icon="📊"
+                      onClick={() => {}}
+                      className="h-20 flex-col"
+                    >
+                      <span className="font-bold">ANALYTICS</span>
+                      <span className="text-xs opacity-80">
+                        Intelligence reports
+                      </span>
+                    </NeonButton>
+
+                    <NeonButton
+                      variant="secondary"
+                      icon="⚙️"
+                      onClick={() => {}}
+                      className="h-20 flex-col"
+                    >
+                      <span className="font-bold">AUTOMATION</span>
+                      <span className="text-xs opacity-80">
+                        System workflows
+                      </span>
+                    </NeonButton>
+                  </div>
+                </div>
+
+                {/* CRM Integration Zone */}
+                <div className="console-terminal rounded-xl overflow-hidden">
+                  <div className="bg-[#10161C]/80 p-4 border-b border-[#FFD700]/20">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-bold text-white tracking-wider">
+                        🔗 BUSINESS INTELLIGENCE PORTAL
+                      </h3>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-divine-pulse" />
+                        <span className="text-emerald-400 text-sm font-mono">
+                          LIVE
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="h-96 bg-gradient-to-br from-[#10161C] to-[#0a0f14] flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-6xl mb-6 animate-divine-pulse">
+                        📊
+                      </div>
+                      <h4 className="text-2xl font-bold text-white mb-4 tracking-wider">
+                        CRM INTEGRATION READY
+                      </h4>
+                      <p className="text-gray-400 mb-6 max-w-md">
+                        Your business intelligence dashboard will manifest here
+                        when connected to your CRM systems
+                      </p>
+
+                      <div className="space-y-2 mb-8 text-sm text-gray-500">
+                        <p>• Lead pipeline visualization</p>
+                        <p>• Automated workflow management</p>
+                        <p>• Divine appointment scheduling</p>
+                        <p>• Revenue tracking & forecasting</p>
+                      </div>
+
+                      <NeonButton variant="divine" icon="🔌" onClick={() => {}}>
+                        CONFIGURE CRM CONNECTION
+                      </NeonButton>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="relative h-[600px] bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">📊</div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    CRM Integration Ready
-                  </h3>
-                  <p className="text-gray-400 mb-4">
-                    GoHighLevel dashboard will be embedded here
-                  </p>
-                  <div className="text-sm text-gray-500 space-y-1">
-                    <p>• Lead management system</p>
-                    <p>• Email automation workflows</p>
-                    <p>• Calendar booking integration</p>
-                    <p>• Pipeline tracking & analytics</p>
-                  </div>
+              {/* Side Intelligence Panel */}
+              <div className="space-y-6">
+                {/* Recent Activity */}
+                <div className="console-terminal rounded-xl p-6">
+                  <h4 className="text-lg font-bold text-[#FFD700] mb-4 tracking-wider flex items-center">
+                    <span className="mr-2">📡</span>
+                    ACTIVITY FEED
+                  </h4>
 
-                  <button className="mt-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white font-bold px-6 py-3 rounded-lg transition-all">
-                    Configure CRM URL
-                  </button>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        icon: "👤",
+                        text: "New lead: Divine Contact",
+                        time: "2 min ago",
+                        color: "text-blue-400",
+                      },
+                      {
+                        icon: "📧",
+                        text: "Campaign deployed",
+                        time: "15 min ago",
+                        color: "text-green-400",
+                      },
+                      {
+                        icon: "💰",
+                        text: "Revenue milestone: $5K",
+                        time: "1 hr ago",
+                        color: "text-[#FFD700]",
+                      },
+                      {
+                        icon: "⚡",
+                        text: "System optimization",
+                        time: "2 hrs ago",
+                        color: "text-purple-400",
+                      },
+                    ].map((activity, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center space-x-3 p-3 bg-black/30 rounded-lg border border-white/10"
+                      >
+                        <span className={activity.color}>{activity.icon}</span>
+                        <div className="flex-1">
+                          <p className="text-white text-sm font-mono">
+                            {activity.text}
+                          </p>
+                          <p className="text-gray-400 text-xs font-mono">
+                            {activity.time}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* AI Insights */}
+                <div className="console-terminal rounded-xl p-6">
+                  <h4 className="text-lg font-bold text-[#FFD700] mb-4 tracking-wider flex items-center">
+                    <span className="mr-2">🧠</span>
+                    DIVINE INSIGHTS
+                  </h4>
+
+                  <div className="space-y-4">
+                    <div className="bg-[#FFD700]/10 border border-[#FFD700]/30 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="text-[#FFD700]">✨</span>
+                        <span className="text-[#FFD700] font-bold text-sm font-mono">
+                          OPTIMIZATION
+                        </span>
+                      </div>
+                      <p className="text-white text-sm">
+                        Your conversion rate shows divine alignment - 23%
+                        increase this week
+                      </p>
+                    </div>
+
+                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="text-emerald-400">📈</span>
+                        <span className="text-emerald-400 font-bold text-sm font-mono">
+                          GROWTH
+                        </span>
+                      </div>
+                      <p className="text-white text-sm">
+                        Lead quality exceeds industry standards by 87% - blessed
+                        productivity
+                      </p>
+                    </div>
+
+                    <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="text-blue-400">⚡</span>
+                        <span className="text-blue-400 font-bold text-sm font-mono">
+                          DIVINE TIP
+                        </span>
+                      </div>
+                      <p className="text-white text-sm">
+                        Respond within 5 minutes for 400% better conversion
+                        alignment
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* CRM Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-                <h4 className="text-lg font-bold text-white mb-4">
-                  Recent Activity
-                </h4>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-blue-400">👤</span>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">New lead: John Smith</p>
-                      <p className="text-gray-400 text-xs">5 minutes ago</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-green-400">📧</span>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">Email campaign sent</p>
-                      <p className="text-gray-400 text-xs">1 hour ago</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-purple-400">💰</span>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">Deal closed: $5,000</p>
-                      <p className="text-gray-400 text-xs">3 hours ago</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-                <h4 className="text-lg font-bold text-white mb-4">
-                  AI Insights
-                </h4>
-                <div className="space-y-4">
-                  <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg p-4">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-blue-400">🧠</span>
-                      <span className="text-blue-400 font-medium text-sm">
-                        Lead Quality Score
-                      </span>
-                    </div>
-                    <p className="text-white text-sm">
-                      Your recent leads show 87% higher engagement than average
-                    </p>
-                  </div>
-
-                  <div className="bg-green-600/20 border border-green-500/30 rounded-lg p-4">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-green-400">📈</span>
-                      <span className="text-green-400 font-medium text-sm">
-                        Conversion Trend
-                      </span>
-                    </div>
-                    <p className="text-white text-sm">
-                      Conversion rate increased 23% this week
-                    </p>
-                  </div>
-
-                  <div className="bg-yellow-600/20 border border-yellow-500/30 rounded-lg p-4">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-yellow-400">⚡</span>
-                      <span className="text-yellow-400 font-medium text-sm">
-                        Optimization Tip
-                      </span>
-                    </div>
-                    <p className="text-white text-sm">
-                      Follow up within 5 minutes for 400% better results
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         )}
       </div>
 
-      {/* Boss Panel */}
+      {/* Boss Panel Integration */}
       <SaintSalBossPanel
         isVisible={showBossPanel}
         onToggle={() => setShowBossPanel(!showBossPanel)}
