@@ -276,7 +276,6 @@ export default function HomePage() {
       <section className="relative py-24">
         {/* Cookin' Knowledge Gold Glow Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 via-transparent to-[#FFD700]/10" />
-        <CircuitBG intensity="medium" animated={true} color="gold" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
