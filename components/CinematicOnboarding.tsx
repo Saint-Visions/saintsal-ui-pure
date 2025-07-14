@@ -14,6 +14,9 @@ export function CinematicOnboarding({
 }: CinematicOnboardingProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [showOnboarding, setShowOnboarding] = useState(isFirstTime);
+  const [particles, setParticles] = useState<
+    { id: number; left: number; top: number; delay: number }[]
+  >([]);
 
   const steps = [
     {
@@ -31,7 +34,7 @@ export function CinematicOnboarding({
       subtitle: "I learn your style and sync with your vibe",
       content:
         "Frustrated? I simplify. Overwhelmed? I guide you step by step. I become exactly what you need.",
-      icon: "����",
+      icon: "🧠",
       background: "from-blue-500/20 to-purple-500/20",
     },
     {
@@ -48,21 +51,24 @@ export function CinematicOnboarding({
       title: "What I Can Do",
       subtitle: "Your complete AI ecosystem",
       content:
-        "Chat with context, save knowledge capsules, multimodal inputs, and escalate to human experts when needed.",
+        "• Code & Development • Business Strategy • Creative Projects • Document Analysis • Voice Chat • File Processing",
       icon: "🚀",
       background: "from-green-500/20 to-blue-500/20",
     },
-    {
-      id: "ready",
-      title: "Ready to Begin",
-      subtitle: "Let's build something extraordinary together",
-      content:
-        "Ask me anything. I'll adapt, learn, and become your most trusted AI companion.",
-      icon: "✨",
-      background: "from-yellow-500/20 to-yellow-600/20",
-    },
   ];
 
+  // Initialize particles only on client side
+  useEffect(() => {
+    const particleArray = Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 2,
+    }));
+    setParticles(particleArray);
+  }, []);
+
+  // Auto-advance steps
   useEffect(() => {
     if (!showOnboarding) return;
 
@@ -217,29 +223,31 @@ export function CinematicOnboarding({
             )}
           </motion.div>
 
-          {/* Mystical particles effect */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-yellow-400 rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0, 1, 0],
-                  scale: [0, 1, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                }}
-              />
-            ))}
-          </div>
+          {/* Mystical particles effect - only render on client */}
+          {particles.length > 0 && (
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              {particles.map((particle) => (
+                <motion.div
+                  key={particle.id}
+                  className="absolute w-1 h-1 bg-yellow-400 rounded-full"
+                  style={{
+                    left: `${particle.left}%`,
+                    top: `${particle.top}%`,
+                  }}
+                  animate={{
+                    y: [0, -20, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: particle.delay,
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Footer */}
