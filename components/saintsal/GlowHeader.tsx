@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 interface GlowHeaderProps {
   title: string;
   subtitle?: string;
-  icon?: string;
+  icon?: string | React.ReactNode;
   status?: "connected" | "active" | "loading";
   rightAction?: React.ReactNode;
 }
@@ -45,7 +45,7 @@ export default function GlowHeader({
           <div className="relative">
             <div className="absolute inset-0 bg-[#FFD700]/20 rounded-xl blur-lg" />
             <div className="relative w-12 h-12 bg-gradient-to-br from-[#FFD700] to-[#FFD700]/70 rounded-xl flex items-center justify-center text-[#10161C] text-xl font-bold">
-              {icon}
+              {typeof icon === "string" ? icon : icon}
             </div>
           </div>
 

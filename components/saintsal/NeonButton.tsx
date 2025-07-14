@@ -8,7 +8,7 @@ interface NeonButtonProps {
   onClick?: () => void;
   variant?: "primary" | "secondary" | "divine" | "danger";
   size?: "sm" | "md" | "lg";
-  icon?: string;
+  icon?: string | React.ReactNode;
   disabled?: boolean;
   className?: string;
 }

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 interface CommandCardProps {
   title: string;
   description?: string;
-  icon: string;
+  icon: string | React.ReactNode;
   value?: string | number;
   trend?: "up" | "down" | "neutral";
   onClick?: () => void;
@@ -103,7 +103,11 @@ export default function CommandCard({
       <div className="relative">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <div className={`text-2xl ${currentVariant.accent}`}>{icon}</div>
+          <div
+            className={`text-2xl ${currentVariant.accent} flex items-center justify-center`}
+          >
+            {typeof icon === "string" ? icon : icon}
+          </div>
           {value && (
             <div className="text-right">
               <div className="text-2xl font-bold font-mono text-white">
