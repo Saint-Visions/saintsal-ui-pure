@@ -184,8 +184,6 @@ export default function HomePage() {
 
       {/* AI Workstation Demo Section */}
       <section className="relative py-24 bg-gradient-to-br from-[#0a0f14] to-[#10161C]">
-        <CircuitBG intensity="low" animated={true} color="blue" />
-
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ y: 40, opacity: 0 }}
