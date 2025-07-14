@@ -374,6 +374,14 @@ textarea {
   font-family: "JetBrains Mono", monospace;
 }
 
+.font-inter {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
 .text-saintsal-gold {
   color: #ffd700;
 }
