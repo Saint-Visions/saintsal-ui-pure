@@ -125,7 +125,10 @@ function HomePage({
         >
           {/* Elite Partnership Network - Premium Brand Showcase */}
           <div className="text-center mb-8 max-w-4xl">
-            <div className="bg-black/90 rounded-2xl p-8 mb-6 border border-yellow-500/30 backdrop-blur-sm">
+            <div
+              className="rounded-2xl p-8 mb-6 border border-yellow-500/30 backdrop-blur-sm"
+              style={{ backgroundColor: "rgba(23, 23, 23, 0.9)" }}
+            >
               {/* Premium Partnership Network */}
               <div className="mb-8">
                 <img
