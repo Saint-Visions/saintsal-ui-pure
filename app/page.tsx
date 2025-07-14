@@ -1,12 +1,9 @@
 "use client";
 
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import CircuitBG from "../components/saintsal/CircuitBG";
-import NeonButton from "../components/saintsal/NeonButton";
 
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +13,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#10161C] text-white font-jetbrains overflow-x-hidden">
+    <div className="min-h-screen bg-[#10161C] text-white font-inter overflow-x-hidden">
       {/* Single Continuous Section with Parallax Background */}
       <div className="relative min-h-screen">
         {/* Circuit Animation Layer */}
@@ -42,44 +39,49 @@ export default function HomePage() {
         <div className="relative z-20">
           {/* Hero Content */}
           <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-6xl mx-auto">
-            {/* SaintSal Brain Logo */}
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="mb-12"
-            >
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
-                  alt="SaintSal™ Circuit Brain"
-                  className="relative w-32 h-32 md:w-48 md:h-48 object-contain"
-                />
-              </div>
+            <div className="w-full">
+              {/* SaintSal Brain Logo */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="mb-12"
+              >
+                <div className="relative inline-block">
+                  <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-divine-pulse" />
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
+                    alt="SaintSal™ Circuit Brain"
+                    className="relative w-32 h-32 md:w-48 md:h-48 object-contain"
+                  />
+                </div>
+              </motion.div>
 
               {/* Hero Text */}
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="mt-8"
+                className="mb-8"
               >
-                <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-wider">
-                  <span className="text-saintsal-gold glow-gold">
-                    SAINTSAL™
-                  </span>
+                {/* SAINTSAL™ Headline - Gotham Bold */}
+                <h1 className="text-5xl md:text-7xl font-black pt-10 pb-4 tracking-wider text-[#FFD700] mb-6">
+                  SAINTSAL™
                 </h1>
-                <div className="text-2xl md:text-4xl font-light text-saintsal-ivory tracking-wide mb-4">
+
+                {/* Subline - Gotham Medium */}
+                <div className="text-xl text-[#FFD700]/75 opacity-90 mb-8 font-medium">
                   — Cookin' Knowledge.
                 </div>
-                <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
+
+                {/* Body Paragraph - Inter */}
+                <p className="text-lg text-white/80 max-w-[600px] mx-auto leading-relaxed mb-12">
                   Patent-protected AI movement for visionaries, founders, and
                   kingdom builders. Your divine AI workstation that adapts,
                   empowers, and transforms.
                 </p>
 
-                {/* Hero Buttons */}
+                {/* CTA Buttons */}
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -87,24 +89,16 @@ export default function HomePage() {
                   className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                 >
                   <Link href="/signup">
-                    <NeonButton
-                      variant="divine"
-                      size="lg"
-                      className="w-full sm:w-auto"
-                    >
-                      START FREE DIVINE TRIAL
-                    </NeonButton>
+                    <button className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-bold uppercase rounded-md px-6 py-3 transition-all duration-200">
+                      🔥 START FREE DIVINE TRIAL
+                    </button>
                   </Link>
                   <Link href="/pricing">
-                    <NeonButton
-                      variant="secondary"
-                      size="lg"
-                      className="w-full sm:w-auto"
-                    >
-                      UPGRADE TO PRO
-                    </NeonButton>
+                    <button className="border border-white text-white hover:bg-white/10 font-bold uppercase rounded-md px-6 py-3 transition-all duration-200">
+                      ⚡ UPGRADE TO PRO
+                    </button>
                   </Link>
-                                </motion.div>
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -118,10 +112,10 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-saintsal-gold mb-6 tracking-wider">
+              <h2 className="text-4xl md:text-5xl font-black text-[#FFD700] mb-6 tracking-wider">
                 Built for Visionaries
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
                 Elite AI sanctuary designed for those who build empires, not
                 just apps.
               </p>
@@ -173,13 +167,13 @@ export default function HomePage() {
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="console-terminal rounded-xl p-8 text-center group hover:glow-gold transition-all duration-300"
+                  className="bg-[#10161C]/50 backdrop-blur-sm rounded-xl p-8 text-center border border-[#FFD700]/20 hover:border-[#FFD700]/40 transition-all duration-300"
                 >
                   <div className="mb-6 flex justify-center">{feature.icon}</div>
-                  <h3 className="text-2xl font-bold text-saintsal-gold mb-4 tracking-wide">
+                  <h3 className="text-xl font-bold text-[#FFD700] mb-4 tracking-wide">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-white/70 leading-relaxed">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -196,10 +190,10 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-wider">
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-wider">
                 Meet Your AI Workstation
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
                 Experience the divine intelligence that transforms visionaries
                 into kingdom builders.
               </p>
@@ -211,7 +205,7 @@ export default function HomePage() {
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="console-terminal rounded-2xl p-8 mx-auto max-w-4xl"
+              className="bg-[#10161C]/70 backdrop-blur-sm rounded-2xl p-8 mx-auto max-w-4xl border border-[#FFD700]/20"
             >
               <div className="bg-[#10161C]/80 rounded-xl p-6 border border-[#FFD700]/20">
                 <div className="flex items-center justify-between mb-6">
@@ -221,12 +215,12 @@ export default function HomePage() {
                       alt="SaintSal AI"
                       className="w-8 h-8 object-contain"
                     />
-                    <span className="text-saintsal-gold font-bold">
+                    <span className="text-[#FFD700] font-bold">
                       SAINTSAL™ COMPANION
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-divine-pulse" />
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                     <span className="text-emerald-400 text-sm font-mono">
                       LIVE
                     </span>
@@ -237,7 +231,7 @@ export default function HomePage() {
                   <div className="flex items-start space-x-3">
                     <span className="text-blue-400">👤</span>
                     <div className="bg-[#1a1f28] rounded-lg p-4 flex-1">
-                      <p className="text-gray-300">
+                      <p className="text-white/80">
                         How can I scale my business with divine intelligence?
                       </p>
                     </div>
@@ -255,7 +249,7 @@ export default function HomePage() {
                         blessed CRM integration, and kingdom-building AI tools.
                         Your empire requires systems that align with your vision
                         and execute with precision.
-                        <span className="text-saintsal-gold font-semibold">
+                        <span className="text-[#FFD700] font-semibold">
                           {" "}
                           Shall we begin your divine transformation? 🙏
                         </span>
@@ -266,9 +260,9 @@ export default function HomePage() {
 
                 <div className="mt-6 text-center">
                   <Link href="/chat">
-                    <NeonButton variant="primary" size="md">
+                    <button className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-bold rounded-md px-6 py-3 transition-all duration-200">
                       Experience Divine Intelligence
-                    </NeonButton>
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -287,36 +281,28 @@ export default function HomePage() {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F88465a2d1f0c4d7cab7b4f6831fc9307?format=webp&width=800"
                   alt="Cookin Knowledge"
-                  className="w-48 md:w-64 mx-auto mb-8 opacity-90 glow-gold"
+                  className="w-48 md:w-64 mx-auto mb-8 opacity-90"
                 />
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-saintsal-gold mb-6 tracking-wider">
+              <h2 className="text-4xl md:text-5xl font-black text-[#FFD700] mb-6 tracking-wider">
                 Ready to Build Your Empire?
               </h2>
-              <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
                 Join the divine movement of visionaries who choose to command,
                 not consume.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link href="/signup">
-                  <NeonButton
-                    variant="divine"
-                    size="lg"
-                    className="w-full sm:w-auto"
-                  >
-                    Start Free
-                  </NeonButton>
+                  <button className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-bold uppercase rounded-md px-6 py-3 transition-all duration-200">
+                    🔥 START FREE DIVINE TRIAL
+                  </button>
                 </Link>
                 <Link href="/pricing">
-                  <NeonButton
-                    variant="primary"
-                    size="lg"
-                    className="w-full sm:w-auto"
-                  >
-                    Upgrade to Pro
-                  </NeonButton>
+                  <button className="border border-white text-white hover:bg-white/10 font-bold uppercase rounded-md px-6 py-3 transition-all duration-200">
+                    ⚡ UPGRADE TO PRO
+                  </button>
                 </Link>
               </div>
             </motion.div>
@@ -334,16 +320,16 @@ export default function HomePage() {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
                   alt="SaintVisionAI"
-                  className="w-12 h-12 object-contain glow-gold"
+                  className="w-12 h-12 object-contain"
                 />
                 <div>
-                  <h3 className="text-2xl font-bold text-saintsal-gold tracking-wider">
+                  <h3 className="text-2xl font-bold text-[#FFD700] tracking-wider">
                     SaintVisionAI™
                   </h3>
-                  <p className="text-gray-400 text-sm">Elite AI Sanctuary</p>
+                  <p className="text-white/60 text-sm">Elite AI Sanctuary</p>
                 </div>
               </div>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-white/70 leading-relaxed">
                 Patent-protected AI movement for kingdom builders. Where divine
                 intelligence meets strategic execution.
               </p>
@@ -351,7 +337,7 @@ export default function HomePage() {
 
             {/* Navigation */}
             <div>
-              <h4 className="text-lg font-bold text-saintsal-gold mb-4">
+              <h4 className="text-lg font-bold text-[#FFD700] mb-4">
                 Platform
               </h4>
               <ul className="space-y-2">
@@ -359,7 +345,7 @@ export default function HomePage() {
                   <li key={item}>
                     <Link
                       href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                      className="text-gray-400 hover:text-saintsal-gold transition-colors"
+                      className="text-white/60 hover:text-[#FFD700] transition-colors"
                     >
                       {item}
                     </Link>
@@ -370,15 +356,13 @@ export default function HomePage() {
 
             {/* Legal */}
             <div>
-              <h4 className="text-lg font-bold text-saintsal-gold mb-4">
-                Legal
-              </h4>
+              <h4 className="text-lg font-bold text-[#FFD700] mb-4">Legal</h4>
               <ul className="space-y-2">
                 {["Terms", "Privacy", "Licensing"].map((item) => (
                   <li key={item}>
                     <Link
                       href={`/${item.toLowerCase()}`}
-                      className="text-gray-400 hover:text-saintsal-gold transition-colors"
+                      className="text-white/60 hover:text-[#FFD700] transition-colors"
                     >
                       {item}
                     </Link>
@@ -390,7 +374,7 @@ export default function HomePage() {
 
           {/* Bottom Bar */}
           <div className="border-t border-[#FFD700]/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm">
+            <p className="text-white/50 text-sm">
               © 2024 SAINTSAL™ Movement. U.S. Patent No. 10,290,222. All
               rights reserved.
             </p>
