@@ -76,3 +76,24 @@ yarn.lock
 
 # Local configuration
 .config/
+
+# ALL DEPLOYMENT SCRIPTS AND FILES
+*.sh
+*.cmd
+DEPLOY*
+AZURE*
+EMERGENCY*
+LAUNCH*
+TESTING*
+CREATE*
+deploy-*
+azure-*
+emergency-*
+FETCH_HEAD
+
+# Large temporary directories
+deploy-temp/
+deployment-static/
+emergency-deploy/
+emergency-fix/
+beautiful-saintvisionai/
