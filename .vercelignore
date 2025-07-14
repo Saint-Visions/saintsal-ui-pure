@@ -7,86 +7,80 @@ out/
 dist/
 build/
 
-# Development files
-.env.local
-.env.development.local
-.env.test.local
-
-# Testing
-coverage/
-.nyc_output
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# Cache
-.npm
-.yarn/cache
-.cache/
-.eslintcache
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Temporary files
-*.tmp
-*.temp
-
-# Documentation files not needed for deployment
-README.md
-*.md
-CHANGELOG.md
-LICENSE
-
-# Deployment scripts
+# All deployment and script files
 *.sh
-deploy-*
+*.cmd
 DEPLOY_*
-EMERGENCY_*
 AZURE_*
+EMERGENCY_*
 LAUNCH_*
 TESTING_*
 CREATE_*
-
-# Azure specific files
+deploy-*
 azure-*
 emergency-*
 
-# Archive files
-*.zip
-*.tar
-*.gz
-*.rar
+# Documentation and config files not needed
+README.md
+*.md
+LICENSE
+SECURITY.md
+STABILITY_GUIDE.md
+*.json.backup
 
-# Large binary files
-*.dmg
-*.iso
+# Large temporary directories
+deploy-temp/
+deployment-static/
+emergency-deploy/
+emergency-fix/
+beautiful-saintvisionai/
 
-# Git files
+# Environment files
+.env*
+!.env.example
+
+# Database files
+*.db
+*.sqlite*
+
+# Logs and debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Git
 .git/
 .gitignore
 .gitattributes
 
+# Archives
+*.zip
+*.tar
+*.gz
+
+# Test files
+coverage/
+.nyc_output/
+
+# Runtime
+*.pid
+*.seed
+*.pid.lock
+
 # Backup files
 *.bak
 *.backup
+FETCH_HEAD
