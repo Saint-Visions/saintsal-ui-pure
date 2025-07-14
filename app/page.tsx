@@ -398,11 +398,14 @@ export default function HomePage() {
                 src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F88465a2d1f0c4d7cab7b4f6831fc9307?format=webp&width=800"
                 alt="Cookin Knowledge"
                 className="w-24 opacity-70"
-              />
+                            />
             </div>
           </div>
         </div>
       </footer>
+            </div>
+          </div>
+        </div>
     </div>
   );
 }
