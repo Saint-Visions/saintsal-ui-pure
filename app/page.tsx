@@ -22,10 +22,10 @@ export default function HomePage() {
 
         {/* Wall Street/AI Boardroom Background */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-40"
           style={{
             backgroundImage:
-              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F6f1644c16b9c4e66bb02b02cc11e2e72?format=webp&width=800')",
+              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fe4c69c537822414682bb42c1aeda11b3?format=webp&width=1200')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -110,7 +110,7 @@ export default function HomePage() {
       <section className="relative py-24">
         {/* Background */}
         <div
-          className="absolute inset-0 opacity-15"
+          className="absolute inset-0 opacity-30"
           style={{
             backgroundImage:
               "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F88465a2d1f0c4d7cab7b4f6831fc9307?format=webp&width=800')",
