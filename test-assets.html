@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>SaintSal Asset Test</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: monospace;
+      }
+      .asset-test {
+        width: 100%;
+        height: 300px;
+        margin: 20px 0;
+        background-size: cover;
+        background-position: center;
+        border: 2px solid #ffd700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+      .asset1 {
+        background-image: url("https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fe4c69c537822414682bb42c1aeda11b3?format=webp&width=1200");
+      }
+      .asset2 {
+        background-image: url("https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F2a79c65e92a343129c4e5bfe916d4a4d?format=webp&width=1200");
+      }
+      .asset3 {
+        background-image: url("https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fac8ebb0d1e8a4cae8b65e75e44448032?format=webp&width=1200");
+      }
+    </style>
+  </head>
+  <body style="background: #10161c; color: white; padding: 20px">
+    <h1 style="color: #ffd700">SaintSal™ Background Assets Test</h1>
+
+    <div class="asset-test asset1">
+      ASSET 1: Hero Background (e4c69c537822414682bb42c1aeda11b3)
+    </div>
+
+    <div class="asset-test asset2">
+      ASSET 2: Section Background (2a79c65e92a343129c4e5bfe916d4a4d)
+    </div>
+
+    <div class="asset-test asset3">
+      ASSET 3: Additional Asset (ac8ebb0d1e8a4cae8b65e75e44448032)
+    </div>
+
+    <p>If you see images above, your assets are loading correctly!</p>
+  </body>
+</html>
