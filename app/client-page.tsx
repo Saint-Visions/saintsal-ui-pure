@@ -129,7 +129,7 @@ function HomePage({
               {/* Premium Partnership Network */}
               <div className="mb-8">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fb7a0e6e16e0a4460bd0b7177a652b1b2?format=webp&width=800"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
                   alt="SaintVisionAI Elite Partnership Network"
                   className="w-full max-w-lg mx-auto h-auto rounded-xl shadow-2xl border border-yellow-500/20"
                 />
@@ -253,7 +253,7 @@ function HomePage({
           {/* What's Inside These Walls - Elite Version */}
           <div className="w-full max-w-4xl">
             <h2 className="text-yellow-400 text-xl font-bold text-center mb-6 flex items-center justify-center">
-              🔧 What's Inside These Elite Walls
+              ��� What's Inside These Elite Walls
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
