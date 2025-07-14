@@ -40,7 +40,16 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4">
       {/* Background Animation */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-purple-500/5 animate-pulse" />
+        <div
+          className="absolute inset-0 animate-pulse"
+          style={{
+            backgroundImage:
+              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F6b86fa2c1e4c414ba874771fa8473016')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
