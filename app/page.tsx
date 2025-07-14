@@ -20,23 +20,8 @@ export default function HomePage() {
         {/* Background Circuit Animation */}
         <CircuitBG intensity="high" animated={true} color="gold" />
 
-        {/* Wall Street/AI Boardroom Background */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fe4c69c537822414682bb42c1aeda11b3?format=webp&width=1200')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#10161C]/70 via-[#10161C]/80 to-[#10161C]/85" />
-
-        {/* Neural Pattern Overlay */}
-        <div className="absolute inset-0 workstation-grid opacity-20" />
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
