@@ -1,86 +1,19 @@
-# Dependencies - Vercel installs these automatically
-node_modules/
-
-# Build artifacts - Vercel builds these
-.next/
-out/
-dist/
-build/
-
-# All deployment and script files
+node_modules
+.next
+.git
 *.sh
-*.cmd
-DEPLOY_*
-AZURE_*
-EMERGENCY_*
-LAUNCH_*
-TESTING_*
-CREATE_*
-deploy-*
-azure-*
-emergency-*
-
-# Documentation and config files not needed
-README.md
 *.md
-LICENSE
-SECURITY.md
-STABILITY_GUIDE.md
-*.json.backup
-
-# Large temporary directories
-deploy-temp/
-deployment-static/
-emergency-deploy/
-emergency-fix/
-beautiful-saintvisionai/
-
-# Environment files
-.env*
-!.env.example
-
-# Database files
-*.db
-*.sqlite*
-
-# Logs and debug
 *.log
-npm-debug.log*
-yarn-debug.log*
-
-# Cache
-.cache/
-.npm/
-.eslintcache
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Git
-.git/
-.gitignore
-.gitattributes
-
-# Archives
+DEPLOY*
+AZURE*
+EMERGENCY*
+beautiful-saintvisionai
+deploy-temp
+deployment-static
+emergency-deploy
+emergency-fix
 *.zip
 *.tar
 *.gz
-
-# Test files
-coverage/
-.nyc_output/
-
-# Runtime
-*.pid
-*.seed
-*.pid.lock
-
-# Backup files
-*.bak
-*.backup
-FETCH_HEAD
+package-lock.json
+yarn.lock
