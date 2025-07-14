@@ -60,7 +60,7 @@ export default function SaintSalConsole() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center relative overflow-hidden">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center relative overflow-hidden p-4">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                   animate={{ x: [-200, 200] }}
@@ -70,7 +70,11 @@ export default function SaintSalConsole() {
                     ease: "easeInOut",
                   }}
                 />
-                <span className="text-4xl text-[#10161C] font-bold">⚡</span>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
+                  alt="SaintVisionAI Brain"
+                  className="w-20 h-20 object-contain relative z-10"
+                />
               </div>
             </motion.div>
 
@@ -159,7 +163,11 @@ export default function SaintSalConsole() {
               <div className="lg:col-span-2 space-y-6">
                 <div className="console-terminal rounded-xl p-6">
                   <h3 className="text-xl font-bold text-[#FFD700] mb-6 tracking-wider flex items-center">
-                    <span className="mr-3">🖥️</span>
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
+                      alt="SaintVisionAI Console"
+                      className="w-6 h-6 object-contain mr-3"
+                    />
                     BUSINESS COMMAND TERMINAL
                   </h3>
 
