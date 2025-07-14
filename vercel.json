@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "saintvisionai",
   "builds": [
     {
       "src": "next.config.js",
