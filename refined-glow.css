@@ -1,0 +1,149 @@
+/* Gotham-style Golden Glow - Refined Precision */
+.glow-gold {
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 215, 0, 0.2),
+    0 0 0 1px rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glow-gold:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 215, 0, 0.3),
+    0 0 0 1px rgba(255, 215, 0, 0.2),
+    inset 0 0 8px rgba(255, 215, 0, 0.1);
+}
+
+/* Neon Blue Precision Glow */
+.glow-neon-blue {
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(96, 165, 250, 0.2),
+    0 0 0 1px rgba(96, 165, 250, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glow-neon-blue:hover {
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(96, 165, 250, 0.3),
+    0 0 0 1px rgba(96, 165, 250, 0.2),
+    inset 0 0 8px rgba(96, 165, 250, 0.1);
+}
+
+/* Refined Logo Glow - Sharp edges with inner highlight */
+.logo-glow {
+  filter: drop-shadow(0 0 1px rgba(255, 215, 0, 0.8))
+    drop-shadow(0 0 2px rgba(255, 215, 0, 0.4));
+  transition: filter 0.3s ease;
+}
+
+.logo-glow:hover {
+  filter: drop-shadow(0 0 1px rgba(255, 215, 0, 1))
+    drop-shadow(0 0 3px rgba(255, 215, 0, 0.6))
+    drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+}
+
+/* Text Layer Glow - No background, just text highlight */
+.text-glow-gold {
+  color: #ffd700;
+  text-shadow:
+    0 0 2px rgba(255, 215, 0, 0.8),
+    0 0 4px rgba(255, 215, 0, 0.4),
+    0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Button Thin Neon Outline */
+.btn-neon-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-neon-outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-neon-outline:hover {
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow:
+    inset 0 0 8px rgba(255, 215, 0, 0.1),
+    0 0 0 1px rgba(255, 215, 0, 0.2);
+}
+
+.btn-neon-outline:hover::before {
+  left: 100%;
+}
+
+/* Box Accent Line Glow - No shadow blob, just highlighted edge */
+.box-accent-glow {
+  border-left: 2px solid rgba(255, 215, 0, 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 0, 0.05) 0%,
+    transparent 10%
+  );
+  transition: all 0.3s ease;
+}
+
+.box-accent-glow:hover {
+  border-left-color: rgba(255, 215, 0, 0.9);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    transparent 15%
+  );
+}
+
+/* Refined Console Terminal - Precision edges */
+.console-terminal-refined {
+  background: rgba(16, 22, 28, 0.95);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  position: relative;
+}
+
+.console-terminal-refined::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.5),
+    transparent
+  );
+}
+
+.console-terminal-refined::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.3),
+    transparent
+  );
+}
