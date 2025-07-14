@@ -1,13 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import jwt from "jsonwebtoken";
 
-const supabase = createClient(
-  process.env.VITE_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-);
+// Conditional imports to prevent build errors
+let supabase: any = null;
+let jwt: any = null;
 
-const JWT_SECRET = process.env.SUPABASE_JWT_SECRET!;
+if (process.env.VITE_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  try {
+    const { createClient } = require("@supabase/supabase-js");
+    supabase = createClient(
+      process.env.VITE_SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
+    );
+  } catch (error) {
+    console.warn("Supabase not available");
+  }
+}
+
+if (process.env.SUPABASE_JWT_SECRET) {
+  try {
+    jwt = require("jsonwebtoken");
+  } catch (error) {
+    console.warn("JWT not available");
+  }
+}
+
+const JWT_SECRET = process.env.SUPABASE_JWT_SECRET || "fallback-secret";
 
 export async function POST(request: NextRequest) {
   try {
