@@ -174,11 +174,10 @@ export default function CircuitBG({
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F6b86fa2c1e4c414ba874771fa8473016?format=webp&width=1200')",
+            "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F6b86fa2c1e4c414ba874771fa8473016')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          opacity: config.opacity * 2,
           animationDuration: "2s",
           animationIterationCount: "infinite",
           animationName: "pulse",
