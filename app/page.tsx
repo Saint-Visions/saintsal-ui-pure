@@ -18,7 +18,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
         <CircuitBG intensity="medium" animated={true} color="gold" />
-        
+
         <div className="absolute inset-0 bg-gradient-to-br from-[#10161C]/80 via-[#10161C]/85 to-[#10161C]/90" />
 
         {/* Hero Content */}
@@ -51,7 +51,8 @@ export default function HomePage() {
               — Cookin' Knowledge.
             </h2>
             <p className="text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              The only intent-triggered SaaS platform that simplifies actions, not just collects data.
+              The only intent-triggered SaaS platform that simplifies actions,
+              not just collects data.
             </p>
           </motion.div>
 
@@ -81,7 +82,8 @@ export default function HomePage() {
               Ready to Transform Your Lead Generation?
             </h3>
             <p className="text-sm text-gray-400 mb-6">
-              Join other patent-protected platform that truly understand how to execute and turn their visitors into customers.
+              Join other patent-protected platform that truly understand how to
+              execute and turn their visitors into customers.
             </p>
           </motion.div>
 
@@ -117,7 +119,7 @@ export default function HomePage() {
                 className="w-full sm:w-auto"
               >
                 Find Partners
-              </NenButton>
+              </NeonButton>
             </Link>
           </motion.div>
 
@@ -132,7 +134,8 @@ export default function HomePage() {
               $27-$497
             </div>
             <div className="text-sm text-gray-400">
-              Monthly pricing • NO setup fees • $0 credit check required • Cancel anytime
+              Monthly pricing • NO setup fees • $0 credit check required •
+              Cancel anytime
             </div>
           </motion.div>
         </div>
@@ -147,20 +150,20 @@ export default function HomePage() {
                 title: "Azure Enterprise",
                 subtitle: "Infrastructure Ready",
                 description: "Enterprise-grade platform that scales",
-                color: "bg-blue-600"
+                color: "bg-blue-600",
               },
               {
                 title: "Patent Protected",
                 subtitle: "Innovation Secured",
                 description: "Proprietary technology and methods",
-                color: "bg-yellow-500"
+                color: "bg-yellow-500",
               },
               {
                 title: "CRM Integration",
                 subtitle: "Business Intelligence",
                 description: "Seamless workflow automation",
-                color: "bg-purple-600"
-              }
+                color: "bg-purple-600",
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -170,7 +173,9 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="console-terminal rounded-lg p-6 text-center"
               >
-                <div className={`${item.color} w-12 h-12 rounded-lg mx-auto mb-4 flex items-center justify-center`}>
+                <div
+                  className={`${item.color} w-12 h-12 rounded-lg mx-auto mb-4 flex items-center justify-center`}
+                >
                   <span className="text-white font-bold">⚡</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -179,9 +184,7 @@ export default function HomePage() {
                 <p className="text-sm font-medium text-saintsal-gold mb-2">
                   {item.subtitle}
                 </p>
-                <p className="text-sm text-gray-400">
-                  {item.description}
-                </p>
+                <p className="text-sm text-gray-400">{item.description}</p>
               </motion.div>
             ))}
           </div>
