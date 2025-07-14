@@ -1,1 +1,0 @@
-{"name":"emergency","version":"1.0.0","main":"emergency.js","scripts":{"start":"node emergency.js"},"engines":{"node":"18.x"}}
