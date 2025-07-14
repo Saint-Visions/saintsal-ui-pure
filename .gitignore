@@ -9,6 +9,20 @@ out/
 dist/
 build/
 
+# BLOCK ALL DEPLOYMENT ARTIFACTS PERMANENTLY
+beautiful-saintvisionai/
+deploy-temp/
+deployment-static/
+emergency-deploy/
+emergency-fix/
+emergency.js
+package-azure-emergency.json
+package-emergency.json
+*.deploy.*
+*deploy*
+*emergency*
+*azure*
+
 # Environment files
 .env
 .env.*
@@ -48,21 +62,10 @@ coverage/
 .cache/
 .eslintcache
 
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
 # Archive files
 *.zip
 *.tar
 *.gz
-
-# Azure deployment artifacts
-.azure/
-azure-deploy-*/
-deployment-*/
 
 # Runtime data
 pids
@@ -70,30 +73,14 @@ pids
 *.seed
 *.pid.lock
 
-# Dependency lock files (optional - some teams include these)
+# ALL SCRIPTS
+*.sh
+*.cmd
+*.bat
+
+# Dependency lock files
 package-lock.json
 yarn.lock
 
-# Local configuration
-.config/
-
-# ALL DEPLOYMENT SCRIPTS AND FILES
-*.sh
-*.cmd
-DEPLOY*
-AZURE*
-EMERGENCY*
-LAUNCH*
-TESTING*
-CREATE*
-deploy-*
-azure-*
-emergency-*
+# Large files
 FETCH_HEAD
-
-# Large temporary directories
-deploy-temp/
-deployment-static/
-emergency-deploy/
-emergency-fix/
-beautiful-saintvisionai/
