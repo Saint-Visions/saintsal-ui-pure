@@ -20,7 +20,20 @@ export default function HomePage() {
         {/* Background Circuit Animation */}
         <CircuitBG intensity="high" animated={true} color="gold" />
 
-        {/* Dark Overlay */}
+        {/* Background Image with Parallax */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fcf84ed9938f847c3bc2c3849e966fb91')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+          }}
+        />
+
+        {/* Dark Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#10161C]/70 via-[#10161C]/80 to-[#10161C]/85" />
 
         {/* Hero Content */}
