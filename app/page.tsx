@@ -33,7 +33,7 @@ export default function HomePage() {
         />
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#10161C]/80 via-[#10161C]/90 to-[#10161C]/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#10161C]/70 via-[#10161C]/80 to-[#10161C]/85" />
 
         {/* Neural Pattern Overlay */}
         <div className="absolute inset-0 workstation-grid opacity-20" />
@@ -119,7 +119,7 @@ export default function HomePage() {
             backgroundAttachment: "fixed",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#10161C] via-[#10161C]/95 to-[#10161C]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#10161C]/90 via-[#10161C]/85 to-[#10161C]/90" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
