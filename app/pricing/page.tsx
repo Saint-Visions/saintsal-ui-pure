@@ -1,342 +1,431 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
-interface PricingTier {
-  id: string;
-  name: string;
-  price: number;
-  period: string;
-  description: string;
-  features: string[];
-  buttonText: string;
-  buttonColor: string;
-  popular?: boolean;
-  priceId?: string;
-}
+import Link from "next/link";
+import SidebarNav from "../../components/saintsal/SidebarNav";
 
 export default function PricingPage() {
-  const [isAnnual, setIsAnnual] = useState(false);
-  const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [billingPeriod, setBillingPeriod] = useState("monthly"); // monthly, yearly
 
-  const pricingTiers: PricingTier[] = [
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const plans = [
     {
-      id: "free",
-      name: "Free Tier",
-      price: 0,
-      period: "/month",
-      description: "Perfect for getting started with SaintSal™",
+      name: "Professional",
+      description: "Perfect for individual professionals and consultants",
+      price: { monthly: 97, yearly: 970 },
       features: [
-        "Basic AI conversations",
-        "5 Knowledge Capsules",
-        "Standard support",
-        "Community access",
-        "Basic analytics",
+        "GPT-4o AI Access",
+        "Basic CRM Integration",
+        "5 AI Agents",
+        "Standard Templates",
+        "Email Support",
+        "Monthly Strategy Session",
       ],
-      buttonText: "Start Free",
-      buttonColor: "from-gray-600 to-gray-700",
-      priceId: "",
+      cta: "Start Professional Trial",
+      popular: false,
+      color: "from-blue-600/20 to-blue-700/20",
+      border: "border-blue-500/30",
     },
     {
-      id: "pro",
-      name: "Pro",
-      price: isAnnual ? 77 : 97,
-      period: "/month",
-      description: "Advanced features for serious users",
+      name: "Executive",
+      description: "Advanced capabilities for growing businesses",
+      price: { monthly: 297, yearly: 2970 },
       features: [
-        "Unlimited AI conversations",
-        "Unlimited Knowledge Capsules",
-        "Priority support",
-        "Advanced analytics",
-        "Custom integrations",
-        "API access",
-        "Bulk operations",
+        "Dual AI Engines (GPT-4o + Azure)",
+        "Full CRM Suite Integration",
+        "15 AI Agents",
+        "Custom Workflows",
+        "Priority Support",
+        "Advanced Analytics",
+        "White-label Options",
+        "Weekly Strategy Sessions",
       ],
-      buttonText: "Upgrade to Pro",
-      buttonColor: "from-blue-600 to-blue-700",
+      cta: "Start Executive Trial",
       popular: true,
-      priceId: isAnnual ? "price_annual_pro" : "price_monthly_pro",
+      color: "from-[#FFD700]/20 to-[#FFA500]/20",
+      border: "border-[#FFD700]/50",
     },
     {
-      id: "enterprise",
       name: "Enterprise",
-      price: isAnnual ? 197 : 247,
-      period: "/month",
-      description: "Complete solution for teams and businesses",
+      description: "Full-scale deployment for large organizations",
+      price: { monthly: 997, yearly: 9970 },
       features: [
-        "Everything in Pro",
-        "White-label options",
-        "Dedicated support manager",
-        "Custom AI training",
-        "Advanced security",
-        "Team management",
-        "Custom deployment",
-        "SLA guarantee",
+        "Complete AI Command Center",
+        "Enterprise CRM Deployment",
+        "Unlimited AI Agents",
+        "Custom AI Training",
+        "Dedicated Success Manager",
+        "SLA Guarantees",
+        "On-premise Options",
+        "Patent License Access",
+        "Daily Strategic Consultation",
       ],
-      buttonText: "Contact Sales",
-      buttonColor: "from-purple-600 to-purple-700",
-      priceId: isAnnual
-        ? "price_annual_enterprise"
-        : "price_monthly_enterprise",
+      cta: "Contact Enterprise Sales",
+      popular: false,
+      color: "from-purple-600/20 to-purple-700/20",
+      border: "border-purple-500/30",
     },
   ];
 
-  const handleUpgrade = async (tier: PricingTier) => {
-    if (tier.id === "free") {
-      // Handle free tier signup
-      window.location.href = "/signup";
-      return;
-    }
-
-    if (tier.id === "enterprise") {
-      // Handle enterprise contact
-      window.location.href =
-        "mailto:sales@saintvisionai.com?subject=Enterprise Inquiry";
-      return;
-    }
-
-    setIsLoading(tier.id);
-
-    try {
-      // Simulate Stripe checkout creation
-      setTimeout(() => {
-        // In production, this would create a Stripe checkout session
-        const checkoutUrl = `/api/stripe/create-checkout?priceId=${tier.priceId}&mode=subscription`;
-        window.location.href = checkoutUrl;
-      }, 1500);
-    } catch (error) {
-      console.error("Checkout error:", error);
-      setIsLoading(null);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
-      {/* Header */}
-      <div className="bg-black/50 border-b border-gray-700 p-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
-                alt="SaintSal Logo"
-                className="w-10 h-10 object-cover rounded"
-              />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Choose Your{" "}
-              <span className="text-yellow-400">Divine Intelligence</span> Plan
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Join thousands of users who've upgraded their AI experience with
-              SaintSal™. Each plan includes our patented HACP™ Protocol.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-[#0a0f14] text-white overflow-x-hidden relative">
+      {/* Sidebar Navigation */}
+      <SidebarNav />
 
-          {/* Billing Toggle */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <span
-              className={`font-medium ${!isAnnual ? "text-white" : "text-gray-400"}`}
-            >
-              Monthly
-            </span>
-            <button
-              onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative w-14 h-8 rounded-full transition-colors ${
-                isAnnual ? "bg-yellow-500" : "bg-gray-600"
-              }`}
-            >
-              <div
-                className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-transform ${
-                  isAnnual ? "translate-x-7" : "translate-x-1"
-                }`}
-              />
-            </button>
-            <span
-              className={`font-medium ${isAnnual ? "text-white" : "text-gray-400"}`}
-            >
-              Annual
-            </span>
-            {isAnnual && (
-              <span className="bg-green-600 text-white text-xs px-2 py-1 rounded-full">
-                Save 20%
-              </span>
-            )}
-          </div>
-        </div>
+      {/* Floating Gold Particles */}
+      <div className="fixed inset-0 pointer-events-none z-5">
+        {[...Array(18)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-0.5 h-0.5 bg-[#FFD700] rounded-full opacity-25 animate-pulse"
+            style={{
+              left: `${20 + Math.random() * 60}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 6}s`,
+              animationDuration: `${4 + Math.random() * 3}s`,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Pricing Cards */}
-      <div className="max-w-7xl mx-auto p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingTiers.map((tier, index) => (
+      {/* Main Content Area */}
+      <div className="ml-0 md:ml-80 transition-all duration-300">
+        <div className="relative min-h-screen">
+          {/* Professional Pricing Background */}
+          <div className="fixed inset-0 z-0">
+            {/* Base Corporate/Financial Atmosphere */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F9b1ffa67700343cbaedfa55c2f38fa32?format=webp&width=800')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
+                filter: "brightness(0.3) contrast(1.2) sepia(10%)",
+              }}
+            />
+
+            {/* Elegant Grid Pattern */}
+            <div
+              className="absolute inset-0 opacity-8"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Cpath d='M0 0h80v80H0V0zm20 20v40h40V20H20z'/%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundAttachment: "fixed",
+              }}
+            />
+
+            {/* SAINTSAL Logo Watermark */}
+            <div
+              className="absolute inset-0 opacity-4"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0894db8532664c4eab068c93b2d098dd?format=webp&width=800')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "18%",
+                backgroundAttachment: "fixed",
+                mixBlendMode: "color-dodge",
+                filter:
+                  "sepia(100%) hue-rotate(40deg) saturate(150%) brightness(0.3)",
+              }}
+            />
+
+            {/* Professional Gradient */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(135deg, 
+                  rgba(10, 15, 20, 0.85) 0%, 
+                  rgba(10, 15, 20, 0.95) 100%)`,
+              }}
+            />
+          </div>
+
+          {/* Content */}
+          <div className="relative z-20 py-16 px-6">
+            {/* Header */}
             <motion.div
-              key={tier.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative rounded-2xl p-8 ${
-                tier.popular
-                  ? "bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-2 border-blue-500/50"
-                  : "bg-gray-900/50 border border-gray-700"
-              }`}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16 max-w-4xl mx-auto"
             >
-              {tier.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-bold">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {tier.name}
-                </h3>
-                <p className="text-gray-400 mb-6">{tier.description}</p>
-
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-white">
-                    ${tier.price}
-                  </span>
-                  <span className="text-gray-400">{tier.period}</span>
-                  {isAnnual && tier.price > 0 && (
-                    <div className="text-sm text-green-400 mt-1">
-                      Save ${Math.round(tier.price * 12 * 0.2)} yearly
-                    </div>
-                  )}
-                </div>
-
-                <button
-                  onClick={() => handleUpgrade(tier)}
-                  disabled={isLoading === tier.id}
-                  className={`w-full bg-gradient-to-r ${tier.buttonColor} hover:opacity-90 disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg`}
-                >
-                  {isLoading === tier.id ? (
-                    <span className="flex items-center justify-center space-x-2">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>Processing...</span>
-                    </span>
-                  ) : (
-                    tier.buttonText
-                  )}
-                </button>
+              <div className="flex justify-center mb-8">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fb5cec8804f8f4e7a980ec8f3d48dae87?format=webp&width=800"
+                  alt="SAINTSAL Pricing"
+                  className="w-16 h-16 object-contain"
+                  style={{
+                    filter: "drop-shadow(0 0 15px rgba(255, 215, 0, 0.4))",
+                  }}
+                />
               </div>
 
-              <div className="space-y-3">
-                {tier.features.map((feature, featureIndex) => (
-                  <div
-                    key={featureIndex}
-                    className="flex items-center space-x-3"
+              <h1
+                className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight"
+                style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+              >
+                Professional
+                <br />
+                <span className="text-[#FFD700] font-medium">
+                  Investment Tiers
+                </span>
+              </h1>
+              <p
+                className="text-xl text-white/70 max-w-3xl mx-auto font-light leading-relaxed"
+                style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+              >
+                Choose the professional-grade AI solution that scales with your
+                strategic objectives
+              </p>
+            </motion.div>
+
+            {/* Billing Toggle */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center mb-16"
+            >
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-1 border border-white/20">
+                <div className="flex">
+                  <button
+                    onClick={() => setBillingPeriod("monthly")}
+                    className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                      billingPeriod === "monthly"
+                        ? "bg-[#FFD700] text-black"
+                        : "text-white/70 hover:text-white"
+                    }`}
                   >
-                    <span className="text-green-400">✓</span>
-                    <span className="text-gray-300">{feature}</span>
+                    Monthly
+                  </button>
+                  <button
+                    onClick={() => setBillingPeriod("yearly")}
+                    className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 relative ${
+                      billingPeriod === "yearly"
+                        ? "bg-[#FFD700] text-black"
+                        : "text-white/70 hover:text-white"
+                    }`}
+                  >
+                    Yearly
+                    <span className="absolute -top-2 -right-2 bg-emerald-500 text-black text-xs px-2 py-1 rounded-full">
+                      Save 20%
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Pricing Cards */}
+            <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 mb-16">
+              {plans.map((plan, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
+                  className={`bg-gradient-to-br ${plan.color} backdrop-blur-lg rounded-2xl p-8 border ${plan.border} relative transition-all duration-300 hover:scale-105 ${
+                    plan.popular ? "ring-2 ring-[#FFD700]/50" : ""
+                  }`}
+                  style={{
+                    boxShadow: plan.popular
+                      ? "inset 0 0 40px rgba(255, 215, 0, 0.1), 0 16px 64px rgba(0, 0, 0, 0.3)"
+                      : "inset 0 0 30px rgba(255, 255, 255, 0.05), 0 12px 48px rgba(0, 0, 0, 0.2)",
+                  }}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#FFD700] text-black text-sm font-bold px-4 py-2 rounded-full">
+                      Most Popular
+                    </div>
+                  )}
+
+                  <div className="mb-8">
+                    <h3
+                      className="text-2xl font-medium text-white mb-3"
+                      style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                    >
+                      {plan.name}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed mb-6">
+                      {plan.description}
+                    </p>
+                    <div className="flex items-baseline">
+                      <span className="text-5xl font-light text-white">
+                        ${plan.price[billingPeriod]}
+                      </span>
+                      <span className="text-white/60 ml-2">
+                        /{billingPeriod === "monthly" ? "month" : "year"}
+                      </span>
+                    </div>
+                    {billingPeriod === "yearly" && (
+                      <div className="text-emerald-400 text-sm mt-2">
+                        Save ${plan.price.monthly * 12 - plan.price.yearly}{" "}
+                        annually
+                      </div>
+                    )}
+                  </div>
+
+                  <ul className="space-y-4 mb-8">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start">
+                        <div className="w-1.5 h-1.5 bg-[#FFD700] rounded-full mt-2 mr-3 flex-shrink-0" />
+                        <span className="text-white/90">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    className={`w-full py-4 px-6 rounded-xl font-medium transition-all duration-200 ${
+                      plan.popular
+                        ? "bg-[#FFD700] hover:bg-[#FFA500] text-black"
+                        : "border-2 border-white/30 text-white hover:bg-white/10 hover:border-[#FFD700]/50"
+                    }`}
+                    style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                  >
+                    {plan.cta}
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Enterprise Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="max-w-6xl mx-auto"
+            >
+              <div className="text-center mb-12">
+                <h2
+                  className="text-4xl font-light text-white mb-6 tracking-tight"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Enterprise Capabilities
+                </h2>
+                <p className="text-xl text-white/70 font-light">
+                  Advanced features available across all professional tiers
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  {
+                    icon: "🧠",
+                    title: "Dual AI Engines",
+                    desc: "GPT-4o + Azure Intelligence",
+                  },
+                  {
+                    icon: "📊",
+                    title: "CRM Integration",
+                    desc: "GoHighLevel + Custom APIs",
+                  },
+                  {
+                    icon: "🎯",
+                    title: "Strategic Analytics",
+                    desc: "Real-time Performance Insights",
+                  },
+                  {
+                    icon: "🔒",
+                    title: "Enterprise Security",
+                    desc: "SOC 2 Type II Compliance",
+                  },
+                  {
+                    icon: "⚡",
+                    title: "Custom Deployment",
+                    desc: "On-premise + Cloud Options",
+                  },
+                  {
+                    icon: "👥",
+                    title: "Dedicated Support",
+                    desc: "24/7 Professional Assistance",
+                  },
+                  {
+                    icon: "📈",
+                    title: "Scalable Architecture",
+                    desc: "Auto-scaling Infrastructure",
+                  },
+                  {
+                    icon: "🏛️",
+                    title: "Patent Protection",
+                    desc: "Proprietary Technology Access",
+                  },
+                ].map((feature, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  >
+                    <div className="text-3xl mb-4">{feature.icon}</div>
+                    <h3 className="font-medium text-white mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/70 text-sm">{feature.desc}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
-          ))}
-        </div>
 
-        {/* FAQ Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-white mb-8">
-            Frequently Asked Questions
-          </h2>
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-center mt-20 max-w-4xl mx-auto"
+            >
+              <div className="mb-8">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F4bd0a5e2c3064329987dec9cf3eba462?format=webp&width=800"
+                  alt="Cookin Knowledge"
+                  className="w-32 mx-auto mb-8 opacity-70"
+                />
+              </div>
 
-          <div className="space-y-6">
-            <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-white mb-3">
-                What is the HACP™ Protocol?
-              </h3>
-              <p className="text-gray-300">
-                HACP™ (Human-Adaptive Cognitive Protocol) is our patented AI
-                system (US Patent 10,290,222) that adapts to your emotional
-                state, learning style, and communication preferences in
-                real-time.
-              </p>
-            </div>
-
-            <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-white mb-3">
-                Can I cancel anytime?
-              </h3>
-              <p className="text-gray-300">
-                Yes! You can cancel your subscription at any time. Your access
-                will continue until the end of your current billing period, and
-                you can always downgrade to our free tier.
-              </p>
-            </div>
-
-            <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-white mb-3">
-                What payment methods do you accept?
-              </h3>
-              <p className="text-gray-300">
-                We accept all major credit cards (Visa, MasterCard, American
-                Express) and PayPal through our secure Stripe payment processor.
-              </p>
-            </div>
-
-            <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-white mb-3">
-                Is there a free trial?
-              </h3>
-              <p className="text-gray-300">
-                Our free tier gives you immediate access to core features. You
-                can upgrade at any time to unlock advanced capabilities and
-                unlimited usage.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 border border-yellow-500/30 rounded-2xl p-8">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Experience Divine Intelligence?
-            </h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Join the SAINTSAL™ movement and discover why users say "This
-              isn't AI. This is God's co-founder on earth."
-            </p>
-
-            <div className="flex items-center justify-center space-x-4">
-              <button
-                onClick={() => handleUpgrade(pricingTiers[1])}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-lg"
+              <h2
+                className="text-4xl md:text-5xl font-light text-white mb-8 tracking-tight"
+                style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
               >
-                Start Pro Trial
-              </button>
-
-              <a
-                href="/chat"
-                className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-8 py-3 rounded-xl transition-all"
+                Ready to Scale Your
+                <br />
+                <span className="text-[#FFD700] font-medium">
+                  Professional Operations?
+                </span>
+              </h2>
+              <p
+                className="text-xl text-white/70 mb-12 font-light max-w-3xl mx-auto"
+                style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
               >
-                Try Free Version
-              </a>
-            </div>
+                Join elite professionals who choose strategic AI execution over
+                simple conversation tools
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Link href="/signup">
+                  <button
+                    className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-medium rounded-xl px-12 py-4 transition-all duration-200 text-lg"
+                    style={{
+                      fontFamily: '"Inter", system-ui, sans-serif',
+                      boxShadow: "0 8px 32px rgba(255, 215, 0, 0.3)",
+                    }}
+                  >
+                    Start Professional Trial
+                  </button>
+                </Link>
+                <Link href="/enterprise">
+                  <button
+                    className="border-2 border-white/30 text-white hover:bg-white/5 hover:border-[#FFD700]/50 font-medium rounded-xl px-12 py-4 transition-all duration-200 text-lg"
+                    style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                  >
+                    Contact Enterprise
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="border-t border-gray-700 mt-16 py-8">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-400 text-sm">
-            ⚡ Powered by HACP™ Protocol • US Patent 10,290,222 • SAINTSAL™
-            Movement
-          </p>
-          <p className="text-gray-500 text-xs mt-2">
-            Secure payments processed by Stripe • Enterprise-grade security •
-            99.9% uptime guarantee
-          </p>
         </div>
       </div>
     </div>
