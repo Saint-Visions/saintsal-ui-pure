@@ -26,11 +26,11 @@ export default function HomePage() {
       <div className="ml-0 md:ml-80 transition-all duration-300">
         <div className="relative min-h-screen">
           {/* Circuit Animation Layer */}
-          <CircuitBG intensity="high" animated={true} color="gold" />
+          <CircuitBG intensity="medium" animated={true} color="gold" />
 
           {/* Multi-Layer Sophisticated Background System */}
           <div className="fixed inset-0 z-0">
-            {/* Base Layer - Primary Wall Street/Business Atmosphere */}
+            {/* Base Layer - Professional Business Atmosphere */}
             <div
               className="absolute inset-0"
               style={{
@@ -40,27 +40,11 @@ export default function HomePage() {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundAttachment: "fixed",
-                filter: "brightness(0.7) contrast(1.2)",
+                filter: "brightness(0.6) contrast(1.1)",
               }}
             />
 
-            {/* Layer 2 - Professional Meeting/Conference Atmosphere */}
-            <div
-              className="absolute inset-0 opacity-25"
-              style={{
-                backgroundImage:
-                  "url('https://cdn.builder.io/api/v1/image/assets/TEMP/e8aa6abef9c997e84baf52c38bc8f8072a33723b?width=3746')",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center left",
-                backgroundSize: "cover",
-                backgroundAttachment: "fixed",
-                mixBlendMode: "soft-light",
-                filter:
-                  "sepia(30%) hue-rotate(20deg) brightness(0.9) contrast(1.1)",
-              }}
-            />
-
-            {/* Layer 3 - Elite Business Boardroom Vibes */}
+            {/* Layer 2 - Elite Business Meeting Atmosphere */}
             <div
               className="absolute inset-0 opacity-20"
               style={{
@@ -70,509 +54,572 @@ export default function HomePage() {
                 backgroundPosition: "center right",
                 backgroundSize: "cover",
                 backgroundAttachment: "fixed",
-                mixBlendMode: "multiply",
-                filter:
-                  "sepia(40%) hue-rotate(30deg) brightness(0.8) saturate(1.3)",
+                mixBlendMode: "soft-light",
+                filter: "sepia(20%) brightness(0.9)",
               }}
             />
 
-            {/* Layer 4 - SaintVisionAI Branding Overlay */}
+            {/* Layer 3 - Cookin Knowledge Watermark */}
             <div
-              className="absolute inset-0 opacity-15"
-              style={{
-                backgroundImage:
-                  "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fbd827413de6a4a48b27f95a88a41b4f3?format=webp&width=800')",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "top center",
-                backgroundSize: "contain",
-                backgroundAttachment: "fixed",
-                mixBlendMode: "overlay",
-                filter: "sepia(50%) hue-rotate(40deg) brightness(1.1)",
-              }}
-            />
-
-            {/* Layer 5 - Cookin Knowledge Logo - Rotating Watermark */}
-            <div
-              className="absolute inset-0 opacity-8"
+              className="absolute inset-0 opacity-6"
               style={{
                 backgroundImage:
                   "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F88465a2d1f0c4d7cab7b4f6831fc9307?format=webp&width=800')",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                backgroundSize: "35%",
+                backgroundSize: "30%",
                 backgroundAttachment: "fixed",
                 mixBlendMode: "color-dodge",
                 filter:
-                  "sepia(100%) hue-rotate(40deg) saturate(200%) brightness(0.6)",
-                transform: `rotate(${scrollY * 0.05}deg)`,
-                transition: "transform 0.1s ease-out",
+                  "sepia(100%) hue-rotate(40deg) saturate(150%) brightness(0.5)",
               }}
             />
 
-            {/* Layer 6 - Dynamic Gradient Overlay */}
+            {/* Subtle gradient overlay */}
             <div
               className="absolute inset-0"
               style={{
-                background: `radial-gradient(circle at ${50 + scrollY * 0.1}% ${50 + scrollY * 0.05}%, 
-                  rgba(255, 215, 0, 0.1) 0%, 
-                  rgba(16, 22, 28, 0.8) 40%, 
+                background: `radial-gradient(circle at center, 
+                  rgba(16, 22, 28, 0.7) 0%, 
+                  rgba(16, 22, 28, 0.85) 60%, 
                   rgba(16, 22, 28, 0.95) 100%)`,
               }}
             />
           </div>
 
-          {/* Enhanced Dark Overlay with Breathing Effect */}
-          <div
-            className="fixed inset-0 z-10"
-            style={{
-              background: `linear-gradient(135deg, 
-                rgba(16, 22, 28, 0.75) 0%, 
-                rgba(26, 31, 40, 0.85) 50%, 
-                rgba(16, 22, 28, 0.90) 100%)`,
-              animation: "breathe 6s ease-in-out infinite",
-            }}
-          />
-
-          {/* Custom breathing animation */}
-          <style jsx>{`
-            @keyframes breathe {
-              0%,
-              100% {
-                opacity: 1;
-              }
-              50% {
-                opacity: 0.95;
-              }
-            }
-            @keyframes divine-pulse {
-              0%,
-              100% {
-                box-shadow:
-                  0 0 30px rgba(255, 215, 0, 0.6),
-                  0 0 60px rgba(255, 215, 0, 0.4),
-                  0 0 90px rgba(255, 215, 0, 0.2);
-              }
-              50% {
-                box-shadow:
-                  0 0 40px rgba(255, 215, 0, 0.8),
-                  0 0 80px rgba(255, 215, 0, 0.6),
-                  0 0 120px rgba(255, 215, 0, 0.3);
-              }
-            }
-          `}</style>
-
-          {/* All Content in One Flowing Container */}
+          {/* Content Container */}
           <div className="relative z-20">
-            {/* Hero Content */}
-            <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-5xl mx-auto">
+            {/* Hero Section - Clean and Professional */}
+            <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-6xl mx-auto">
               <div className="w-full">
-                {/* GOTTA GUY Quote Box - ENHANCED */}
+                {/* SaintVisionAI Logo */}
                 <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="bg-gradient-to-br from-[#1a1f28]/95 to-[#0f1419]/95 backdrop-blur-md rounded-2xl p-8 mb-10 border-2 border-[#FFD700]/40 max-w-lg mx-auto relative overflow-hidden"
-                  style={{
-                    boxShadow: `
-                      inset 0 0 40px rgba(255, 215, 0, 0.15), 
-                      0 8px 32px rgba(0, 0, 0, 0.4),
-                      0 0 50px rgba(255, 215, 0, 0.3)
-                    `,
-                    backdropFilter: "blur(20px)",
-                    animation: "divine-pulse 4s ease-in-out infinite",
-                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="mb-8"
                 >
-                  {/* Sparkle overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFD700]/10 to-transparent animate-pulse" />
-
-                  <div className="relative z-10">
-                    <p className="text-[#FFD700] text-lg font-medium leading-relaxed mb-4">
-                      "SaintSal" AI doesn't just answer.
-                      <br />
-                      It adapts. It empowers. It becomes your...
-                      <br />
-                      <span
-                        className="text-3xl font-black tracking-wider block mt-2"
-                        style={{
-                          fontFamily:
-                            '"Bebas Neue", "Sora", system-ui, sans-serif',
-                          textShadow:
-                            "0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.4)",
-                          background:
-                            "linear-gradient(45deg, #FFD700, #FFA500, #FFD700)",
-                          backgroundClip: "text",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                        }}
-                      >
-                        GOTTA GUY™!
-                      </span>
-                    </p>
-                  </div>
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/1703961c02a45f92cc4a097e52a8a7502f3f2633?width=2048"
+                    alt="SaintVisionAI"
+                    className="w-16 h-16 mx-auto mb-6 object-contain"
+                    style={{
+                      filter: "drop-shadow(0 0 20px rgba(255, 215, 0, 0.4))",
+                    }}
+                  />
                 </motion.div>
 
-                {/* SaintSal Brain Logo - ULTRA ENHANCED */}
+                {/* Main Headline - Anthropic Style */}
                 <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-                  className="mb-10"
-                >
-                  <div className="relative inline-block">
-                    {/* Multiple glow layers */}
-                    <div className="absolute inset-0 bg-[#FFD700]/40 rounded-full blur-3xl animate-pulse" />
-                    <div
-                      className="absolute inset-0 bg-[#FFA500]/30 rounded-full blur-2xl animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    />
-                    <div
-                      className="absolute inset-0 bg-[#FF8C00]/20 rounded-full blur-xl animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    />
-
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/1703961c02a45f92cc4a097e52a8a7502f3f2633?width=2048"
-                      alt="SaintSal™ Circuit Brain"
-                      className="relative w-28 h-28 md:w-40 md:h-40 object-contain transform hover:scale-110 transition-all duration-500"
-                      style={{
-                        filter: `
-                          drop-shadow(0 0 30px rgba(255, 215, 0, 0.8))
-                          drop-shadow(0 0 60px rgba(255, 215, 0, 0.4))
-                          drop-shadow(0 0 90px rgba(255, 215, 0, 0.2))
-                        `,
-                      }}
-                    />
-                  </div>
-                  <div className="mt-4">
-                    <div
-                      className="text-sm text-[#FFD700]/90 font-bold tracking-[0.3em]"
-                      style={{
-                        fontFamily: '"Inter", system-ui, sans-serif',
-                        textShadow: "0 0 15px rgba(255, 215, 0, 0.5)",
-                      }}
-                    >
-                      SAINTSAL™
-                    </div>
-                    <div className="text-xs text-white/70 tracking-wider">
-                      Cookin' Knowledge
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* SaintVisionAI™ Title - ULTRA ENHANCED */}
-                <motion.div
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.4 }}
-                  className="mb-10"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="mb-12"
                 >
                   <h1
-                    className="text-5xl md:text-7xl font-black tracking-[0.25em] mb-8 uppercase relative"
+                    className="text-5xl md:text-7xl font-light text-white mb-6 tracking-tight leading-tight"
                     style={{
-                      fontFamily: '"Bebas Neue", "Sora", system-ui, sans-serif',
-                      background:
-                        "linear-gradient(45deg, #FFD700 0%, #FFA500 25%, #FFD700 50%, #FF8C00 75%, #FFD700 100%)",
-                      backgroundSize: "200% 200%",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      animation: "gradient-shift 3s ease-in-out infinite",
-                      textShadow: "0 0 50px rgba(255, 215, 0, 0.8)",
+                      fontFamily: '"Inter", system-ui, sans-serif',
+                      fontWeight: "300",
                     }}
                   >
-                    SaintVisionAI™
-                    {/* Floating particles */}
-                    <span className="absolute -top-2 -right-2 text-[#FFD700] text-xl animate-bounce">
-                      ✨
-                    </span>
+                    AI that actually
+                    <br />
                     <span
-                      className="absolute -bottom-2 -left-2 text-[#FFA500] text-lg animate-bounce"
-                      style={{ animationDelay: "1s" }}
+                      className="font-medium text-[#FFD700]"
+                      style={{ fontWeight: "500" }}
                     >
-                      ⚡
+                      gets things done
                     </span>
                   </h1>
 
-                  <style jsx>{`
-                    @keyframes gradient-shift {
-                      0%,
-                      100% {
-                        background-position: 0% 50%;
-                      }
-                      50% {
-                        background-position: 100% 50%;
-                      }
-                    }
-                  `}</style>
+                  <p
+                    className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-8 font-light"
+                    style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                  >
+                    Dual AI engines, integrated CRM, and white-label
+                    capabilities.
+                    <br />
+                    Built for professionals who need results, not just
+                    conversations.
+                  </p>
+                </motion.div>
 
-                  {/* MEGA Enhanced CTA Button */}
+                {/* CTA Buttons - Clean Design */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+                >
                   <Link href="/signup">
                     <button
-                      className="bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] hover:from-[#FFA500] hover:via-[#FF8C00] hover:to-[#FFA500] text-black font-black uppercase rounded-xl px-10 py-5 mb-8 transition-all duration-300 text-xl tracking-wide transform hover:scale-110 relative overflow-hidden group"
+                      className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-medium rounded-lg px-8 py-4 transition-all duration-200 text-lg"
                       style={{
-                        fontFamily: '"Sora", system-ui, sans-serif',
-                        boxShadow: `
-                          0 0 50px rgba(255, 215, 0, 0.9),
-                          0 0 100px rgba(255, 215, 0, 0.5),
-                          inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                          inset 0 -1px 0 rgba(0, 0, 0, 0.2)
-                        `,
-                        backgroundSize: "200% 200%",
-                        animation: "gradient-shift 2s ease-in-out infinite",
+                        fontFamily: '"Inter", system-ui, sans-serif',
+                        boxShadow: "0 4px 16px rgba(255, 215, 0, 0.3)",
                       }}
                     >
-                      {/* Button shine effect */}
-                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                      <span className="relative z-10">🔥 Start Cooking</span>
+                      Start building
                     </button>
                   </Link>
-
-                  {/* ENHANCED Secondary Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
-                    <Link href="/chat">
-                      <button
-                        className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 hover:from-blue-700 hover:via-blue-800 hover:to-blue-700 text-white font-bold rounded-xl px-8 py-4 transition-all duration-300 flex items-center gap-3 transform hover:scale-105 relative overflow-hidden group"
-                        style={{
-                          boxShadow: `
-                            0 0 30px rgba(59, 130, 246, 0.6),
-                            0 0 60px rgba(59, 130, 246, 0.3),
-                            inset 0 1px 0 rgba(255, 255, 255, 0.2)
-                          `,
-                          backdropFilter: "blur(10px)",
-                          backgroundSize: "200% 200%",
-                          animation: "gradient-shift 3s ease-in-out infinite",
-                        }}
-                      >
-                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                        <span className="relative z-10 text-2xl">⚡</span>
-                        <span className="relative z-10">AI Chat</span>
-                      </button>
-                    </Link>
-                    <Link href="/login">
-                      <button
-                        className="bg-gradient-to-r from-green-600 via-green-700 to-green-600 hover:from-green-700 hover:via-green-800 hover:to-green-700 text-white font-bold rounded-xl px-8 py-4 transition-all duration-300 flex items-center gap-3 transform hover:scale-105 relative overflow-hidden group"
-                        style={{
-                          boxShadow: `
-                            0 0 30px rgba(34, 197, 94, 0.6),
-                            0 0 60px rgba(34, 197, 94, 0.3),
-                            inset 0 1px 0 rgba(255, 255, 255, 0.2)
-                          `,
-                          backdropFilter: "blur(10px)",
-                          backgroundSize: "200% 200%",
-                          animation:
-                            "gradient-shift 3s ease-in-out infinite reverse",
-                        }}
-                      >
-                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                        <span className="relative z-10 text-2xl">🔐</span>
-                        <span className="relative z-10">Sign In</span>
-                      </button>
-                    </Link>
-                  </div>
-
-                  {/* Enhanced Quick Access */}
-                  <div className="text-center mb-10">
-                    <div className="text-sm text-white/70 mb-3 font-medium">
-                      Quick Access:
-                    </div>
-                    <div className="flex justify-center gap-6 text-sm">
-                      <Link
-                        href="/pricing"
-                        className="text-orange-400 hover:text-orange-300 transition-all duration-300 hover:drop-shadow-lg hover:scale-110 font-medium"
-                      >
-                        <span className="text-lg mr-1">⚠️</span> Pricing
-                      </Link>
-                      <Link
-                        href="/setup"
-                        className="text-blue-400 hover:text-blue-300 transition-all duration-300 hover:drop-shadow-lg hover:scale-110 font-medium"
-                      >
-                        <span className="text-lg mr-1">🛠️</span> Setup
-                      </Link>
-                      <Link
-                        href="/help"
-                        className="text-purple-400 hover:text-purple-300 transition-all duration-300 hover:drop-shadow-lg hover:scale-110 font-medium"
-                      >
-                        <span className="text-lg mr-1">❓</span> Help
-                      </Link>
-                    </div>
-                  </div>
+                  <Link href="/demo">
+                    <button
+                      className="border border-white/30 text-white hover:bg-white/5 font-medium rounded-lg px-8 py-4 transition-all duration-200 text-lg backdrop-blur-sm"
+                      style={{
+                        fontFamily: '"Inter", system-ui, sans-serif',
+                      }}
+                    >
+                      View demo
+                    </button>
+                  </Link>
                 </motion.div>
 
-                {/* What's Inside These Walls - MEGA ENHANCED */}
+                {/* Trust Indicators */}
                 <motion.div
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="mb-16"
+                  className="text-center text-white/60 text-sm"
                 >
-                  <div className="flex items-center justify-center gap-3 mb-8">
-                    <span className="text-[#FFD700] text-2xl animate-pulse">
-                      🗲
-                    </span>
-                    <h3
-                      className="text-2xl font-black text-[#FFD700] tracking-wide relative"
-                      style={{
-                        fontFamily: '"Sora", system-ui, sans-serif',
-                        textShadow: "0 0 20px rgba(255, 215, 0, 0.7)",
-                      }}
-                    >
-                      What's Inside These Walls
-                      <span className="absolute -top-1 -right-6 text-yellow-300 text-sm animate-bounce">
-                        ✨
-                      </span>
-                    </h3>
-                    <span
-                      className="text-[#FFD700] text-2xl animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    >
-                      🗲
-                    </span>
-                  </div>
-
-                  {/* ULTRA Enhanced Feature Grid - 2x2 */}
-                  <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
-                    {[
-                      {
-                        title: "Lead Discovery",
-                        desc: "AI-powered lookup",
-                        color:
-                          "bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800",
-                        icon: "🔍",
-                        glow: "rgba(59, 130, 246, 0.5)",
-                        particles: ["💫", "⭐", "✨"],
-                      },
-                      {
-                        title: "Referral Network",
-                        desc: "Partner tracking",
-                        color:
-                          "bg-gradient-to-br from-green-600 via-green-700 to-green-800",
-                        icon: "🤝",
-                        glow: "rgba(34, 197, 94, 0.5)",
-                        particles: ["🌟", "💚", "✨"],
-                      },
-                      {
-                        title: "AI Deal Analysis",
-                        desc: "GPT-4 insights",
-                        color:
-                          "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800",
-                        icon: "📊",
-                        glow: "rgba(147, 51, 234, 0.5)",
-                        particles: ["🔮", "💜", "⚡"],
-                      },
-                      {
-                        title: "Mobile Export",
-                        desc: "iOS/Android apps",
-                        color:
-                          "bg-gradient-to-br from-red-600 via-red-700 to-red-800",
-                        icon: "📱",
-                        glow: "rgba(239, 68, 68, 0.5)",
-                        particles: ["🚀", "❤️", "✨"],
-                      },
-                    ].map((feature, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                        className={`${feature.color} rounded-xl p-6 text-center text-white transform hover:scale-110 transition-all duration-500 cursor-pointer relative overflow-hidden group`}
-                        style={{
-                          boxShadow: `
-                            inset 0 0 30px rgba(255, 255, 255, 0.15), 
-                            0 0 30px ${feature.glow},
-                            0 8px 32px rgba(0, 0, 0, 0.3)
-                          `,
-                          backdropFilter: "blur(10px)",
-                        }}
-                      >
-                        {/* Animated background particles */}
-                        {feature.particles.map((particle, pIndex) => (
-                          <span
-                            key={pIndex}
-                            className="absolute text-xs opacity-50 animate-bounce"
-                            style={{
-                              top: `${20 + pIndex * 20}%`,
-                              left: `${10 + pIndex * 30}%`,
-                              animationDelay: `${pIndex * 0.5}s`,
-                              animationDuration: "2s",
-                            }}
-                          >
-                            {particle}
-                          </span>
-                        ))}
-
-                        {/* Shine effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-
-                        <div className="relative z-10">
-                          <div className="text-3xl mb-3 transform group-hover:scale-125 transition-transform duration-300">
-                            {feature.icon}
-                          </div>
-                          <div className="font-bold text-sm mb-2">
-                            {feature.title}
-                          </div>
-                          <div className="text-xs opacity-90">
-                            {feature.desc}
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Elite AI Sanctuary Badge - ULTRA ENHANCED */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="text-center"
-                >
-                  <div className="flex items-center justify-center gap-3 mb-4 flex-wrap">
-                    <span className="text-[#FFD700] animate-pulse text-xl">
-                      ✨
-                    </span>
-                    <span
-                      className="text-[#FFA500] animate-pulse text-lg"
-                      style={{ animationDelay: "0.5s" }}
-                    >
-                      ⭐
-                    </span>
-                    <span
-                      className="text-[#FFD700] font-black text-lg tracking-wide px-4 py-2 rounded-full border border-[#FFD700]/30"
-                      style={{
-                        fontFamily: '"Sora", system-ui, sans-serif',
-                        textShadow: "0 0 20px rgba(255, 215, 0, 0.7)",
-                        background:
-                          "linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1))",
-                        backdropFilter: "blur(10px)",
-                      }}
-                    >
-                      Elite AI Sanctuary • Ready for Saints
-                    </span>
-                    <span
-                      className="text-[#FFA500] animate-pulse text-lg"
-                      style={{ animationDelay: "1s" }}
-                    >
-                      ⭐
-                    </span>
-                    <span
-                      className="text-[#FFD700] animate-pulse text-xl"
-                      style={{ animationDelay: "1.5s" }}
-                    >
-                      ✨
-                    </span>
-                  </div>
-                  <div className="text-sm text-white/70 max-w-md mx-auto font-medium">
-                    Azure Cognitive Services + OpenAI GPT-4o + Premium
-                    Infrastructure
-                  </div>
+                  <p>Powered by Azure Cognitive Services + OpenAI GPT-4o</p>
                 </motion.div>
               </div>
             </div>
 
-            {/* Enhanced Content sections continue with the same ultra-enhanced styling... */}
-            {/* [The pricing and other sections would follow the same enhanced pattern] */}
+            {/* Features Section - Professional Grid */}
+            <div className="py-24 max-w-7xl mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2
+                  className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Built for scale
+                </h2>
+                <p
+                  className="text-xl text-white/70 max-w-3xl mx-auto font-light"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Enterprise-grade AI tools that integrate seamlessly with your
+                  workflow
+                </p>
+              </motion.div>
+
+              {/* Feature Grid */}
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: "🧠",
+                    title: "Dual AI Engines",
+                    description:
+                      "GPT-4o and Azure AI working in tandem for superior results",
+                    features: [
+                      "Advanced reasoning",
+                      "Real-time processing",
+                      "Context awareness",
+                    ],
+                  },
+                  {
+                    icon: "📊",
+                    title: "Integrated CRM",
+                    description:
+                      "GoHighLevel integration with white-label capabilities",
+                    features: [
+                      "Lead management",
+                      "Automated workflows",
+                      "Client tracking",
+                    ],
+                  },
+                  {
+                    icon: "⚡",
+                    title: "Enterprise Ready",
+                    description:
+                      "Patent-protected platform built for serious businesses",
+                    features: [
+                      "Custom deployment",
+                      "API access",
+                      "Priority support",
+                    ],
+                  },
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  >
+                    <div className="text-3xl mb-4">{feature.icon}</div>
+                    <h3
+                      className="text-xl font-medium text-white mb-4"
+                      style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                    >
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/70 mb-6 leading-relaxed">
+                      {feature.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {feature.features.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center text-sm text-white/60"
+                        >
+                          <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full mr-3 flex-shrink-0"></span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Capabilities Section */}
+            <div className="py-24 bg-white/2 backdrop-blur-sm">
+              <div className="max-w-7xl mx-auto px-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-16"
+                >
+                  <h2
+                    className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight"
+                    style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                  >
+                    What you can build
+                  </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    {
+                      icon: "🔍",
+                      title: "Lead Discovery",
+                      desc: "AI-powered prospect identification",
+                    },
+                    {
+                      icon: "🤖",
+                      title: "AI Assistants",
+                      desc: "Custom AI agents for your business",
+                    },
+                    {
+                      icon: "📱",
+                      title: "Mobile Apps",
+                      desc: "iOS and Android deployment",
+                    },
+                    {
+                      icon: "🎨",
+                      title: "Content Generation",
+                      desc: "Images, text, and media creation",
+                    },
+                    {
+                      icon: "📧",
+                      title: "Email Automation",
+                      desc: "Intelligent campaign management",
+                    },
+                    {
+                      icon: "📊",
+                      title: "Analytics Dashboard",
+                      desc: "Real-time insights and reporting",
+                    },
+                    {
+                      icon: "🔗",
+                      title: "API Integration",
+                      desc: "Connect with existing tools",
+                    },
+                    {
+                      icon: "👥",
+                      title: "Client Portals",
+                      desc: "White-label customer access",
+                    },
+                  ].map((capability, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      viewport={{ once: true }}
+                      className="bg-white/5 backdrop-blur-sm rounded-lg p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300"
+                    >
+                      <div className="text-2xl mb-3">{capability.icon}</div>
+                      <h3 className="font-medium text-white mb-2">
+                        {capability.title}
+                      </h3>
+                      <p className="text-sm text-white/60">{capability.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Pricing Section - Clean and Professional */}
+            <div className="py-24 max-w-6xl mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2
+                  className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Simple, transparent pricing
+                </h2>
+                <p
+                  className="text-xl text-white/70 max-w-3xl mx-auto font-light"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Choose the plan that scales with your business
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Starter",
+                    price: "$97",
+                    period: "/month",
+                    description: "Perfect for small teams getting started",
+                    features: [
+                      "GPT-4 access",
+                      "Basic CRM integration",
+                      "Email support",
+                      "Standard templates",
+                    ],
+                    cta: "Start free trial",
+                  },
+                  {
+                    name: "Professional",
+                    price: "$297",
+                    period: "/month",
+                    description: "Advanced features for growing businesses",
+                    features: [
+                      "Dual AI engines",
+                      "Full CRM integration",
+                      "Priority support",
+                      "Custom workflows",
+                      "API access",
+                    ],
+                    cta: "Start free trial",
+                    popular: true,
+                  },
+                  {
+                    name: "Enterprise",
+                    price: "Custom",
+                    period: "",
+                    description: "Tailored solutions for large organizations",
+                    features: [
+                      "White-label deployment",
+                      "Custom AI training",
+                      "Dedicated support",
+                      "SLA guarantees",
+                      "On-premise options",
+                    ],
+                    cta: "Contact sales",
+                  },
+                ].map((plan, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className={`bg-white/5 backdrop-blur-sm rounded-xl p-8 border transition-all duration-300 relative ${
+                      plan.popular
+                        ? "border-[#FFD700]/50 ring-1 ring-[#FFD700]/20"
+                        : "border-white/10 hover:border-white/20"
+                    }`}
+                  >
+                    {plan.popular && (
+                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FFD700] text-black text-xs font-medium px-3 py-1 rounded-full">
+                        Most popular
+                      </div>
+                    )}
+
+                    <div className="mb-6">
+                      <h3
+                        className="text-xl font-medium text-white mb-2"
+                        style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                      >
+                        {plan.name}
+                      </h3>
+                      <div className="flex items-baseline mb-3">
+                        <span className="text-4xl font-light text-white">
+                          {plan.price}
+                        </span>
+                        {plan.period && (
+                          <span className="text-white/60 ml-1">
+                            {plan.period}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-white/70">{plan.description}</p>
+                    </div>
+
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-center text-white/80">
+                          <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full mr-3 flex-shrink-0"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <button
+                      className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+                        plan.popular
+                          ? "bg-[#FFD700] hover:bg-[#FFA500] text-black"
+                          : "border border-white/30 text-white hover:bg-white/5"
+                      }`}
+                      style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                    >
+                      {plan.cta}
+                    </button>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Final CTA Section */}
+            <div className="py-24 text-center max-w-4xl mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2
+                  className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Ready to get started?
+                </h2>
+                <p
+                  className="text-xl text-white/70 mb-8 font-light"
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                >
+                  Join thousands of professionals already building with
+                  SaintVisionAI
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/signup">
+                    <button
+                      className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-medium rounded-lg px-8 py-4 transition-all duration-200 text-lg"
+                      style={{
+                        fontFamily: '"Inter", system-ui, sans-serif',
+                        boxShadow: "0 4px 16px rgba(255, 215, 0, 0.3)",
+                      }}
+                    >
+                      Start building today
+                    </button>
+                  </Link>
+                  <Link href="/contact">
+                    <button
+                      className="border border-white/30 text-white hover:bg-white/5 font-medium rounded-lg px-8 py-4 transition-all duration-200 text-lg"
+                      style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                    >
+                      Talk to sales
+                    </button>
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="bg-white/3 backdrop-blur-sm border-t border-white/10 py-16">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-4 gap-8 mb-12">
+              {/* Logo Section */}
+              <div className="md:col-span-2">
+                <div className="flex items-center space-x-3 mb-6">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
+                    alt="SaintVisionAI"
+                    className="w-8 h-8 object-contain"
+                  />
+                  <div>
+                    <h3
+                      className="text-lg font-medium text-white"
+                      style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                    >
+                      SaintVisionAI™
+                    </h3>
+                    <p className="text-white/60 text-sm">Elite AI Platform</p>
+                  </div>
+                </div>
+                <p className="text-white/70 leading-relaxed max-w-md">
+                  Patent-protected AI platform for businesses that need results,
+                  not just conversations.
+                </p>
+              </div>
+
+              {/* Navigation */}
+              <div>
+                <h4 className="font-medium text-white mb-4">Platform</h4>
+                <ul className="space-y-2">
+                  {["Dashboard", "Console", "API", "Documentation"].map(
+                    (item) => (
+                      <li key={item}>
+                        <Link
+                          href={`/${item.toLowerCase()}`}
+                          className="text-white/60 hover:text-white transition-colors"
+                        >
+                          {item}
+                        </Link>
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+
+              {/* Support */}
+              <div>
+                <h4 className="font-medium text-white mb-4">Support</h4>
+                <ul className="space-y-2">
+                  {["Help Center", "Contact", "Status", "Privacy"].map(
+                    (item) => (
+                      <li key={item}>
+                        <Link
+                          href={`/${item.toLowerCase()}`}
+                          className="text-white/60 hover:text-white transition-colors"
+                        >
+                          {item}
+                        </Link>
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+              <p className="text-white/50 text-sm">
+                © 2024 SAINTSAL™ Movement. U.S. Patent No. 10,290,222. All
+                rights reserved.
+              </p>
+              <div className="flex items-center space-x-4 mt-4 md:mt-0">
+                <span className="text-white/50 text-sm">
+                  Built with purpose
+                </span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
