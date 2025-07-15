@@ -1,448 +1,317 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import SaintSalBossPanel from "../../components/SaintSalBossPanel";
-import CinematicOnboarding from "../../components/CinematicOnboarding";
-import KnowledgeCapsules from "../../components/KnowledgeCapsules";
-import { motion, AnimatePresence } from "framer-motion";
-
-interface Message {
-  role: string;
-  content: string;
-  timestamp?: Date;
-  mood?: string;
-}
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import SidebarNav from "../../components/saintsal/SidebarNav";
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputMessage, setInputMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [showBossPanel, setShowBossPanel] = useState(false);
-  const [walkThroughMode, setWalkThroughMode] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
-  const [showOnboarding, setShowOnboarding] = useState(true);
-  const [isFirstTime, setIsFirstTime] = useState(true);
-  const [fileUploaded, setFileUploaded] = useState<File | null>(null);
-  const [voiceInput, setVoiceInput] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [message, setMessage] = useState("");
+  const [activeAI, setActiveAI] = useState("dual"); // dual, gpt4, azure
 
-  // Initialize with cinematic welcome
   useEffect(() => {
-    setTimeout(() => {
-      const welcomeMessage: Message = {
-        role: "assistant",
-        content:
-          "Welcome. I've been waiting to work with someone like you. I'm SaintSal™ - your adaptive AI companion. I adapt to your vibe, teach as I guide, and become smarter with every interaction. What can I help you achieve today?",
-        timestamp: new Date(),
-        mood: "excited",
-      };
-      setMessages([welcomeMessage]);
-    }, 1000);
+    setIsLoaded(true);
   }, []);
 
-  const sendMessage = async () => {
-    if (!inputMessage.trim() || isLoading) return;
-
-    const userMessage: Message = {
-      role: "user",
-      content: inputMessage,
-      timestamp: new Date(),
-    };
-    const newMessages = [...messages, userMessage];
-    setMessages(newMessages);
-    setInputMessage("");
-    setIsLoading(true);
-
-    try {
-      // Simulate intelligent response with HACP logic
-      setTimeout(() => {
-        let response = "";
-        let mood = "calm";
-
-        // Check for escalation triggers
-        const input = inputMessage.toLowerCase();
-        if (
-          input.includes("frustrated") ||
-          input.includes("wtf") ||
-          input.includes("bs")
-        ) {
-          mood = "frustrated";
-          response =
-            "I can sense your frustration. Let me take a different angle and simplify this for you. What specific challenge are you facing?";
-        } else if (
-          input.includes("confused") ||
-          input.includes("don't understand") ||
-          input.includes("help")
-        ) {
-          mood = "overwhelmed";
-          response =
-            "No worries - I'm here to walk you through this step by step. Let me break this down in a way that makes perfect sense.";
-        } else if (walkThroughMode) {
-          // Step-by-step explanation mode
-          const steps = [
-            "Step 1: Let's define exactly what you need",
-            "Step 2: I'll simplify the approach for you",
-            "Step 3: Here's what you can do right now",
-            "Step 4: Want me to handle this for you?",
-          ];
-          response = `${steps[currentStep - 1]} - ${getStepContent(currentStep, inputMessage)}`;
-          setCurrentStep((prev) => (prev < 4 ? prev + 1 : 1));
-        } else {
-          // Adaptive responses based on context
-          if (input.includes("funding") || input.includes("money")) {
-            response =
-              "I can help you navigate funding opportunities. Based on your needs, I'm thinking you might want to qualify for grants, understand investor requirements, or explore alternative funding. Which direction feels right?";
-          } else if (input.includes("ai") || input.includes("assistant")) {
-            response =
-              "Perfect! Building AI assistants is my specialty. I can guide you through everything from concept to deployment. Are you looking to create a customer service bot, internal tool, or something more advanced?";
-          } else if (input.includes("crm") || input.includes("customer")) {
-            response =
-              "CRM optimization is crucial for growth. I can help you streamline your customer management, automate workflows, or integrate AI-powered insights. What's your biggest CRM challenge right now?";
-          } else {
-            response =
-              "I understand what you're looking for. Let me provide you with a solution that actually works. Here's how we can approach this...";
-          }
-        }
-
-        const aiMessage: Message = {
-          role: "assistant",
-          content: response,
-          timestamp: new Date(),
-          mood,
-        };
-        setMessages([...newMessages, aiMessage]);
-        setIsLoading(false);
-      }, 1000);
-    } catch (error) {
-      console.error("Chat error:", error);
-      const errorMessage: Message = {
-        role: "assistant",
-        content:
-          "I'm experiencing a momentary sync issue. Let me escalate this to ensure you get the help you need.",
-        timestamp: new Date(),
-        mood: "urgent",
-      };
-      setMessages([...newMessages, errorMessage]);
-      setIsLoading(false);
-    }
-  };
-
-  const getStepContent = (step: number, input: string) => {
-    switch (step) {
-      case 1:
-        return "Based on your message, I'm identifying the core need.";
-      case 2:
-        return "Here's the simplified approach that works.";
-      case 3:
-        return "These are your immediate next steps.";
-      case 4:
-        return "I can take this over completely if you'd prefer.";
-      default:
-        return "Let's continue working together.";
-    }
-  };
-
-  const getMoodEmoji = (mood?: string) => {
-    switch (mood) {
-      case "frustrated":
-        return "😤";
-      case "overwhelmed":
-        return "🤯";
-      case "urgent":
-        return "🚨";
-      case "excited":
-        return "✨";
-      default:
-        return "🤖";
-    }
-  };
-
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setFileUploaded(file);
-      // Auto-analyze the file
-      const analysisMessage: Message = {
-        role: "assistant",
-        content: `I've received your ${file.type.includes("pdf") ? "PDF document" : "file"}: "${file.name}". I'm analyzing it now to provide you with context-aware responses. What would you like to know about this file?`,
-        timestamp: new Date(),
-        mood: "excited",
-      };
-      setMessages((prev) => [...prev, analysisMessage]);
-    }
-  };
-
-  const toggleVoiceInput = () => {
-    setVoiceInput(!voiceInput);
-    if (!voiceInput) {
-      // Simulate voice input activation
-      const voiceMessage: Message = {
-        role: "assistant",
-        content:
-          "🎤 Voice input activated! I'm listening and ready to adapt to your vocal patterns and tone.",
-        timestamp: new Date(),
-        mood: "excited",
-      };
-      setMessages((prev) => [...prev, voiceMessage]);
-    }
-  };
-
-  const handleKnowledgeCapsuleSave = (capsule: any) => {
-    console.log("Knowledge capsule saved:", capsule);
-    const saveMessage: Message = {
-      role: "assistant",
-      content: `📑 Knowledge capsule "${capsule.title}" saved! This conversation is now bookmarked for future reference and can be shared with others.`,
-      timestamp: new Date(),
-      mood: "excited",
-    };
-    setMessages((prev) => [...prev, saveMessage]);
-  };
-
-  const handleKnowledgeCapsuleLoad = (capsule: any) => {
-    console.log("Loading knowledge capsule:", capsule);
-    const loadMessage: Message = {
-      role: "assistant",
-      content: `📖 Resuming "${capsule.title}" thread. I remember exactly where we left off and I'm ready to continue with full context.`,
-      timestamp: new Date(),
-      mood: "excited",
-    };
-    setMessages((prev) => [...prev, loadMessage]);
-  };
+  const conversations = [
+    {
+      type: "user",
+      message:
+        "Analyze our Q4 performance and recommend strategic adjustments for market expansion",
+      time: "14:35",
+    },
+    {
+      type: "ai",
+      message:
+        "⚡ **Dual AI Analysis Complete**\n\nQ4 Performance Overview:\n• Revenue: +127% YoY growth\n• Market share: Expanded 23% in target demographics\n• Customer acquisition: 2,847 new clients\n\n**Strategic Recommendations:**\n\n1. **Geographic Expansion** (+34% potential)\n   - Southeast markets showing 67% demand increase\n   - Recommend Q1 pilot program\n\n2. **Product Diversification** (+28% potential)\n   - AI consulting services high-demand\n   - White-label solutions opportunity\n\n3. **Partnership Strategy** (+41% potential)\n   - 15 potential strategic alliances identified\n   - GoHighLevel integration expansion\n\n**Next Actions:**\n✅ CRM updated with 247 qualified expansion leads\n✅ Market research data compiled\n✅ ROI projections generated\n\nReady to execute any of these strategies. Which would you like to prioritize?",
+      time: "14:36",
+      engines: ["GPT-4o", "Azure AI"],
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white flex">
-      {/* Chat Sidebar */}
-      <div className="w-80 bg-gradient-to-b from-gray-900/50 to-black/80 border-r border-yellow-500/20 p-6">
-        <div className="flex items-center space-x-3 mb-8">
-          <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/d85f32bc05687e1285ca0e47819c9b2c93e74b09?width=2048"
-              alt="SaintSal Logo"
-              className="w-8 h-8 object-cover rounded"
-            />
-          </div>
-          <div>
-            <h2 className="text-yellow-400 font-bold text-lg">SaintSal™ AI</h2>
-            <p className="text-gray-400 text-sm">Divine Intelligence</p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-[#0a0f14] text-white overflow-x-hidden relative">
+      {/* Sidebar Navigation */}
+      <SidebarNav />
 
-        {/* Mode Controls */}
-        <div className="space-y-4 mb-8">
-          <button
-            onClick={() => setWalkThroughMode(!walkThroughMode)}
-            className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-all ${
-              walkThroughMode
-                ? "bg-blue-600 text-white"
-                : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-            }`}
-          >
-            <span>🧭</span>
-            <span className="text-sm font-medium">Walk Me Through This</span>
-          </button>
-
-          <button
-            onClick={() => setShowBossPanel(true)}
-            className="w-full flex items-center space-x-3 p-3 bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 rounded-lg transition-all"
-          >
-            <span>👑</span>
-            <span className="text-sm font-medium text-black">Boss Mode</span>
-          </button>
-        </div>
-
-        {/* Status Indicators */}
-        <div className="space-y-3">
-          <div className="bg-gray-800/50 p-3 rounded-lg border border-gray-700">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs text-gray-400">HACP™ Status</span>
-              <span className="text-xs text-green-400">Active</span>
-            </div>
-            <div className="h-1 bg-gray-700 rounded-full">
-              <div className="h-1 bg-green-400 rounded-full w-3/4"></div>
-            </div>
-          </div>
-
-          <div className="text-xs text-gray-500 text-center">
-            <p>⚡ Adaptive Intelligence Online</p>
-            <p>US Patent 10,290,222</p>
-          </div>
-        </div>
+      {/* Floating Gold Particles */}
+      <div className="fixed inset-0 pointer-events-none z-5">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-0.5 h-0.5 bg-[#FFD700] rounded-full opacity-30 animate-pulse"
+            style={{
+              left: `${25 + Math.random() * 50}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 3}s`,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <div className="bg-black/50 border-b border-gray-700 p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-xl font-bold text-white">
-                SaintSal™ Command Center
-              </h1>
-              <p className="text-gray-400 text-sm">
-                Your adaptive AI that learns and evolves
-              </p>
-            </div>
-            {walkThroughMode && (
-              <div className="bg-blue-600/20 border border-blue-500/30 rounded-lg px-3 py-1">
-                <span className="text-blue-400 text-sm">
-                  Step {currentStep}/4 Mode
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
+      {/* Main Content Area */}
+      <div className="ml-0 md:ml-80 transition-all duration-300">
+        <div className="relative h-screen flex flex-col">
+          {/* Professional AI Background */}
+          <div className="fixed inset-0 z-0">
+            {/* Base Neural Network/AI Atmosphere */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F1058c6bc3c2c44829d2b5c1680ff6d39?format=webp&width=800')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
+                filter: "brightness(0.25) contrast(1.4) sepia(20%)",
+              }}
+            />
 
-        {/* Messages Container */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
-          {messages.length === 0 ? (
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-            >
-              <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
-                <span className="text-black font-bold text-3xl">S</span>
+            {/* Subtle AI Circuit Pattern */}
+            <div
+              className="absolute inset-0 opacity-8"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFD700' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Cpath d='M30 10v10M30 40v10M10 30h10M40 30h10M20 20l7 7M33 33l7 7M40 20l-7 7M27 33l-7 7'/%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundAttachment: "fixed",
+              }}
+            />
+
+            {/* Cookin Knowledge AI Watermark */}
+            <div
+              className="absolute inset-0 opacity-4"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F4bd0a5e2c3064329987dec9cf3eba462?format=webp&width=800')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "15%",
+                backgroundAttachment: "fixed",
+                mixBlendMode: "color-dodge",
+                filter:
+                  "sepia(100%) hue-rotate(40deg) saturate(200%) brightness(0.3)",
+              }}
+            />
+
+            {/* AI Gradient Overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(145deg, 
+                  rgba(10, 15, 20, 0.9) 0%, 
+                  rgba(10, 15, 20, 0.95) 100%)`,
+              }}
+            />
+          </div>
+
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-20 p-6 border-b border-white/10 bg-white/3 backdrop-blur-lg"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fb5cec8804f8f4e7a980ec8f3d48dae87?format=webp&width=800"
+                  alt="SAINTSAL AI"
+                  className="w-10 h-10 object-contain"
+                  style={{
+                    filter: "drop-shadow(0 0 10px rgba(255, 215, 0, 0.4))",
+                  }}
+                />
+                <div>
+                  <h1
+                    className="text-2xl font-light text-white tracking-wide"
+                    style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                  >
+                    AI Companion
+                  </h1>
+                  <p className="text-white/60 text-sm">
+                    Dual Intelligence • Strategic Execution
+                  </p>
+                </div>
               </div>
-              <h3 className="text-yellow-400 text-2xl font-bold mb-3">
-                SaintSal™ AI Ready
-              </h3>
-              <p className="text-gray-300 max-w-md mx-auto">
-                I'm your adaptive companion that learns your style, anticipates
-                your needs, and becomes smarter with every interaction.
-              </p>
-            </motion.div>
-          ) : (
-            <AnimatePresence>
-              {messages.map((message, index) => (
+
+              {/* AI Engine Selector */}
+              <div className="flex items-center space-x-2">
+                {[
+                  { key: "dual", label: "Dual AI", color: "bg-[#FFD700]" },
+                  { key: "gpt4", label: "GPT-4o", color: "bg-blue-500" },
+                  { key: "azure", label: "Azure", color: "bg-purple-500" },
+                ].map((engine) => (
+                  <button
+                    key={engine.key}
+                    onClick={() => setActiveAI(engine.key)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      activeAI === engine.key
+                        ? `${engine.color} text-black`
+                        : "bg-white/10 text-white/70 hover:bg-white/20"
+                    }`}
+                  >
+                    {engine.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Chat Area */}
+          <div className="relative z-20 flex-1 overflow-hidden flex flex-col">
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              {conversations.map((conv, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`flex ${conv.type === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div
-                    className={`max-w-2xl rounded-2xl p-4 ${
-                      message.role === "user"
-                        ? "bg-gradient-to-r from-yellow-600 to-yellow-700 text-black ml-12"
-                        : "bg-gradient-to-r from-gray-800 to-gray-700 text-white mr-12"
-                    }`}
-                  >
-                    <div className="flex items-start space-x-3">
-                      <span className="text-lg">
-                        {message.role === "user"
-                          ? "👤"
-                          : getMoodEmoji(message.mood)}
-                      </span>
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-1">
-                          <span className="font-bold text-sm">
-                            {message.role === "user" ? "You" : "SaintSal AI"}
-                          </span>
-                          {message.mood && message.role === "assistant" && (
-                            <span className="text-xs bg-black/20 px-2 py-1 rounded-full">
-                              {message.mood}
-                            </span>
-                          )}
+                  {conv.type === "user" ? (
+                    <div className="max-w-2xl">
+                      <div className="bg-blue-600/20 backdrop-blur-sm rounded-xl p-6 border border-blue-500/30">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
+                            U
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-white leading-relaxed">
+                              {conv.message}
+                            </p>
+                            <div className="text-white/50 text-xs mt-2">
+                              {conv.time}
+                            </div>
+                          </div>
                         </div>
-                        <p className="leading-relaxed">{message.content}</p>
-                        {message.timestamp && (
-                          <p className="text-xs opacity-70 mt-2">
-                            {message.timestamp.toLocaleTimeString()}
-                          </p>
-                        )}
                       </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="max-w-4xl">
+                      <div className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20">
+                        <div className="flex items-start space-x-4">
+                          <img
+                            src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fb5cec8804f8f4e7a980ec8f3d48dae87?format=webp&width=800"
+                            alt="SAINTSAL AI"
+                            className="w-8 h-8 object-contain mt-1"
+                          />
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-3">
+                              <span className="text-[#FFD700] font-medium">
+                                SAINTSAL™ AI
+                              </span>
+                              {conv.engines && (
+                                <div className="flex space-x-1">
+                                  {conv.engines.map((engine, i) => (
+                                    <span
+                                      key={i}
+                                      className="text-xs bg-white/10 px-2 py-1 rounded text-white/70"
+                                    >
+                                      {engine}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                            <div className="text-white leading-relaxed whitespace-pre-line">
+                              {conv.message}
+                            </div>
+                            <div className="text-[#FFD700]/70 text-xs mt-3">
+                              {conv.time}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               ))}
-            </AnimatePresence>
-          )}
+            </div>
 
-          {isLoading && (
+            {/* Input Area */}
             <motion.div
-              className="flex justify-start"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="p-6 border-t border-white/10 bg-white/3 backdrop-blur-lg"
             >
-              <div className="bg-gray-800 rounded-2xl p-4 mr-12">
-                <div className="flex items-center space-x-3">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"></div>
-                    <div
-                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
-                      style={{ animationDelay: "0.1s" }}
-                    ></div>
-                    <div
-                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
-                      style={{ animationDelay: "0.2s" }}
-                    ></div>
+              <div className="max-w-4xl mx-auto">
+                <div className="flex items-end space-x-4">
+                  <div className="flex-1">
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Enter your strategic command or question..."
+                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-white placeholder-white/50 resize-none focus:outline-none focus:border-[#FFD700]/50 transition-all duration-200"
+                      rows={3}
+                      style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                    />
                   </div>
-                  <span className="text-gray-400 text-sm">
-                    SaintSal is adapting response...
-                  </span>
+                  <button className="bg-[#FFD700] hover:bg-[#FFA500] text-black px-6 py-4 rounded-xl font-medium transition-all duration-200 flex items-center space-x-2">
+                    <span>Execute</span>
+                    <span className="text-lg">⚡</span>
+                  </button>
+                </div>
+
+                {/* Quick Commands */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {[
+                    "Analyze market trends",
+                    "Generate CRM report",
+                    "Strategic recommendations",
+                    "Content creation brief",
+                    "Performance metrics",
+                  ].map((suggestion, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setMessage(suggestion)}
+                      className="bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-sm text-white/80 transition-all duration-200"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
                 </div>
               </div>
             </motion.div>
-          )}
-        </div>
+          </div>
 
-        {/* Input Area */}
-        <div className="bg-black/50 border-t border-gray-700 p-6">
-          <div className="flex items-end space-x-4">
-            <div className="flex-1">
-              <input
-                ref={inputRef}
-                type="text"
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && sendMessage()}
-                placeholder="Ask SaintSal anything... I adapt to help you succeed."
-                className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-yellow-500 focus:outline-none transition-colors"
-                disabled={isLoading}
-              />
+          {/* Professional Features Panel */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="absolute right-4 top-24 w-64 bg-white/5 backdrop-blur-lg rounded-xl p-4 border border-white/10 hidden xl:block z-30"
+          >
+            <h3 className="text-lg font-medium text-white mb-4">
+              AI Capabilities
+            </h3>
+            <div className="space-y-3">
+              {[
+                { icon: "🧠", title: "Strategic Analysis", active: true },
+                { icon: "📊", title: "Data Processing", active: true },
+                { icon: "🎯", title: "CRM Integration", active: true },
+                { icon: "📝", title: "Content Generation", active: false },
+                { icon: "📈", title: "Performance Tracking", active: true },
+              ].map((capability, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <span className="text-lg">{capability.icon}</span>
+                  <span className="text-white/80 text-sm flex-1">
+                    {capability.title}
+                  </span>
+                  <div
+                    className={`w-2 h-2 rounded-full ${
+                      capability.active ? "bg-emerald-400" : "bg-white/30"
+                    }`}
+                  />
+                </div>
+              ))}
             </div>
-            <button
-              onClick={sendMessage}
-              disabled={isLoading || !inputMessage.trim()}
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 disabled:from-gray-600 disabled:to-gray-700 text-black disabled:text-gray-400 p-3 rounded-xl font-bold transition-all shadow-lg"
-            >
-              {isLoading ? "🔥" : "➤"}
-            </button>
-          </div>
-
-          <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
-            <span>��� HACP™ Protocol Active • Adaptive Intelligence</span>
-            <span>{messages.length} interactions</span>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* SaintSal Boss Panel */}
-      <SaintSalBossPanel
-        isVisible={showBossPanel}
-        onToggle={() => setShowBossPanel(!showBossPanel)}
-        currentInput={inputMessage}
-        messages={messages}
-      />
-
-      {/* Knowledge Capsules */}
-      <KnowledgeCapsules
-        currentMessages={messages}
-        onSave={handleKnowledgeCapsuleSave}
-        onLoad={handleKnowledgeCapsuleLoad}
-      />
-
-      {/* Cinematic Onboarding */}
-      <CinematicOnboarding
-        isFirstTime={isFirstTime && showOnboarding}
-        onComplete={() => {
-          setShowOnboarding(false);
-          setIsFirstTime(false);
-        }}
-      />
     </div>
   );
 }
