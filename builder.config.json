@@ -1,0 +1,18 @@
+{
+  "apiKey": "d83998c6a81f466db4fb83ab90c7ba25",
+  "contentModels": [
+    {
+      "name": "page",
+      "kind": "page"
+    }
+  ],
+  "integrations": {
+    "next": {
+      "trailingSlash": false
+    }
+  },
+  "output": {
+    "srcDir": ".",
+    "outDir": ".next"
+  }
+}
