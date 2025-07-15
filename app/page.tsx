@@ -38,147 +38,227 @@ export default function HomePage() {
         {/* All Content in One Flowing Container */}
         <div className="relative z-20">
           {/* Hero Content */}
-          <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-6xl mx-auto">
+          <div className="flex items-center justify-center min-h-screen text-center px-6 max-w-5xl mx-auto">
             <div className="w-full">
+              {/* GOTTA GUY Quote Box */}
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="bg-[#1a1f28]/90 backdrop-blur-sm rounded-xl p-6 mb-8 border border-[#FFD700]/30 max-w-lg mx-auto"
+                style={{ boxShadow: "inset 0 0 30px rgba(255, 215, 0, 0.1)" }}
+              >
+                <p className="text-[#FFD700] text-lg font-medium leading-relaxed">
+                  "SaintSal" AI doesn't just answer.
+                  <br />
+                  It adapts. It empowers. It becomes your...
+                  <br />
+                  <span
+                    className="text-2xl font-black tracking-wider"
+                    style={{
+                      fontFamily: '"Bebas Neue", "Sora", system-ui, sans-serif',
+                    }}
+                  >
+                    GOTTA GUY™!
+                  </span>
+                </p>
+              </motion.div>
+
               {/* SaintSal Brain Logo */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="mb-12"
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                className="mb-8"
               >
                 <div className="relative inline-block">
                   <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full blur-3xl animate-pulse" />
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2F0d63ecf25b7f45398d50df5cd4f332bf"
                     alt="SaintSal™ Circuit Brain"
-                    className="relative w-32 h-32 md:w-48 md:h-48 object-contain"
+                    className="relative w-24 h-24 md:w-32 md:h-32 object-contain"
                   />
+                </div>
+                <div className="mt-3">
+                  <div
+                    className="text-xs text-[#FFD700]/80 font-medium tracking-widest"
+                    style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+                  >
+                    SAINTSAL™
+                  </div>
+                  <div className="text-xs text-white/60">Cookin' Knowledge</div>
                 </div>
               </motion.div>
 
-              {/* Hero Text */}
+              {/* SaintVisionAI™ Title */}
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.3 }}
+                transition={{ duration: 1, delay: 0.4 }}
                 className="mb-8"
               >
-                {/* SAINTSAL™ Headline - Bebas Neue/Sora Style */}
                 <h1
-                  className="text-6xl md:text-8xl font-black pt-10 pb-4 tracking-[0.2em] text-[#FFD700] mb-6 uppercase"
+                  className="text-4xl md:text-6xl font-black tracking-[0.2em] text-[#FFD700] mb-6 uppercase"
                   style={{
                     fontFamily: '"Bebas Neue", "Sora", system-ui, sans-serif',
                     textShadow: "0 0 20px rgba(255, 215, 0, 0.5)",
-                    letterSpacing: "0.15em",
                   }}
                 >
-                  SAINTSAL™
+                  SaintVisionAI™
                 </h1>
 
-                {/* Performance-Focused Tagline */}
-                <div
-                  className="text-2xl md:text-3xl text-[#FFD700] opacity-90 mb-8 font-bold tracking-wide"
-                  style={{
-                    fontFamily: '"Sora", system-ui, sans-serif',
-                    textShadow: "0 0 10px rgba(255, 215, 0, 0.3)",
-                  }}
-                >
-                  Elite AI Execution Platform
+                {/* Main CTA Button */}
+                <Link href="/signup">
+                  <button
+                    className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-black uppercase rounded-lg px-8 py-4 mb-6 transition-all duration-200 text-lg tracking-wide"
+                    style={{
+                      fontFamily: '"Sora", system-ui, sans-serif',
+                      boxShadow: "0 0 30px rgba(255, 215, 0, 0.6)",
+                    }}
+                  >
+                    🔥 Start Cooking
+                  </button>
+                </Link>
+
+                {/* Secondary Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                  <Link href="/chat">
+                    <button
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg px-6 py-3 transition-all duration-200 flex items-center gap-2"
+                      style={{ boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                    >
+                      ⚡ AI Chat
+                    </button>
+                  </Link>
+                  <Link href="/login">
+                    <button
+                      className="bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg px-6 py-3 transition-all duration-200 flex items-center gap-2"
+                      style={{ boxShadow: "0 0 20px rgba(34, 197, 94, 0.4)" }}
+                    >
+                      🔐 Sign In
+                    </button>
+                  </Link>
                 </div>
 
-                {/* OpenAI-Style Clear Value Prop */}
-                <p
-                  className="text-xl md:text-2xl text-white/90 max-w-[700px] mx-auto leading-relaxed mb-12 font-medium"
-                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
-                >
-                  Dual AI engines. CRM integration. Kingdom-level automation.
-                  <br />
-                  <span className="text-[#FFD700]/80">
-                    Get in. Execute. Dominate.
-                  </span>
-                </p>
+                {/* Quick Access */}
+                <div className="text-center mb-8">
+                  <div className="text-sm text-white/60 mb-2">
+                    Quick Access:
+                  </div>
+                  <div className="flex justify-center gap-4 text-xs">
+                    <Link
+                      href="/pricing"
+                      className="text-orange-400 hover:text-orange-300"
+                    >
+                      ⚠️ Pricing
+                    </Link>
+                    <Link
+                      href="/setup"
+                      className="text-blue-400 hover:text-blue-300"
+                    >
+                      🛠️ Setup
+                    </Link>
+                    <Link
+                      href="/help"
+                      className="text-purple-400 hover:text-purple-300"
+                    >
+                      ❓ Help
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
 
-                {/* Performance-Focused Feature Highlights */}
-                <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+              {/* What's Inside These Walls - Compact Cards */}
+              <motion.div
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="mb-12"
+              >
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  <span className="text-[#FFD700]">🗲</span>
+                  <h3
+                    className="text-xl font-bold text-[#FFD700] tracking-wide"
+                    style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
+                  >
+                    What's Inside These Walls
+                  </h3>
+                </div>
+
+                {/* Compact Feature Grid - 2x2 */}
+                <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
                   {[
                     {
-                      icon: "⚡",
-                      title: "Instant AI",
-                      desc: "GPT-4o + Azure dual power",
+                      title: "Lead Discovery",
+                      desc: "AI-powered lookup",
+                      color: "bg-blue-600",
+                      icon: "🔍",
                     },
                     {
-                      icon: "🎯",
-                      title: "Direct CRM",
-                      desc: "GoHighLevel integration",
+                      title: "Referral Network",
+                      desc: "Partner tracking",
+                      color: "bg-green-600",
+                      icon: "🤝",
                     },
                     {
-                      icon: "👑",
-                      title: "Elite Only",
-                      desc: "Patent-protected platform",
+                      title: "AI Deal Analysis",
+                      desc: "GPT-4 insights",
+                      color: "bg-purple-600",
+                      icon: "📊",
+                    },
+                    {
+                      title: "Mobile Export",
+                      desc: "iOS/Android apps",
+                      color: "bg-red-600",
+                      icon: "📱",
                     },
                   ].map((feature, index) => (
                     <motion.div
                       key={index}
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                      className="bg-[#10161C]/50 backdrop-blur-sm rounded-lg p-4 border border-[#FFD700]/20"
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                      className={`${feature.color} rounded-lg p-4 text-center text-white`}
                       style={{
-                        boxShadow: "inset 0 0 20px rgba(255, 215, 0, 0.1)",
+                        boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.1)",
                       }}
                     >
                       <div className="text-2xl mb-2">{feature.icon}</div>
-                      <div
-                        className="text-[#FFD700] font-bold text-sm mb-1 tracking-wide"
-                        style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
-                      >
+                      <div className="font-bold text-sm mb-1">
                         {feature.title}
                       </div>
-                      <div className="text-white/70 text-xs">
-                        {feature.desc}
-                      </div>
+                      <div className="text-xs opacity-80">{feature.desc}</div>
                     </motion.div>
                   ))}
                 </div>
+              </motion.div>
 
-                {/* CTA Buttons - Neon Yellow Style */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-                >
-                  <Link href="/signup">
-                    <button
-                      className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-black uppercase rounded-lg px-8 py-4 transition-all duration-200 text-lg tracking-wide"
-                      style={{
-                        fontFamily: '"Sora", system-ui, sans-serif',
-                        boxShadow: "0 0 30px rgba(255, 215, 0, 0.6)",
-                        border: "2px solid #FFD700",
-                      }}
-                    >
-                      🚀 START EXECUTION
-                    </button>
-                  </Link>
-                  <Link href="/pricing">
-                    <button
-                      className="border-2 border-[#FFD700]/60 text-[#FFD700] hover:bg-[#FFD700]/10 font-bold uppercase rounded-lg px-8 py-4 transition-all duration-200 text-lg tracking-wide"
-                      style={{
-                        fontFamily: '"Sora", system-ui, sans-serif',
-                        boxShadow: "inset 0 0 20px rgba(255, 215, 0, 0.1)",
-                      }}
-                    >
-                      ⚡ VIEW TIERS
-                    </button>
-                  </Link>
-                </motion.div>
+              {/* Elite AI Sanctuary Badge */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-center"
+              >
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <span className="text-[#FFD700]">✨</span>
+                  <span
+                    className="text-[#FFD700] font-bold text-sm tracking-wide"
+                    style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
+                  >
+                    Elite AI Sanctuary • Ready for Saints
+                  </span>
+                </div>
+                <div className="text-xs text-white/60 max-w-md mx-auto">
+                  Azure Cognitive Services + OpenAI GPT-4o + Premium
+                  Infrastructure
+                </div>
               </motion.div>
             </div>
           </div>
 
-          {/* Quick Demo Section - OpenAI Style */}
-          <div className="py-24 max-w-6xl mx-auto px-6">
+          {/* Compact Pricing Section */}
+          <div className="py-16 max-w-4xl mx-auto px-6">
             <motion.div
               initial={{ y: 40, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -187,223 +267,193 @@ export default function HomePage() {
               className="text-center mb-12"
             >
               <h2
-                className="text-4xl md:text-6xl font-black text-white mb-6 tracking-wider"
-                style={{
-                  fontFamily: '"Bebas Neue", "Sora", system-ui, sans-serif',
-                  textShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
-                }}
-              >
-                AI Workstation Demo
-              </h2>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                See the divine intelligence in action.
-              </p>
-            </motion.div>
-
-            {/* Demo Preview */}
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-[#10161C]/70 backdrop-blur-sm rounded-2xl p-8 mx-auto max-w-4xl border border-[#FFD700]/20"
-              style={{ boxShadow: "inset 0 0 30px rgba(255, 215, 0, 0.1)" }}
-            >
-              <div className="bg-[#10161C]/80 rounded-xl p-6 border border-[#FFD700]/20">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-3">
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
-                      alt="SaintSal AI"
-                      className="w-8 h-8 object-contain"
-                    />
-                    <span
-                      className="text-[#FFD700] font-bold tracking-wide"
-                      style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
-                    >
-                      SAINTSAL™ COMPANION
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    <span className="text-emerald-400 text-sm font-mono">
-                      LIVE
-                    </span>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <span className="text-blue-400">👤</span>
-                    <div className="bg-[#1a1f28] rounded-lg p-4 flex-1">
-                      <p className="text-white/80">
-                        Execute market analysis for Q1 strategic positioning
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
-                      alt="SaintSal AI"
-                      className="w-6 h-6 object-contain mt-1"
-                    />
-                    <div className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 border border-[#FFD700]/20 rounded-lg p-4 flex-1">
-                      <p className="text-white">
-                        ⚡ Analysis complete. Market positioning identified. CRM
-                        updated with 847 qualified leads.
-                        <span className="text-[#FFD700] font-semibold">
-                          {" "}
-                          Strategic recommendations ready for execution.
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 text-center">
-                  <Link href="/chat">
-                    <button
-                      className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-bold rounded-lg px-6 py-3 transition-all duration-200"
-                      style={{ boxShadow: "0 0 20px rgba(255, 215, 0, 0.4)" }}
-                    >
-                      Execute Now
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Final CTA */}
-          <div className="py-24 max-w-4xl mx-auto px-6 text-center">
-            <motion.div
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2
-                className="text-4xl md:text-5xl font-black text-[#FFD700] mb-6 tracking-wider"
+                className="text-3xl md:text-5xl font-black text-[#FFD700] mb-6 tracking-wider"
                 style={{
                   fontFamily: '"Bebas Neue", "Sora", system-ui, sans-serif',
                   textShadow: "0 0 15px rgba(255, 215, 0, 0.5)",
                 }}
               >
-                Ready to Execute?
+                PartnerTech AI Execution Tiers
               </h2>
-              <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
-                Join elite builders who choose execution over consumption.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href="/signup">
-                  <button
-                    className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-black uppercase rounded-lg px-8 py-4 transition-all duration-200 text-lg"
-                    style={{
-                      fontFamily: '"Sora", system-ui, sans-serif',
-                      boxShadow: "0 0 30px rgba(255, 215, 0, 0.6)",
-                    }}
-                  >
-                    🚀 START EXECUTION
-                  </button>
-                </Link>
-                <Link href="/pricing">
-                  <button
-                    className="border-2 border-[#FFD700]/60 text-[#FFD700] hover:bg-[#FFD700]/10 font-bold uppercase rounded-lg px-8 py-4 transition-all duration-200 text-lg"
-                    style={{
-                      fontFamily: '"Sora", system-ui, sans-serif',
-                      boxShadow: "inset 0 0 20px rgba(255, 215, 0, 0.1)",
-                    }}
-                  >
-                    ⚡ VIEW TIERS
-                  </button>
-                </Link>
-              </div>
             </motion.div>
+
+            {/* Compact Pricing Cards - Vertical Stack */}
+            <div className="max-w-sm mx-auto space-y-3">
+              {[
+                {
+                  name: "Starter Summit",
+                  price: "$97",
+                  period: "/mo",
+                  color: "bg-gradient-to-r from-purple-600 to-purple-700",
+                  features: ["GPT-4 Access", "Basic CRM", "Email Support"],
+                },
+                {
+                  name: "Summit Elite",
+                  price: "$297",
+                  period: "/mo",
+                  color: "bg-gradient-to-r from-blue-600 to-blue-700",
+                  features: ["Dual AI Engines", "Full CRM", "Priority Support"],
+                  popular: true,
+                },
+                {
+                  name: "Azure Enterprise",
+                  price: "$597",
+                  period: "/mo",
+                  color: "bg-gradient-to-r from-yellow-500 to-yellow-600",
+                  features: ["White Label", "API Access", "Custom Training"],
+                },
+                {
+                  name: "Patent Protected",
+                  price: "$997",
+                  period: "/mo",
+                  color: "bg-gradient-to-r from-pink-600 to-pink-700",
+                  features: ["Everything", "Patent License", "1-on-1 Training"],
+                },
+                {
+                  name: "Lead Generation",
+                  price: "$197",
+                  period: "/mo",
+                  color: "bg-gradient-to-r from-green-600 to-green-700",
+                  features: ["AI Prospecting", "Lead Export", "CRM Sync"],
+                },
+              ].map((tier, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ x: -50, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`${tier.color} rounded-lg p-4 text-white relative`}
+                  style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)" }}
+                >
+                  {tier.popular && (
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-[#FFD700] text-black text-xs font-bold px-3 py-1 rounded-full">
+                      MOST POPULAR
+                    </div>
+                  )}
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <div
+                        className="font-bold text-lg"
+                        style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
+                      >
+                        {tier.name}
+                      </div>
+                      <div className="text-xs opacity-80">
+                        {tier.features.join(" • ")}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-black">{tier.price}</div>
+                      <div className="text-sm opacity-80">{tier.period}</div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Get Started Button */}
+            <div className="text-center mt-8">
+              <Link href="/pricing">
+                <button
+                  className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-black uppercase rounded-lg px-8 py-4 transition-all duration-200 text-lg"
+                  style={{
+                    fontFamily: '"Sora", system-ui, sans-serif',
+                    boxShadow: "0 0 30px rgba(255, 215, 0, 0.6)",
+                  }}
+                >
+                  🚀 Choose Your Tier
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Operations Dashboard Preview */}
+          <div className="py-16 max-w-4xl mx-auto px-6">
+            <motion.div
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2
+                className="text-3xl md:text-5xl font-black text-white mb-6 tracking-wider"
+                style={{
+                  fontFamily: '"Bebas Neue", "Sora", system-ui, sans-serif',
+                  textShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
+                }}
+              >
+                SaintSal™ Operations Dash
+              </h2>
+              <p className="text-lg text-white/80">
+                Real-time metrics and AI-powered insights
+              </p>
+            </motion.div>
+
+            {/* Operations Metrics - Compact Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              {[
+                {
+                  label: "Active Leads",
+                  value: "2,847",
+                  color: "bg-pink-600",
+                  change: "+12%",
+                },
+                {
+                  label: "Conversions",
+                  value: "347",
+                  color: "bg-green-600",
+                  change: "+23%",
+                },
+                {
+                  label: "Revenue",
+                  value: "$127K",
+                  color: "bg-purple-600",
+                  change: "+45%",
+                },
+                {
+                  label: "AI Queries",
+                  value: "15,629",
+                  color: "bg-blue-600",
+                  change: "+67%",
+                },
+              ].map((metric, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`${metric.color} rounded-lg p-4 text-white text-center`}
+                  style={{
+                    boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.1)",
+                  }}
+                >
+                  <div className="text-2xl font-black mb-1">{metric.value}</div>
+                  <div className="text-xs opacity-80 mb-1">{metric.label}</div>
+                  <div className="text-xs text-green-300">{metric.change}</div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Final CTA */}
+            <div className="text-center">
+              <Link href="/dashboard">
+                <button
+                  className="bg-[#FFD700] hover:bg-[#FFA500] text-black font-black uppercase rounded-lg px-8 py-4 transition-all duration-200 text-lg"
+                  style={{
+                    fontFamily: '"Sora", system-ui, sans-serif',
+                    boxShadow: "0 0 30px rgba(255, 215, 0, 0.6)",
+                  }}
+                >
+                  🎯 Access Dashboard
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="relative bg-[#0a0f14]/90 border-t border-[#FFD700]/20 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            {/* Logo Section */}
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 mb-6">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fd83998c6a81f466db4fb83ab90c7ba25%2Fef556df9f2134479a582959e03ab77e9?format=webp&width=800"
-                  alt="SaintVisionAI"
-                  className="w-12 h-12 object-contain"
-                />
-                <div>
-                  <h3
-                    className="text-2xl font-bold text-[#FFD700] tracking-wider"
-                    style={{ fontFamily: '"Sora", system-ui, sans-serif' }}
-                  >
-                    SaintVisionAI™
-                  </h3>
-                  <p className="text-white/60 text-sm">
-                    Elite AI Execution Platform
-                  </p>
-                </div>
-              </div>
-              <p className="text-white/70 leading-relaxed">
-                Patent-protected AI movement for kingdom builders. Where divine
-                intelligence meets strategic execution.
-              </p>
-            </div>
-
-            {/* Navigation */}
-            <div>
-              <h4 className="text-lg font-bold text-[#FFD700] mb-4">
-                Platform
-              </h4>
-              <ul className="space-y-2">
-                {["Home", "Dashboard", "Console", "Pricing"].map((item) => (
-                  <li key={item}>
-                    <Link
-                      href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                      className="text-white/60 hover:text-[#FFD700] transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h4 className="text-lg font-bold text-[#FFD700] mb-4">Legal</h4>
-              <ul className="space-y-2">
-                {["Terms", "Privacy", "Licensing"].map((item) => (
-                  <li key={item}>
-                    <Link
-                      href={`/${item.toLowerCase()}`}
-                      className="text-white/60 hover:text-[#FFD700] transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-[#FFD700]/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white/50 text-sm">
-              © 2024 SAINTSAL™ Movement. U.S. Patent No. 10,290,222. All
-              rights reserved.
-            </p>
-            <div className="flex items-center space-x-4 mt-4 md:mt-0">
-              <span className="text-white/50 text-sm">Elite AI Execution</span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
